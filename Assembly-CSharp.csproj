@@ -57,7 +57,8 @@
   <ItemGroup>
      <Compile Include="Assets\PhysicsObject.cs" />
      <Compile Include="Assets\Scripts\CameraScript.cs" />
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>A:/Documentos/Proyectos/Unity/Will-o-the-Wisp/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
