@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
         createBubble();
+        Attack();
     }
 
     void Move()
@@ -46,6 +47,25 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity += -1f * Physics.gravity.normalized * this.CalculateJumpVerticalSpeed(this.jumpHeight);
             isGrounded = false;
+        }
+    }
+
+    void Attack() {
+        if (Input.GetMouseButtonDown(0)) {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            {
+                Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
+                Debug.Log("Did Hit");
+            }
+            else
+            {
+                Debug.DrawRay(transform.position, ray.direction * 1000, Color.white, 10f);
+                Debug.Log("Did not Hit");
+            }
         }
     }
 
