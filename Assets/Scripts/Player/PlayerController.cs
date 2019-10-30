@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private Transform tr;
+    private bool isRunning;
     GameObject player;
     public float speed = 50f;
     public Vector3 move = new Vector3(0, 55, -55);
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
         tr = player.transform.GetComponent<Transform>();
         rb = player.GetComponent<Rigidbody>();
         isGrounded = true;
+        isRunning = false;
     }
 
     // Update is called once per frame
@@ -37,6 +39,18 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isRunning = true;
+            speed *= 2;
+        }
+
+        else if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isRunning = false;
+            speed /= 2;
+        }
+        
         move = new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * speed, rb.velocity.y, Input.GetAxis("Vertical") * Time.deltaTime * speed);
         tr.Translate(move);
     }
