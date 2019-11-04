@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class BurbujaControlller : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Vector3 pos;
+    Rigidbody rb;
+    GameObject bubble;
+    Transform tr;
+    BurbujaStats bs;
+
+    void Awake() {
+        bubble = GameObject.FindGameObjectWithTag("Bubble");
+        rb = bubble.GetComponent<Rigidbody>();
+        tr = bubble.GetComponent<Transform>();
+        bs = bubble.GetComponent<BurbujaStats>();
+    }
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        bubbleFloat();
+    }
+
+    void bubbleFloat() {
+        pos = tr.position;
+        pos.y += Mathf.Sin (Time.fixedTime * Mathf.PI * bs.frecuencia) * bs.amplitud;
+        tr.position = pos;
     }
 }

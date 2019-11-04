@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class BurbujaStats : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float amplitud = 0.5f;
+    public float frecuencia = 1f;
+    
 }
