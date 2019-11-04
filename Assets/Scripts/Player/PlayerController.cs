@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Dagda");
-        ps = GetComponent<playerStats>();
+        ps = player.GetComponent<playerStats>();
     }
 
     void Start()
