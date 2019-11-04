@@ -6,29 +6,30 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private Transform tr;
-    private bool isRunning;
     GameObject player;
-    public float speed = 50f;
     public Vector3 move = new Vector3(0, 55, -55);
-    public float jumpHeight = 2f;
-    private bool isGrounded;
     public GameObject bubble;
+    public playerStats ps;
+    
+
+    //Todos estos valores se moverán a otro script 
+    
 
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Dagda");
+        ps = GetComponent<playerStats>();
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         print("Let\'s get this bread.");
         tr = player.transform.GetComponent<Transform>();
         rb = player.GetComponent<Rigidbody>();
-        isGrounded = true;
-        isRunning = false;
+        ps.isGrounded = true;
+        ps.isRunning = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
@@ -41,45 +42,75 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            isRunning = true;
-            speed *= 2;
+            ps.isRunning = true;
+            ps.speed *= 2;
         }
 
         else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
-            isRunning = false;
-            speed /= 2;
+            ps.isRunning = false;
+            ps.speed /= 2;
         }
         
-        move = new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * speed, rb.velocity.y, Input.GetAxis("Vertical") * Time.deltaTime * speed);
+        move = new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * ps.speed, rb.velocity.y, Input.GetAxis("Vertical") * Time.deltaTime * ps.speed);
         tr.Translate(move);
     }
 
     void Jump()
     {
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if(Input.GetButtonDown("Jump") && ps.isGrounded)
         {
-            rb.velocity += -1f * Physics.gravity.normalized * this.CalculateJumpVerticalSpeed(this.jumpHeight);
-            isGrounded = false;
+            rb.velocity += -1f * Physics.gravity.normalized * this.CalculateJumpVerticalSpeed(this.ps.jumpHeight);
+            ps.isGrounded = false;
+        }
+    }
+
+    void LightAttack() {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        bool check = Physics.Raycast(ray, out hit, Mathf.Infinity);
+
+        if (check)
+        {
+            Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
+            Debug.Log("Light attack did Hit");
+            if (hit.collider.tag == "Enemy") {
+                hit.collider.GetComponent<BaseEnemy>().getHit(ps.lightDamage);
+            }
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, ray.direction * 1000, Color.white, 10f);
+            Debug.Log("Light attack did not Hit");
+        }
+    }
+
+    void HeavyAttack() {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        bool check = Physics.Raycast(ray, out hit, Mathf.Infinity);
+
+        if (check)
+        {
+            Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
+            Debug.Log("Heavy attack did Hit");
+            if (hit.collider.tag == "Enemy") {
+                hit.collider.GetComponent<BaseEnemy>().getHit(ps.heavyDamage);
+            }
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, ray.direction * 1000, Color.white, 10f);
+            Debug.Log("Heavy attack did not Hit");
         }
     }
 
     void Attack() {
         if (Input.GetMouseButtonDown(0)) {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-            {
-                Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
-                Debug.Log("Did Hit");
-            }
-            else
-            {
-                Debug.DrawRay(transform.position, ray.direction * 1000, Color.white, 10f);
-                Debug.Log("Did not Hit");
-            }
+            LightAttack();
+        }
+        else if (Input.GetMouseButtonDown(1)) {
+            HeavyAttack();
         }
     }
 
@@ -109,6 +140,6 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Ground") isGrounded = true;
+        if (collision.collider.tag == "Ground") ps.isGrounded = true;
     }
 }
