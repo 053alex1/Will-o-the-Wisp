@@ -6,10 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private Transform tr;
+
     GameObject player;
     public Vector3 move = new Vector3(0, 55, -55);
     public GameObject bubble;
     public playerStats ps;
+
+    public float RotationSpeed;
     
 
     //Todos estos valores se moverán a otro script 
@@ -54,6 +57,8 @@ public class PlayerController : MonoBehaviour
         
         move = new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * ps.speed, rb.velocity.y, Input.GetAxis("Vertical") * Time.deltaTime * ps.speed);
         tr.Translate(move);
+
+        transform.Rotate(0, Input.GetAxis("Horizontal") * RotationSpeed * Time.deltaTime, 0);
     }
 
     void Jump()
