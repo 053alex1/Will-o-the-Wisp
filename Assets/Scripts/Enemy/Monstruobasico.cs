@@ -31,7 +31,7 @@ private bool follow= false;
     target = GameObject.FindWithTag("Dagda").transform;
         timer = wanderTimer;
         agent.speed = 50f;
-        agent.angularSpeed = 150;
+        agent.acceleration = 20;
         agent.stoppingDistance = 1;
 
 }
