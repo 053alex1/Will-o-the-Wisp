@@ -27,7 +27,11 @@ public class BurbujaControlller : MonoBehaviour
 
     void bubbleFloat() {
         pos = tr.position;
-        pos.y += Mathf.Sin (Time.fixedTime * Mathf.PI * bs.frecuencia) * bs.amplitud;
+        pos.y += Mathf.Sin (2 * Time.fixedTime * Mathf.PI * bs.frecuencia) * bs.amplitud;
         tr.position = pos;
+
+        /*La fórmula de la onda del seno es y(t) = A * sin(2 * pi * f * t + fase)
+            A mayor amplitud (A), mayor será altura de los picos
+            A mayor frecuencia (f), más oscilaciones por unidad de tiempo*/
     }
 }

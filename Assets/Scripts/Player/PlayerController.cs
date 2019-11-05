@@ -74,6 +74,9 @@ public class PlayerController : MonoBehaviour
         {
             Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
             Debug.Log("Light attack did Hit");
+
+            ps.reduceMana(ps.lightDamage);
+            
             if (hit.collider.tag == "Enemy") {
                 hit.collider.GetComponent<BaseEnemy>().getHit(ps.lightDamage);
             }
@@ -94,6 +97,9 @@ public class PlayerController : MonoBehaviour
         {
             Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
             Debug.Log("Heavy attack did Hit");
+
+            ps.reduceMana(ps.heavyDamage);
+
             if (hit.collider.tag == "Enemy") {
                 hit.collider.GetComponent<BaseEnemy>().getHit(ps.heavyDamage);
             }
