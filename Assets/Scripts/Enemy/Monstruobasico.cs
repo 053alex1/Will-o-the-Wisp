@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class Montruobasico : MonoBehaviour
+
+[RequireComponent(typeof(NavMeshAgent))]
+public class Monstruobasico : MonoBehaviour
 { 
 //Radio en el que busca una nueva posicion aleatoria a la que ir en Wander
-public float wanderRadius;
+public float wanderRadius=40;
 //Tiempo que tarda en buscar una nueva posicion a la que ir en Wander
-public float wanderTimer;
+public float wanderTimer=4;
 //Radio(distancia) maxima a la que busca a dagda
-public float radius ;
+public float radius=50 ;
 //Angulo de vision de busqueda de dagda
-public float fov = 30f;
+public float fov = 90f;
 
 //Usados para el calculo(igual luego los quito de aquí)
 private float dot = 0;
