@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Enemy
   - Bubble
+  - Fuego
+  - Altar
   layers:
   - Default
   - TransparentFX
