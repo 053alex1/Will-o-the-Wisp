@@ -23,6 +23,9 @@ public class BurbujaControlller : MonoBehaviour
     void Update()
     {
         bubbleFloat();
+        if (bs.resistencia <= 0) {
+            romperBurbuja();
+        }
     }
 
     void bubbleFloat() {
@@ -33,5 +36,33 @@ public class BurbujaControlller : MonoBehaviour
         /*La fórmula de la onda del seno es y(t) = A * sin(2 * pi * f * t + fase)
             A mayor amplitud (A), mayor será altura de los picos
             A mayor frecuencia (f), más oscilaciones por unidad de tiempo*/
+    }
+
+    void romperBurbuja() {
+        for(int i = 0; i < bs.fuegoFatuos.Length; i++){
+            Transform fuego = bs.fuegoFatuos[i];
+            if (fuego.GetComponent<FuegosController>().libre == false) {
+                fuego.GetComponent<FuegosController>().libre = true;
+                fuego.parent = null;
+                fuego.GetComponent<FuegosController>().changeTarget();
+                bs.cont--;
+            }
+        }
+        Destroy(gameObject);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {   
+        //Vector3.Distance(transform.position, otherObject.transform.position) -- cada frame
+        if (other.gameObject.tag == "Fuego") {
+            Transform fuego = other.transform;
+            fuego.GetComponent<FuegosController>().libre = false;
+            fuego.parent = tr;
+            bs.cont ++;
+        }
+
+        if (other.gameObject.tag == "Altar" && bs.cont == bs.fuegoFatuos.Length) {
+            Debug.Log("Has reunido todos los fuegos YEEEAA");
+        }
     }
 }
