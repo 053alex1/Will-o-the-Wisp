@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FuegosController : MonoBehaviour
+public class FuegoController : MonoBehaviour
 {
     public Transform[] waypoints;
     Vector3 targetPoint;
@@ -12,6 +12,10 @@ public class FuegosController : MonoBehaviour
     public bool teLloc = false;
     //public float distanceThreshold;
 
+
+    void Awake() {
+        findWaypoints();
+    }
     void Start()
     {
         indiceVector = Random.Range(0, waypoints.Length);
@@ -33,8 +37,11 @@ public class FuegosController : MonoBehaviour
             else {
                 MoveMe();
             }
-        }
-            
+        }      
+    }
+
+    void findWaypoints() {
+        waypoints = GameObject.Find("Waypoints").GetComponentsInChildren<Transform>();
     }
     void MoveMe(){
         transform.position = Vector3.Lerp (transform.position, targetPoint, Time.deltaTime * speed);

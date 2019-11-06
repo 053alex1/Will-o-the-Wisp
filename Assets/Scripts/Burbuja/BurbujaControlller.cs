@@ -41,10 +41,10 @@ public class BurbujaControlller : MonoBehaviour
     void romperBurbuja() {
         for(int i = 0; i < bs.fuegoFatuos.Length; i++){
             Transform fuego = bs.fuegoFatuos[i];
-            if (fuego.GetComponent<FuegosController>().libre == false) {
-                fuego.GetComponent<FuegosController>().libre = true;
+            if (fuego.GetComponent<FuegoController>().libre == false) {
+                fuego.GetComponent<FuegoController>().libre = true;
                 fuego.parent = null;
-                fuego.GetComponent<FuegosController>().changeTarget();
+                //fuego.GetComponent<FuegoController>().changeTarget();
                 bs.cont--;
             }
         }
@@ -56,7 +56,7 @@ public class BurbujaControlller : MonoBehaviour
         //Vector3.Distance(transform.position, otherObject.transform.position) -- cada frame
         if (other.gameObject.tag == "Fuego") {
             Transform fuego = other.transform;
-            fuego.GetComponent<FuegosController>().libre = false;
+            fuego.GetComponent<FuegoController>().libre = false;
             fuego.parent = tr;
             bs.cont ++;
         }
@@ -65,4 +65,6 @@ public class BurbujaControlller : MonoBehaviour
             Debug.Log("Has reunido todos los fuegos YEEEAA");
         }
     }
+
+    
 }

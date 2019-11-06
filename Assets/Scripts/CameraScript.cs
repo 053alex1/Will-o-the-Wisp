@@ -34,7 +34,7 @@ public class CameraScript : MonoBehaviour
         transform.position = Vector3.Slerp(transform.position, newPos, smoothSpeed);
 
         if(LookAtPlayer || RotateAroundPlayer)
-		transform.LookAt(target);
+		    transform.LookAt(target);
 	}
 
     void RotateCheck()
