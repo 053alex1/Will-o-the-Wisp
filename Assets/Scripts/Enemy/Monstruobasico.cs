@@ -10,6 +10,7 @@ public class Monstruobasico : MonoBehaviour
 public float wanderRadius=40;
 //Tiempo que tarda en buscar una nueva posicion a la que ir en Wander
 public float wanderTimer=4;
+public float TimerCDAttack=1;
 //Radio(distancia) maxima a la que busca a dagda
 public float radius=50 ;
 //Angulo de vision de busqueda de dagda
@@ -17,7 +18,7 @@ public float fov = 90f;
 //Usados para el calculo(igual luego los quito de aquí
 protected Transform target;
 protected NavMeshAgent agent;
-private float timer;
+private float timer , timerAttack;
 private bool follow= false;
  //   private MetodosGenerales m;
 
@@ -27,6 +28,7 @@ private bool follow= false;
     agent = GetComponent<NavMeshAgent>();
     target = GameObject.FindWithTag("Dagda").transform;
         timer = wanderTimer;
+        timerAttack=TimerCDAttack;
         agent.speed = 50f;
         agent.acceleration = 20;
         agent.stoppingDistance = 15;
@@ -37,6 +39,7 @@ private bool follow= false;
 // Update is called once per frame
 void Update()
 {       
+        timerAttack+=Time.deltaTime;
         //logica sencilla: si no estas siguiendo al protagonista tu recorrido es aleatorio
         if(!follow){
             wander();
@@ -65,10 +68,12 @@ private void seguir()
             if (dis <= agent.stoppingDistance * agent.stoppingDistance)
 			{
                
-                playerStats targetStats = target.GetComponent<playerStats>();
-                //añadir metodos de cooldown
-                //if (target!=null)
-                  //  targetStats.getHit(1f);
+               if(timerAttack > TimerCDAttack){
+                timerAttack=0;
+
+                    playerStats targetStats = target.GetComponent<playerStats>(); 
+                    targetStats.getHit(1f);
+                }
             }
                 agent.SetDestination(target.position);
             

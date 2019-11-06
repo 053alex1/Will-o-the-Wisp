@@ -47,8 +47,9 @@ public class playerStats : MonoBehaviour
     }
     public void getHit(float damage) {
         hp -= damage;
-        Debug.Log("ouch - " + hp + " hp left");
-        if (hp <= 0) Destroy(gameObject);
+        if(hp>=0)
+            Debug.Log("ouch - " + hp + " hp left");
+        if (hp <= 0) gameObject.SetActive(false);
     }
 
 }
