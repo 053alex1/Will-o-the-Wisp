@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity += -1f * Physics.gravity.normalized * this.CalculateJumpVerticalSpeed(this.ps.jumpHeight);
             ps.isGrounded = false;
-            playerAnimator.setBool("isJumping", true);
+            playerAnimator.SetBool("isJumping", true);
         }
     }
 
@@ -130,12 +130,14 @@ public class PlayerController : MonoBehaviour
     }
 
     void Attack() {
+        playerAnimator.SetBool("isAttacking", true);
         if (Input.GetMouseButtonDown(0)) {
             LightAttack();
         }
         else if (Input.GetMouseButtonDown(1)) {
             HeavyAttack();
         }
+        playerAnimator.SetBool("isAttacking", false);
     }
 
     float CalculateJumpVerticalSpeed(float height)
@@ -164,6 +166,20 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Ground") ps.isGrounded = true;
+        if (collision.collider.tag == "Ground")
+        {
+            ps.isGrounded = true;
+            playerAnimator.SetBool("isJumping", false);
+        }
+        
+        if(collision.collider.tag == "Enemy")
+        {
+            Debug.Log("Has sido dañado");
+            playerAnimator.SetBool("isHurting", true);
+            ps.reduceHp(20.0f);
+            playerAnimator.SetBool("isHurting", false);
+            Debug.Log("Ya no eres dañado");
+
+        }
     }
 }
