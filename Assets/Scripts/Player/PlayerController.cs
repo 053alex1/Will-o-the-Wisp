@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity += -1f * Physics.gravity.normalized * this.CalculateJumpVerticalSpeed(this.ps.jumpHeight);
             ps.isGrounded = false;
+            playerAnimator.setBool("isJumping", true);
         }
     }
 
