@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_GeneratorAsset: {fileID: 0}
   m_Script: {fileID: 12146, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: soft_round
   m_EditorClassIdentifier: 
@@ -56,7 +55,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_RadiusScale: 1
+  m_RadiusScale: 1.178
   m_BlackWhiteRemapMin: 0
   m_BlackWhiteRemapMax: 1
   m_InvertRemapRange: 0
