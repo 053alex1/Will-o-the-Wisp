@@ -43,6 +43,12 @@ public class playerStats : MonoBehaviour
     }
     void Start() {
         InvokeRepeating("regenMana", 0f, manaRegenPerSec);  // Con esta función se invoca a regenMana() cada 0.5 segundos
+        fillHp();
+    }
+    public void getHit(float damage) {
+        hp -= damage;
+        Debug.Log("ouch - " + hp + " hp left");
+        if (hp <= 0) Destroy(gameObject);
     }
 
 }
