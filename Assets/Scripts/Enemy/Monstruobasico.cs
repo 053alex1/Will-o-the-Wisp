@@ -33,18 +33,27 @@ private bool follow= false;
         agent.speed = 50f;
         agent.acceleration = 20;
         agent.stoppingDistance = 1;
+ 
+
+
 
 }
+ 
 
 // Update is called once per frame
 void Update()
 {       
         //logica sencilla: si no estas siguiendo al protagonista tu recorrido es aleatorio
-        if(!follow)
-            wander( agent,  timer,  wanderTimer,  wanderRadius);
+        if(!follow){
+           timer= wander( agent,  timer,  wanderTimer,  wanderRadius);
+        }
         follow=seguir( agent,  target,  fov,  radius);
     
 }
 
-
+void OnDrawGizmosSelected ()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, wanderRadius);
+	}
 }

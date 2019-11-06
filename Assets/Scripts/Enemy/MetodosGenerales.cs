@@ -19,6 +19,12 @@ public class MetodosGenerales : MonoBehaviour
         {
 
             agent.SetDestination(target.position);
+            if (dis <= agent.stoppingDistance)
+			{
+                
+                playerStats targetStats = target.GetComponent<playerStats>();
+                targetStats.getHit(10f);
+            }
             return true;
         }
         else
@@ -28,7 +34,7 @@ public class MetodosGenerales : MonoBehaviour
     }
 
 
-    public void wander(NavMeshAgent agent, float timer, float wanderTimer, float wanderRadius)
+    public float wander(NavMeshAgent agent, float timer, float wanderTimer, float wanderRadius)
     {
 
         timer += Time.deltaTime;
@@ -39,6 +45,7 @@ public class MetodosGenerales : MonoBehaviour
             agent.SetDestination(newPos);
             timer = 0;
         }
+        return timer;
     }
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {
