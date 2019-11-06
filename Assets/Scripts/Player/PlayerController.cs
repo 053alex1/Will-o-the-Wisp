@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private Transform tr;
+    public Animator playerAnimator;
+    public GameObject GFX;
 
     GameObject player;
     public Vector3 move = new Vector3(0, 55, -55);
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Dagda");
         ps = player.GetComponent<playerStats>();
+        playerAnimator = GFX.transform.GetComponent<Animator>();
     }
 
     void Start()
@@ -47,16 +50,19 @@ public class PlayerController : MonoBehaviour
         {
             ps.isRunning = true;
             ps.speed *= 2;
+            playerAnimator.SetBool("isRunning", true);
         }
 
         else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
             ps.isRunning = false;
             ps.speed /= 2;
+            playerAnimator.SetBool("isRunning", false);
         }
         
         move = new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * ps.speed, rb.velocity.y, Input.GetAxis("Vertical") * Time.deltaTime * ps.speed);
         tr.Translate(move);
+        playerAnimator.SetFloat("Walking", Mathf.Abs(move.x + move.z));
 
         transform.Rotate(0, Input.GetAxis("Horizontal") * RotationSpeed * Time.deltaTime, 0);
     }
