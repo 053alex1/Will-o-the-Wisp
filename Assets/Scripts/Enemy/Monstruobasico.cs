@@ -32,7 +32,7 @@ private bool follow= false;
         timer = wanderTimer;
         agent.speed = 50f;
         agent.acceleration = 20;
-        agent.stoppingDistance = 1;
+        agent.stoppingDistance = 15;
  
 
 
