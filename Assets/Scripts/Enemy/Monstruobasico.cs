@@ -15,13 +15,20 @@ public float TimerCDAttack=1;
 public float radius=50 ;
 //Angulo de vision de busqueda de dagda
 public float fov = 90f;
-//Usados para el calculo(igual luego los quito de aquí
-protected Transform target;
+
+    public Animator playerAnimator;
+    public GameObject GFX;
+    //Usados para el calculo(igual luego los quito de aquí
+    protected Transform target;
 protected NavMeshAgent agent;
 private float timer , timerAttack;
 private bool follow= false;
- //   private MetodosGenerales m;
+    //   private MetodosGenerales m;
 
+    private void Awake()
+    {
+        playerAnimator = GFX.transform.GetComponent<Animator>();
+    }
     // Use this for initialization
     void Start()
 {

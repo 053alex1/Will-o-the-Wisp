@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bubble;
     public playerStats ps;
 
-    public float RotationSpeed;
+    public float RotationSpeed = 100;
     
 
     //Todos estos valores se moverán a otro script 
