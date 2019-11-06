@@ -71,6 +71,9 @@
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/Will o the Wisp/Will-o-the-Wisp/Will-o-the-Wisp/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.TerrainTools">
+ <HintPath>D:/Will o the Wisp/Will-o-the-Wisp/Will-o-the-Wisp/Library/ScriptAssemblies/Unity.TerrainTools.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.ProGrids">
  <HintPath>D:/Will o the Wisp/Will-o-the-Wisp/Will-o-the-Wisp/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
  </Reference>
@@ -101,14 +104,11 @@
  <Reference Include="Unity.TextMeshPro">
  <HintPath>D:/Will o the Wisp/Will-o-the-Wisp/Will-o-the-Wisp/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
- <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>D:/Will o the Wisp/Will-o-the-Wisp/Will-o-the-Wisp/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TerrainTools">
- <HintPath>D:/Will o the Wisp/Will-o-the-Wisp/Will-o-the-Wisp/Library/ScriptAssemblies/Unity.TerrainTools.dll</HintPath>
- </Reference>
  <Reference Include="Unity.TerrainTools.Editor">
  <HintPath>D:/Will o the Wisp/Will-o-the-Wisp/Will-o-the-Wisp/Library/ScriptAssemblies/Unity.TerrainTools.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Analytics.DataPrivacy">
+ <HintPath>D:/Will o the Wisp/Will-o-the-Wisp/Will-o-the-Wisp/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

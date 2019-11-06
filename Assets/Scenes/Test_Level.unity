@@ -292,6 +292,7 @@ MonoBehaviour:
   move: {x: 0, y: 55, z: -55}
   bubble: {fileID: 2154605315000130315, guid: 2d7b76edaae9a0443b73baf46e1b5dce, type: 3}
   ps: {fileID: 0}
+  RotationSpeed: 0
 --- !u!65 &306618550
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -401,6 +402,7 @@ MonoBehaviour:
   move: {x: 0, y: 55, z: -55}
   bubble: {fileID: 2154605315000130315, guid: 2d7b76edaae9a0443b73baf46e1b5dce, type: 3}
   ps: {fileID: 310963743}
+  RotationSpeed: 0
 --- !u!136 &310963741
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -692,20 +694,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ba56cd07d83644f8adf55966b94653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 129705931}
-  - {fileID: 1526368662}
-  - {fileID: 641258758}
-  - {fileID: 60176252}
-  - {fileID: 1576420857}
-  - {fileID: 534487018}
-  - {fileID: 2021015109}
-  - {fileID: 1372641504}
-  - {fileID: 789889685}
-  indiceVector: 0
-  speed: 1
-  libre: 1
-  teLloc: 0
 --- !u!135 &413920662
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1207,20 +1195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ba56cd07d83644f8adf55966b94653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 129705931}
-  - {fileID: 1526368662}
-  - {fileID: 641258758}
-  - {fileID: 60176252}
-  - {fileID: 1576420857}
-  - {fileID: 534487018}
-  - {fileID: 2021015109}
-  - {fileID: 1372641504}
-  - {fileID: 789889685}
-  indiceVector: 0
-  speed: 1
-  libre: 1
-  teLloc: 0
 --- !u!135 &871579436
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1469,20 +1443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ba56cd07d83644f8adf55966b94653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 129705931}
-  - {fileID: 1526368662}
-  - {fileID: 641258758}
-  - {fileID: 60176252}
-  - {fileID: 1576420857}
-  - {fileID: 534487018}
-  - {fileID: 2021015109}
-  - {fileID: 1372641504}
-  - {fileID: 789889685}
-  indiceVector: 0
-  speed: 1
-  libre: 1
-  teLloc: 0
 --- !u!135 &1195590481
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1695,7 +1655,8 @@ MonoBehaviour:
   target: {fileID: 310963742}
   smoothSpeed: 0.2
   offset: {x: 0, y: 10, z: -30}
-  position: {x: 0, y: 0, z: 0}
+  LookAtPlayer: 0
+  RotateAroundPlayer: 0
 --- !u!81 &1363109197
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1754,13 +1715,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363109195}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.15856206, y: -0, z: -0, w: 0.98734903}
+  m_LocalPosition: {x: 0, y: 11.33, z: -68.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 18.247002, y: 0, z: 0}
 --- !u!1 &1372641503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,20 +1889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ba56cd07d83644f8adf55966b94653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 129705931}
-  - {fileID: 1526368662}
-  - {fileID: 641258758}
-  - {fileID: 60176252}
-  - {fileID: 1576420857}
-  - {fileID: 534487018}
-  - {fileID: 2021015109}
-  - {fileID: 1372641504}
-  - {fileID: 789889685}
-  indiceVector: 0
-  speed: 1
-  libre: 1
-  teLloc: 0
 --- !u!135 &1496658956
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2167,20 +2114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ba56cd07d83644f8adf55966b94653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 129705931}
-  - {fileID: 1526368662}
-  - {fileID: 641258758}
-  - {fileID: 60176252}
-  - {fileID: 1576420857}
-  - {fileID: 534487018}
-  - {fileID: 2021015109}
-  - {fileID: 1372641504}
-  - {fileID: 789889685}
-  indiceVector: 0
-  speed: 1
-  libre: 1
-  teLloc: 0
 --- !u!135 &1885759549
 SphereCollider:
   m_ObjectHideFlags: 0
