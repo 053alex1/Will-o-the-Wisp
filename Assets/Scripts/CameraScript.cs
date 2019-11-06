@@ -6,13 +6,12 @@ public class CameraScript : MonoBehaviour
 {
     private float RotationSpeed = 5.0f;
     public Transform target;
-
 	public float smoothSpeed;
 	public Vector3 offset;
-
     public bool LookAtPlayer = false;
     public bool RotateAroundPlayer = false;
 
+    
     private void Start()
     {
         offset = transform.position - target.position;

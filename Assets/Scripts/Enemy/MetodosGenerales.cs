@@ -20,15 +20,12 @@ public class MetodosGenerales : MonoBehaviour
 
             if (dis <= agent.stoppingDistance * agent.stoppingDistance)
 			{
-
                 Debug.Log(agent.stoppingDistance.ToString());
                 playerStats targetStats = target.GetComponent<playerStats>();
                 //añadir metodos de cooldown
                 //if (target!=null)
                   //  targetStats.getHit(1f);
             }
-        
-            
                 agent.SetDestination(target.position);
             
             return true;

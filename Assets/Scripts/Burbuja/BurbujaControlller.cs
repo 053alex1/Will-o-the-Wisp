@@ -20,7 +20,7 @@ public class BurbujaControlller : MonoBehaviour
     {
         
     }
-    void Update()
+    void FixedUpdate()
     {
         bubbleFloat();
         if (bs.resistencia <= 0) {

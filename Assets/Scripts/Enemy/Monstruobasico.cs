@@ -14,10 +14,8 @@ public float wanderTimer=4;
 public float radius=50 ;
 //Angulo de vision de busqueda de dagda
 public float fov = 90f;
-
 //Usados para el calculo(igual luego los quito de aquí)
 private float dot = 0;
-
 protected Transform target;
 protected NavMeshAgent agent;
 private float timer;
@@ -33,10 +31,6 @@ private bool follow= false;
         agent.speed = 50f;
         agent.acceleration = 20;
         agent.stoppingDistance = 15;
- 
-
-
-
 }
  
 
@@ -45,10 +39,9 @@ void Update()
 {       
         //logica sencilla: si no estas siguiendo al protagonista tu recorrido es aleatorio
         if(!follow){
-           timer= wander( agent,  timer,  wanderTimer,  wanderRadius);
+           timer = wander( agent,  timer,  wanderTimer,  wanderRadius);
         }
-        follow=seguir( agent,  target,  fov,  radius);
-    
+        follow  =seguir( agent,  target,  fov,  radius);
 }
 
 void OnDrawGizmosSelected ()

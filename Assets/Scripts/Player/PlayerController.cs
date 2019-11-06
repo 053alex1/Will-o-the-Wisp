@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         ps.isRunning = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Move();
         Jump();

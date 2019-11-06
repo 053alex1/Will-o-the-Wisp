@@ -28,7 +28,7 @@ public class FuegoController : MonoBehaviour
         Teletransportarse();
     }
 
-    void Update() 
+    void FixedUpdate() 
     {
         if (libre) {
             if (teLloc == false) {
