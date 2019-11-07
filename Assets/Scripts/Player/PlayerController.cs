@@ -13,8 +13,10 @@ public class PlayerController : MonoBehaviour
     public Vector3 move = new Vector3(0, 55, -55);
     public GameObject bubble;
     public playerStats ps;
-
-    public float RotationSpeed;
+    private Transform maincam;
+    private Quaternion aux;
+    private Vector3 forward = Vector3.zero;
+    private Vector3 movement = Vector3.zero;
     
 
     //Todos estos valores se moverán a otro script 
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Dagda");
         ps = player.GetComponent<playerStats>();
         playerAnimator = GFX.transform.GetComponent<Animator>();
+        maincam = Camera.main.transform;
     }
 
     void Start()
@@ -36,7 +39,7 @@ public class PlayerController : MonoBehaviour
         ps.isRunning = false;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Move();
         Jump();
@@ -60,11 +63,19 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("isRunning", false);
         }
         
-        move = new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * ps.speed, rb.velocity.y, Input.GetAxis("Vertical") * Time.deltaTime * ps.speed);
+        forward = Vector3.Scale(maincam.forward, new Vector3(1,0,1)).normalized;
+        move = (Input.GetAxis("Vertical") * forward * Time.deltaTime + Input.GetAxis("Horizontal") * maincam.right * Time.deltaTime).normalized;
+        move.y = rb.velocity.y;
+        Debug.Log("move is " + move);
+        //move = new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * ps.speed, rb.velocity.y, Input.GetAxis("Vertical") * Time.deltaTime * ps.speed);
         tr.Translate(move);
-        playerAnimator.SetFloat("Walking", Mathf.Abs(move.x + move.z));
+        /* aux = maincam.rotation;
+        aux.x = 0;
+        aux.z = 0;
+        tr.rotation = aux; */
 
-        transform.Rotate(0, Input.GetAxis("Horizontal") * RotationSpeed * Time.deltaTime, 0);
+        playerAnimator.SetFloat("Walking", Mathf.Abs(move.x + move.z));
+        
     }
 
     void Jump()
