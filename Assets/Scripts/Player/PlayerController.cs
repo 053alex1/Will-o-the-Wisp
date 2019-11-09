@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private Transform tr;
     public Animator playerAnimator;
     public GameObject GFX;
+    public bool seg = false;
 
     GameObject player;
     public Vector3 move = new Vector3(0, 55, -55);
@@ -159,9 +160,12 @@ public class PlayerController : MonoBehaviour
     void createBubble()
     {
         if(Input.GetKeyDown(KeyCode.B)){
+        //if(seg){
             bubble = GameObject.FindGameObjectWithTag("Bubble");
+            Debug.Log("S'ha apretat la b");
            if(bubble!= null){
-               if(Vector3.Distance(tr.position, bubble.GetComponent<Transform>().position) < 5){
+               if(Vector3.Distance(tr.position, bubble.GetComponent<Transform>().position) < 10){
+                   Debug.Log("Burbuja Cerca");
                    if(bubble.GetComponent<BurbujaStats>().seguir == true){
                         bubble.GetComponent<BurbujaStats>().seguir = false;
                     }else{
@@ -172,7 +176,7 @@ public class PlayerController : MonoBehaviour
                }
            }
             Debug.Log("Bubble instantiated");
-            Instantiate(bubble, getBubblePosition(), Quaternion.identity);
+            //Instantiate(bubble, getBubblePosition(), Quaternion.identity);
         }
     }
 

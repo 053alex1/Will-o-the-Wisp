@@ -10,6 +10,7 @@ TagManager:
   - Bubble
   - Fuego
   - Altar
+  - Fuegos
   layers:
   - Default
   - TransparentFX

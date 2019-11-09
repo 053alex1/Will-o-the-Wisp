@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 120103075}
   m_Layer: 0
   m_Name: Fuegos
-  m_TagString: Untagged
+  m_TagString: Fuegos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,6 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 0}
   GFX: {fileID: 0}
+  seg: 0
   move: {x: 0, y: 55, z: -55}
   bubble: {fileID: 2154605315000130315, guid: 2d7b76edaae9a0443b73baf46e1b5dce, type: 3}
   ps: {fileID: 0}
@@ -402,6 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 0}
   GFX: {fileID: 0}
+  seg: 0
   move: {x: 0, y: 55, z: -55}
   bubble: {fileID: 2154605315000130315, guid: 2d7b76edaae9a0443b73baf46e1b5dce, type: 3}
   ps: {fileID: 310963743}
