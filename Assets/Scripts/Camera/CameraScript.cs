@@ -22,14 +22,14 @@ public class CameraScript : MonoBehaviour
 
     void LateUpdate ()
 	{
-        RotateCheck();
+        //RotateCheck();
 
-        if(RotateAroundPlayer)
-        {
+        //if(RotateAroundPlayer)
+        //{
             Quaternion camTurnAngle =
             Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
             offset = camTurnAngle * offset;
-        }
+        //}
 
         Vector3 newPos = target.position + offset;
         transform.position = Vector3.Slerp(transform.position, newPos, smoothSpeed);
