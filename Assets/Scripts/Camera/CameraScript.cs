@@ -9,7 +9,7 @@ public class CameraScript : MonoBehaviour
 	public float smoothSpeed;
 	public Vector3 offset;
     public Vector3 offset2 = new Vector3(0, 2, 0);
-    public bool LookAtPlayer = false;
+    public bool LookAtPlayer = true;
     public bool RotateAroundPlayer = false;
 
     

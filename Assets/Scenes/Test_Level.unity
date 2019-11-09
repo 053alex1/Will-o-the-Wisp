@@ -294,7 +294,6 @@ MonoBehaviour:
   move: {x: 0, y: 55, z: -55}
   bubble: {fileID: 2154605315000130315, guid: 2d7b76edaae9a0443b73baf46e1b5dce, type: 3}
   ps: {fileID: 0}
-  RotationSpeed: 0
 --- !u!65 &306618550
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -406,7 +405,6 @@ MonoBehaviour:
   move: {x: 0, y: 55, z: -55}
   bubble: {fileID: 2154605315000130315, guid: 2d7b76edaae9a0443b73baf46e1b5dce, type: 3}
   ps: {fileID: 310963743}
-  RotationSpeed: 0
 --- !u!136 &310963741
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -679,6 +677,7 @@ GameObject:
   - component: {fileID: 413920663}
   - component: {fileID: 413920662}
   - component: {fileID: 413920661}
+  - component: {fileID: 413920666}
   m_Layer: 0
   m_Name: Fuego (4)
   m_TagString: Fuego
@@ -733,7 +732,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cf164ca279670e243808141cb2a5d8f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -775,6 +774,22 @@ Transform:
   m_Father: {fileID: 120103075}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &413920666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413920660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4438c9a6a75264f91e1e5a7cddf432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitud: 0.05
+  frecuencia: 0.5
+  waypoints: []
+  speed: 50
 --- !u!1 &480234683
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,8 +929,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wanderRadius: 40
   wanderTimer: 4
+  TimerCDAttack: 1
   radius: 50
   fov: 90
+  playerAnimator: {fileID: 0}
+  GFX: {fileID: 0}
 --- !u!195 &480234691
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1276,6 +1294,7 @@ GameObject:
   - component: {fileID: 871579437}
   - component: {fileID: 871579436}
   - component: {fileID: 871579435}
+  - component: {fileID: 871579440}
   m_Layer: 0
   m_Name: Fuego (1)
   m_TagString: Fuego
@@ -1330,7 +1349,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cf164ca279670e243808141cb2a5d8f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1372,6 +1391,22 @@ Transform:
   m_Father: {fileID: 120103075}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &871579440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871579434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4438c9a6a75264f91e1e5a7cddf432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitud: 0.05
+  frecuencia: 0.5
+  waypoints: []
+  speed: 50
 --- !u!1 &970320093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,7 +1450,8 @@ MonoBehaviour:
   - {fileID: 1195590484}
   - {fileID: 1496658959}
   - {fileID: 413920665}
-  cont: 0
+  seguir: 0
+  speed: 50
 --- !u!114 &970320095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1458,7 +1494,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ac49d910a9e12ae4b8f3663f436246fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1529,6 +1565,7 @@ GameObject:
   - component: {fileID: 1195590482}
   - component: {fileID: 1195590481}
   - component: {fileID: 1195590480}
+  - component: {fileID: 1195590485}
   m_Layer: 0
   m_Name: Fuego (2)
   m_TagString: Fuego
@@ -1583,7 +1620,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cf164ca279670e243808141cb2a5d8f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1625,6 +1662,22 @@ Transform:
   m_Father: {fileID: 120103075}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1195590485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195590479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4438c9a6a75264f91e1e5a7cddf432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitud: 0.05
+  frecuencia: 0.5
+  waypoints: []
+  speed: 50
 --- !u!1 &1268007823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,9 +1815,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e524f280b5f0e648a84023da9687094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 310963742}
+  RotationSpeed: 5
   smoothSpeed: 0.2
   offset: {x: 0, y: 10, z: -30}
+  offset2: {x: 0, y: 2, z: 0}
   LookAtPlayer: 0
   RotateAroundPlayer: 0
 --- !u!81 &1363109197
@@ -1980,6 +2034,7 @@ GameObject:
   - component: {fileID: 1496658957}
   - component: {fileID: 1496658956}
   - component: {fileID: 1496658955}
+  - component: {fileID: 1496658960}
   m_Layer: 0
   m_Name: Fuego (3)
   m_TagString: Fuego
@@ -2034,7 +2089,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cf164ca279670e243808141cb2a5d8f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2076,6 +2131,22 @@ Transform:
   m_Father: {fileID: 120103075}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1496658960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496658954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4438c9a6a75264f91e1e5a7cddf432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitud: 0.05
+  frecuencia: 0.5
+  waypoints: []
+  speed: 50
 --- !u!1 &1526368661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,6 +2281,7 @@ GameObject:
   - component: {fileID: 1885759550}
   - component: {fileID: 1885759549}
   - component: {fileID: 1885759548}
+  - component: {fileID: 1885759553}
   m_Layer: 0
   m_Name: Fuego
   m_TagString: Fuego
@@ -2264,7 +2336,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cf164ca279670e243808141cb2a5d8f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2306,6 +2378,22 @@ Transform:
   m_Father: {fileID: 120103075}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1885759553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885759547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4438c9a6a75264f91e1e5a7cddf432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitud: 0.05
+  frecuencia: 0.5
+  waypoints: []
+  speed: 50
 --- !u!1 &1970316963
 GameObject:
   m_ObjectHideFlags: 0

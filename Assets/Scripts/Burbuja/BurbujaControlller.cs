@@ -67,7 +67,7 @@ public class BurbujaControlller : MonoBehaviour
                 fuego.GetComponent<FuegoController>().libre = true;
                 fuego.GetComponent<FuegoController>().teLloc = false;
                 // fuego.parent = null;
-                fuego.GetComponent<FuegoController>().changeTarget();
+                //fuego.GetComponent<FuegoController>().changeTarget();
             }
         }
         Destroy(bubble);
