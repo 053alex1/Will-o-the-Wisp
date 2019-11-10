@@ -20,7 +20,7 @@ public class CameraFollow : MonoBehaviour
     void Update()
     {
         currentX += Input.GetAxis("Mouse X") * senseX;
-        currentY += Input.GetAxis("Mouse Y") * senseY;
+        currentY -= Input.GetAxis("Mouse Y") * senseY;
 
         currentY = Mathf.Clamp(currentY, min_ang_Y, max_ang_Y);
     }

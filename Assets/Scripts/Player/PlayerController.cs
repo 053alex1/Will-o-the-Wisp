@@ -68,12 +68,9 @@ public class PlayerController : MonoBehaviour
         forward = Vector3.Scale(maincam.forward, new Vector3(1,0,1)).normalized;
         move = (Input.GetAxis("Vertical") * forward * Time.deltaTime + Input.GetAxis("Horizontal") * maincam.right * Time.deltaTime).normalized;
         move.y = rb.velocity.y;
-        //move = new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * ps.speed, rb.velocity.y, Input.GetAxis("Vertical") * Time.deltaTime * ps.speed);
         tr.Translate(move);
-        /* aux = maincam.rotation;
-        aux.x = 0;
-        aux.z = 0;
-        tr.rotation = aux; */
+
+        tr.Find("Dagda").transform.rotation = Quaternion.Euler(0f, maincam.eulerAngles.y, 0f);
 
         playerAnimator.SetFloat("Walking", Mathf.Abs(move.x + move.z));
         
@@ -89,6 +86,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    //CAMBIAR EL ATAQUE EN VEZ DE AL PUNTO DEL RATÓN, AL PUNTO DEL CROSSHAIR
     void LightAttack() {
         if (ps.mana >= 2) {
             Debug.Log("Light Attack triggered - Mana is " + ps.mana);
