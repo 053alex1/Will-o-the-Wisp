@@ -68,7 +68,6 @@ public class PlayerController : MonoBehaviour
         forward = Vector3.Scale(maincam.forward, new Vector3(1,0,1)).normalized;
         move = (Input.GetAxis("Vertical") * forward * Time.deltaTime + Input.GetAxis("Horizontal") * maincam.right * Time.deltaTime).normalized;
         move.y = rb.velocity.y;
-        Debug.Log("move is " + move);
         //move = new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * ps.speed, rb.velocity.y, Input.GetAxis("Vertical") * Time.deltaTime * ps.speed);
         tr.Translate(move);
         /* aux = maincam.rotation;

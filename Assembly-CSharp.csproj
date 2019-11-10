@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Burbuja\BurbujaControlller.cs" />
      <Compile Include="Assets\Scripts\Burbuja\BurbujaStats.cs" />
      <Compile Include="Assets\Scripts\Burbuja\NPCFollow.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraScript.cs" />
      <Compile Include="Assets\Scripts\Enemy\BaseEnemy.cs" />
      <Compile Include="Assets\Scripts\Enemy\Monstruobasico.cs" />
