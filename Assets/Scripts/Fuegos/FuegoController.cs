@@ -55,7 +55,7 @@ public class FuegoController : MonoBehaviour
                 MoveMe();
             }
         }
-        if(!fs.libre){
+        else{
             seguirBurbuja();
         }     
     }
@@ -94,7 +94,6 @@ public class FuegoController : MonoBehaviour
         targetPoint = waypoints[indiceVector].position;
         waypoints[indiceVector].GetComponent<WayPoint>().ocupado = true;
         fs.teLloc = true;
-        MoveMe();
     }
 
     void seguirBurbuja(){
