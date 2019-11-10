@@ -9,8 +9,11 @@ public class BurbujaControlller : MonoBehaviour
     GameObject bubble;
     
     GameObject dagda;
+    GameObject padreFuegos;
     Transform tr;
     BurbujaStats bs;
+    Transform fuego;
+    FuegoStats fs;
 
     Transform dagtr;
 
@@ -18,6 +21,7 @@ public class BurbujaControlller : MonoBehaviour
     void Awake() {
         bubble = GameObject.FindGameObjectWithTag("Bubble");
         dagda = GameObject.FindGameObjectWithTag("Dagda");
+        padreFuegos = GameObject.Find("Fuegos");
         dagtr= dagda.GetComponent<Transform>();
         rb = bubble.GetComponent<Rigidbody>();
         tr = bubble.GetComponent<Transform>();
@@ -34,7 +38,7 @@ public class BurbujaControlller : MonoBehaviour
         if (bs.resistencia <= 0) {
             romperBurbuja();
         }
-        // fuegosCerca();
+        fuegosCerca();
         if (bs.seguir){
             seguirProta();
         }else{
@@ -43,7 +47,7 @@ public class BurbujaControlller : MonoBehaviour
     }
 
     void findFires() {
-        bs.fuegoFatuos = GameObject.Find("Fuegos").GetComponentsInChildren<Transform>();
+        bs.fuegoFatuos = padreFuegos.GetComponentsInChildren<Transform>();
     }
 
     void bubbleFloat() {
@@ -57,20 +61,33 @@ public class BurbujaControlller : MonoBehaviour
     }
 
     void romperBurbuja() {
-        tr.DetachChildren();
-        for(int i = 1; i < bs.fuegoFatuos.Length; i++){
-            Debug.Log("Pasando por el fuego");
-
-            Transform fuego = bs.fuegoFatuos[i];
-            if (fuego.GetComponent<FuegoController>().libre == false) {
-                Debug.Log("Este fuego no esta libre");
-                fuego.GetComponent<FuegoController>().libre = true;
-                fuego.GetComponent<FuegoController>().teLloc = false;
-                // fuego.parent = null;
-                //fuego.GetComponent<FuegoController>().changeTarget();
-            }
+        //tr.DetachChildren();
+        //for(int i = 0; i <= padreFuegos.transform.childCount; i++){
+        for(int i = 1; i <= bs.fuegoFatuos.Length; i++){
+        //Debug.Log("Deuria entrar");
+            //fuego = padreFuegos.transform.GetChild(i);
+            fuego = bs.fuegoFatuos[i];
+        //if(fuego != null) {
+        //    Debug.Log("El foc existeix");
+        //}
+        //Transform fuego1 = padreFuegos.transform.GetChild(1);
+        //Transform fuego2 = padreFuegos.transform.GetChild(2);
+        //Transform fuego3 = padreFuegos.transform.GetChild(3);
+        //Transform fuego4 = padreFuegos.transform.GetChild(4);
+            fs = fuego.GetComponent<FuegoStats>();
+            fs.libre = true;
+        //if(fuego.GetComponent<FuegoStats>().libre == true) {
+        //    Debug.Log("Fuego Liberado");
+        //}
+        //fuego1.GetComponent<FuegoStats>().libre = true;
+        //fuego2.GetComponent<FuegoStats>().libre = true;
+        //fuego3.GetComponent<FuegoStats>().libre = true;
+        //fuego4.GetComponent<FuegoStats>().libre = true;
+            //fuego.parent = null;
+            //fuego.parent = padreFuegos.GetComponent<Transform>();
+            //fuego.GetComponent<FuegoController>().changeTarget();
         }
-        Destroy(bubble);
+        Destroy(gameObject);
     }
 
 
@@ -84,21 +101,24 @@ public class BurbujaControlller : MonoBehaviour
     }
         //Vector3.Distance(transform.position, otherObject.transform.position) -- cada frame
     void meterFuego(Transform fuego) {
-            fuego.GetComponent<FuegoController>().libre = false;
-            fuego.parent = tr;
+            fuego.GetComponent<FuegoStats>().libre = false;
+            fuego.GetComponent<FuegoStats>().teLloc = false;
+            //fuego.GetComponent<FuegoController>().waypoints[fuego.GetComponent<FuegoController>().indiceVector].GetComponent<WayPoint>().ocupado = false;
+            fuego.GetComponent<FuegoController>().liberarSitio();
+            //fuego.parent = tr;
         }
 
     void OnTriggerEnter(Collider other){ 
-        if (other.gameObject.tag == "Fuego") {
-            other.gameObject.transform.GetComponent<FuegoController>().libre = false;
-            other.gameObject.transform.parent = tr;
-        }
+        //if (other.gameObject.tag == "Fuego") {
+          //  other.gameObject.transform.GetComponent<FuegoStats>().libre = false;
+            //other.gameObject.transform.parent = tr;
+        //}
 
         if (other.gameObject.tag == "Altar") {
             int cont = 0;
             for(int i = 1; i < bs.fuegoFatuos.Length; i++){
                 Transform fuego = bs.fuegoFatuos[i];
-                if (fuego.GetComponent<FuegoController>().libre == false) {
+                if (fuego.GetComponent<FuegoStats>().libre == false) {
                    cont++;
                 }
             }
@@ -108,9 +128,9 @@ public class BurbujaControlller : MonoBehaviour
         }
     }
     void seguirProta(){
-        tr.position = Vector3.Lerp (tr.position, dagtr.position + new Vector3(0, 15, 0), Time.deltaTime * bs.speed);
+        tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(0, 15, 0), Time.deltaTime * bs.speed);
     }
     void pararSeguirProta(){
-
+        tr.position = Vector3.MoveTowards (tr.position, tr.position, Time.deltaTime * bs.speed);
     }
 }

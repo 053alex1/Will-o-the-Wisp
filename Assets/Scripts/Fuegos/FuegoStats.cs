@@ -8,4 +8,6 @@ public class FuegoStats : MonoBehaviour
     public float frecuencia = 0.5f;
     public Transform[] waypoints;
     public float speed = 50f;
+    public bool libre = true;
+    public bool teLloc;
 }

@@ -10,9 +10,12 @@ public class FuegoController : MonoBehaviour
     Rigidbody rb;
     public int indiceVector;
     public float speed = 1;
-    public bool libre = true;
-    public bool teLloc = false;
+    float x;
+    float y;
+    float z;
     Transform tr;
+    Transform burbujatr;
+    GameObject burbuja;
     FuegoStats fs;
 
     //public float distanceThreshold;
@@ -20,31 +23,41 @@ public class FuegoController : MonoBehaviour
 
     void Awake() {
         findWaypoints();
+        tr = gameObject.GetComponent<Transform>();
         fs = gameObject.GetComponent<FuegoStats>();
+        burbuja = GameObject.FindGameObjectWithTag("Bubble");
+        burbujatr= burbuja.GetComponent<Transform>();
+        x = Random.Range(-2, 2);
+        y = Random.Range(-2, 2);
+        z = Random.Range(-2, 2);
     }
     void Start()
     {
+        fs.libre = true;
         indiceVector = Random.Range(1, waypoints.Length);
         while(waypoints[indiceVector].GetComponent<WayPoint>().ocupado == true){
             indiceVector = Random.Range(1, waypoints.Length);
         }
         targetPoint = waypoints[indiceVector].position;
         waypoints[indiceVector].GetComponent<WayPoint>().ocupado = true;
-        teLloc = true;
+        fs.teLloc = true;
         Teletransportarse();
     }
 
     void FixedUpdate() 
     {
         fireFloat();
-        if (libre) {
-            if (teLloc == false) {
+        if (fs.libre) {
+            if (fs.teLloc == false) {
                     changeTarget();
                 }
             else {
                 MoveMe();
             }
-        }      
+        }
+        else{
+            seguirBurbuja();
+        }     
     }
 
 
@@ -68,6 +81,10 @@ public class FuegoController : MonoBehaviour
         transform.position = targetPoint;
     }
 
+    public void liberarSitio() {
+        waypoints[indiceVector].GetComponent<WayPoint>().ocupado = false;
+    }
+
 
     public void changeTarget(){
         indiceVector = Random.Range(1, waypoints.Length);
@@ -76,7 +93,10 @@ public class FuegoController : MonoBehaviour
         }
         targetPoint = waypoints[indiceVector].position;
         waypoints[indiceVector].GetComponent<WayPoint>().ocupado = true;
-        teLloc = true;
-        MoveMe();
+        fs.teLloc = true;
+    }
+
+    void seguirBurbuja(){
+        tr.position = Vector3.MoveTowards (tr.position, burbujatr.position + new Vector3(x, y, z), Time.deltaTime * fs.speed);
     }
 }

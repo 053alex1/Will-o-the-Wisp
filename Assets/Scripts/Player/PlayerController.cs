@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
     private Transform tr;
     public Animator playerAnimator;
     public GameObject GFX;
+    public bool seg = false;
 
     GameObject player;
     public Vector3 move = new Vector3(0, 55, -55);
     public GameObject bubble;
+    public GameObject burbuja;
     public playerStats ps;
     private Transform maincam;
     private Quaternion aux;
@@ -159,20 +161,26 @@ public class PlayerController : MonoBehaviour
     void createBubble()
     {
         if(Input.GetKeyDown(KeyCode.B)){
-            bubble = GameObject.FindGameObjectWithTag("Bubble");
-           if(bubble!= null){
-               if(Vector3.Distance(tr.position, bubble.GetComponent<Transform>().position) < 5){
-                   if(bubble.GetComponent<BurbujaStats>().seguir == true){
-                        bubble.GetComponent<BurbujaStats>().seguir = false;
+        //if(seg){
+            burbuja = GameObject.FindGameObjectWithTag("Bubble");
+            Debug.Log("S'ha apretat la b");
+           if(burbuja!= null){
+               if(Vector3.Distance(tr.position, burbuja.GetComponent<Transform>().position) < 16){
+                   Debug.Log("Burbuja Cerca");
+                   if(burbuja.GetComponent<BurbujaStats>().seguir == true){
+                        burbuja.GetComponent<BurbujaStats>().seguir = false;
+                        Debug.Log("Seguia");
                     }else{
-                        bubble.GetComponent<BurbujaStats>().seguir = true;
+                        Debug.Log("No Seguia");
+                        burbuja.GetComponent<BurbujaStats>().seguir = true;
                     }
                }else{
                     Debug.Log("Ya has creado una burbuja");
                }
-           }
+           }else{
             Debug.Log("Bubble instantiated");
             Instantiate(bubble, getBubblePosition(), Quaternion.identity);
+           }
         }
     }
 
