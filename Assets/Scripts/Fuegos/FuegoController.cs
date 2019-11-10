@@ -26,7 +26,7 @@ public class FuegoController : MonoBehaviour
         tr = gameObject.GetComponent<Transform>();
         fs = gameObject.GetComponent<FuegoStats>();
         burbuja = GameObject.FindGameObjectWithTag("Bubble");
-        burbujatr= burbuja.GetComponent<Transform>();
+        //burbujatr = burbuja.GetComponent<Transform>();
         x = Random.Range(-2, 2);
         y = Random.Range(-2, 2);
         z = Random.Range(-2, 2);

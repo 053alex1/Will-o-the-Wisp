@@ -4,40 +4,45 @@ using UnityEngine;
 
 public class playerStats : MonoBehaviour
 {
-    public float hp = 100f;
-    public float mana = 20f;
-    public float speed = 50f;
+    public float hp;
+    public float mana;
+    public float speed = 20f;
     public float jumpHeight = 0.5f;
     public float lightDamage = 2f;
     public float heavyDamage = 5f;
     public bool isGrounded;
     public bool isRunning;
-    private float maxHealth = 100f;
+    private const float maxHealth = 100f;
     private float manaRegenPerSec = 0.5f;
     private float delay = 3f;   //Tiempo entre el último ataque de maná y la regeneración de este
-    private float maxMana = 20f;
+    private const float maxMana = 20f;
     private float timestamp = 0f;
-    
-    public float reduceHp(float amount) {
-        return hp -= amount;
+    public void reduceHp(float amount) {
+        hp -= amount;
     }
-
+    public float getHp() {
+        return hp;
+    }
+    public float getMana() {
+        return mana;
+    }
     public void fillHp() {
         hp = maxHealth;
     }
-
     public void reduceMana(float amount) {
         timestamp = Time.time;              // Cuando se 
         mana = Mathf.Max(0, mana - amount);
     }
-
     public void regenMana() {
         if (Time.time > (timestamp + delay)) {      // Sólo se recupera el maná cuando hayan pasado los segundos del delay
             mana = Mathf.Min(maxMana, mana + (manaRegenPerSec * Time.deltaTime)); // (* Time.deltaTime) ?
             //Debug.Log("Mana is " + mana);
         }
     }
-
+    void Awake() {  
+        hp = maxHealth;
+        mana = maxMana;
+    }
     void Update() {
         regenMana();
     }

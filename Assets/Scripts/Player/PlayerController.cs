@@ -9,10 +9,9 @@ public class PlayerController : MonoBehaviour
     public Animator playerAnimator;
     public GameObject GFX;
     public bool seg = false;
-
     GameObject player;
     public Vector3 move = new Vector3(0, 55, -55);
-    public GameObject bubble;
+    public GameObject bubblePrefab;
     public GameObject burbuja;
     public playerStats ps;
     private Transform maincam;
@@ -45,7 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
-        createBubble();
+        bubbleFunction();
         Attack();
     }
 
@@ -65,8 +64,10 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("isRunning", false);
         }
         
-        forward = Vector3.Scale(maincam.forward, new Vector3(1,0,1)).normalized;
-        move = (Input.GetAxis("Vertical") * forward * Time.deltaTime + Input.GetAxis("Horizontal") * maincam.right * Time.deltaTime).normalized;
+        forward = Vector3.Scale(maincam.forward, new Vector3(1,0,1)).normalized;    //Indica hacia dónde está el frente respecto a la cámara
+        move = (Input.GetAxis("Vertical") * forward + Input.GetAxis("Horizontal") * maincam.right).normalized;
+        move.x = move.x * Time.deltaTime * ps.speed;
+        move.z = move.z * Time.deltaTime * ps.speed;
         move.y = rb.velocity.y;
         tr.Translate(move);
 
@@ -87,7 +88,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    //CAMBIAR EL ATAQUE EN VEZ DE AL PUNTO DEL RATÓN, AL PUNTO DEL CROSSHAIR
+    //!!!!!!!!!! ------------- CAMBIAR EL ATAQUE EN VEZ DE AL PUNTO DEL RATÓN, AL PUNTO DEL CROSSHAIR
     void LightAttack() {
         if (ps.mana >= 2) {
             Debug.Log("Light Attack triggered - Mana is " + ps.mana);
@@ -156,29 +157,30 @@ public class PlayerController : MonoBehaviour
         return Mathf.Sqrt(2f * height * Physics.gravity.magnitude);
     }
 
-    void createBubble()
+    void bubbleFunction()
     {
         if(Input.GetKeyDown(KeyCode.B)){
-        //if(seg){
             burbuja = GameObject.FindGameObjectWithTag("Bubble");
-            Debug.Log("S'ha apretat la b");
-           if(burbuja!= null){
-               if(Vector3.Distance(tr.position, burbuja.GetComponent<Transform>().position) < 16){
-                   Debug.Log("Burbuja Cerca");
-                   if(burbuja.GetComponent<BurbujaStats>().seguir == true){
-                        burbuja.GetComponent<BurbujaStats>().seguir = false;
-                        Debug.Log("Seguia");
-                    }else{
-                        Debug.Log("No Seguia");
-                        burbuja.GetComponent<BurbujaStats>().seguir = true;
+
+            if (burbuja != null) {
+                Debug.Log("La burbuja está creada");
+                if(Vector3.Distance(tr.position, burbuja.GetComponent<Transform>().position) < 16) {
+                    Debug.Log("Burbuja Cerca");
+                    if (burbuja.GetComponent<BurbujaStats>().getSeguir() == true) {
+                        Debug.Log("Dejando de seguir a Dagda");
+                        burbuja.GetComponent<BurbujaStats>().setSeguir(false);
+                    } else {
+                        Debug.Log("Siguiendo a Dagda");
+                        burbuja.GetComponent<BurbujaStats>().setSeguir(true);
                     }
-               }else{
-                    Debug.Log("Ya has creado una burbuja");
-               }
-           }else{
-            Debug.Log("Bubble instantiated");
-            Instantiate(bubble, getBubblePosition(), Quaternion.identity);
-           }
+                } else {
+                    Debug.Log("Ya has creado una burbuja y estás muy lejos de ella para que te siga");
+                    //Hacer algo para que el jugador se dé cuenta
+                }
+            } else {
+                Instantiate(bubblePrefab, getBubblePosition(), Quaternion.identity);
+                Debug.Log("La burbuja no estaba creada");
+            }
         }
     }
 

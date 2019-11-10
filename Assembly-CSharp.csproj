@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\PhysicsObject.cs" />
-     <Compile Include="Assets\Scripts\Burbuja\BurbujaControlller.cs" />
+     <Compile Include="Assets\Scripts\Burbuja\BurbujaController.cs" />
      <Compile Include="Assets\Scripts\Burbuja\BurbujaStats.cs" />
      <Compile Include="Assets\Scripts\Burbuja\NPCFollow.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
