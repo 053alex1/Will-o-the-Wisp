@@ -14,6 +14,7 @@ public class BurbujaController : MonoBehaviour
     private Transform fuego;
     private FuegoStats fs;
     private Transform dagtr;
+    private Transform[] fuegos;
 
     void Awake() {
         bubble = GameObject.FindGameObjectWithTag("Bubble");
@@ -30,7 +31,7 @@ public class BurbujaController : MonoBehaviour
         bubbleFloat();
         fuegosCerca();
 
-        if (bs.resistencia <= 0) romperBurbuja();
+        if (bs.resistencia <= 0) romperBurbuja2();
         
         if (bs.seguir) seguirProta();
         else pararSeguirProta();
@@ -48,15 +49,22 @@ public class BurbujaController : MonoBehaviour
             A mayor frecuencia (f), más oscilaciones por unidad de tiempo
         */
     }
-
     void romperBurbuja2() {
+        foreach (Transform fireChild in tr.GetComponentsInChildren<Transform>()) {
+            if (fireChild.gameObject.name != "Burbuja(Clone)") {
+                Debug.Log("Fire name: " + fireChild.gameObject.name);
+                fireChild.transform.SetParent(padreFuegos.transform);
+                fireChild.GetComponent<FuegoStats>().libre = true;
+            }
+        }
+
         tr.DetachChildren();
         Destroy(gameObject);
     }
     void romperBurbuja() {
         //tr.DetachChildren();
         //for(int i = 0; i <= padreFuegos.transform.childCount; i++){
-        for(int i = 0; i < bs.fuegoFatuos.Length; i++){
+        for(int i = 1; i <= bs.fuegoFatuos.Length; i++){
         //Debug.Log("Deuria entrar");
             //fuego = padreFuegos.transform.GetChild(i);
             fuego = bs.fuegoFatuos[i];
@@ -92,11 +100,12 @@ public class BurbujaController : MonoBehaviour
     }
         //Vector3.Distance(transform.position, otherObject.transform.position) -- cada frame
     void meterFuego(Transform fuego) {
-            fuego.GetComponent<FuegoStats>().libre = false;
-            fuego.GetComponent<FuegoStats>().teLloc = false;
-            //fuego.GetComponent<FuegoController>().waypoints[fuego.GetComponent<FuegoController>().indiceVector].GetComponent<WayPoint>().ocupado = false;
-            fuego.GetComponent<FuegoController>().liberarSitio();
-            //fuego.parent = tr;
+        fuego.transform.SetParent(bubble.transform);
+        fuego.GetComponent<FuegoStats>().libre = false;
+        fuego.GetComponent<FuegoStats>().teLloc = false;
+        //fuego.GetComponent<FuegoController>().waypoints[fuego.GetComponent<FuegoController>().indiceVector].GetComponent<WayPoint>().ocupado = false;
+        fuego.GetComponent<FuegoController>().liberarSitio();
+        //fuego.parent = tr;
     }
     void escaparFuego(Transform fuego) {
         fuego.GetComponent<FuegoStats>().libre = true;
