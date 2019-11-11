@@ -38,8 +38,8 @@ ModelImporter:
       name: Dagda_Salto
       takeName: Take 001
       internalID: 1827226128182048838
-      firstFrame: 1
-      lastFrame: 35
+      firstFrame: 10
+      lastFrame: 33
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
