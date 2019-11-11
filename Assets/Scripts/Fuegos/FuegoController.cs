@@ -19,14 +19,10 @@ public class FuegoController : MonoBehaviour
     FuegoStats fs;
 
     //public float distanceThreshold;
-
-
     void Awake() {
         findWaypoints();
         tr = gameObject.GetComponent<Transform>();
         fs = gameObject.GetComponent<FuegoStats>();
-        burbuja = GameObject.FindGameObjectWithTag("Bubble");
-        //burbujatr = burbuja.GetComponent<Transform>();
         x = Random.Range(-2, 2);
         y = Random.Range(-2, 2);
         z = Random.Range(-2, 2);
@@ -43,10 +39,10 @@ public class FuegoController : MonoBehaviour
         fs.teLloc = true;
         Teletransportarse();
     }
-
     void FixedUpdate() 
     {
         fireFloat();
+
         if (fs.libre) {
             if (fs.teLloc == false) {
                     changeTarget();
@@ -57,10 +53,8 @@ public class FuegoController : MonoBehaviour
         }
         else{
             seguirBurbuja();
-        }     
+        }
     }
-
-
     void fireFloat() {
         pos = transform.position;
         pos.y += Mathf.Sin (2 * Time.fixedTime * Mathf.PI * fs.frecuencia) * fs.amplitud;
@@ -76,17 +70,16 @@ public class FuegoController : MonoBehaviour
     void MoveMe(){
         transform.position = Vector3.Lerp (transform.position, targetPoint, Time.deltaTime * speed);
     }
-
     void Teletransportarse(){
         transform.position = targetPoint;
     }
-
     public void liberarSitio() {
         waypoints[indiceVector].GetComponent<WayPoint>().ocupado = false;
     }
-
-
-    public void changeTarget(){
+    GameObject getBubble() {
+        return burbuja = GameObject.FindGameObjectWithTag("Bubble");
+    }
+    void changeTarget(){
         indiceVector = Random.Range(1, waypoints.Length);
         while(waypoints[indiceVector].GetComponent<WayPoint>().ocupado == true){
             indiceVector = Random.Range(1, waypoints.Length);
@@ -95,8 +88,9 @@ public class FuegoController : MonoBehaviour
         waypoints[indiceVector].GetComponent<WayPoint>().ocupado = true;
         fs.teLloc = true;
     }
-
     void seguirBurbuja(){
-        tr.position = Vector3.MoveTowards (tr.position, burbujatr.position + new Vector3(x, y, z), Time.deltaTime * fs.speed);
+        if (getBubble() != null) {
+            tr.position = Vector3.MoveTowards (tr.position, burbuja.transform.position + new Vector3(x, y, z), Time.deltaTime * fs.speed);
+        }
     }
 }

@@ -39,22 +39,24 @@ public class BurbujaController : MonoBehaviour
     void findFires() {
         bs.fuegoFatuos = padreFuegos.GetComponentsInChildren<Transform>();
     }
-
     void bubbleFloat() {
         pos = tr.position;
         pos.y += Mathf.Sin (2 * Time.fixedTime * Mathf.PI * bs.frecuencia) * bs.amplitud;
         tr.position = pos;
-
         /*  La fórmula de la onda del seno es y(t) = A * sin(2 * pi * f * t + fase)
             A mayor amplitud (A), mayor será altura de los picos
             A mayor frecuencia (f), más oscilaciones por unidad de tiempo
         */
     }
 
+    void romperBurbuja2() {
+        tr.DetachChildren();
+        Destroy(gameObject);
+    }
     void romperBurbuja() {
         //tr.DetachChildren();
         //for(int i = 0; i <= padreFuegos.transform.childCount; i++){
-        for(int i = 1; i <= bs.fuegoFatuos.Length; i++){
+        for(int i = 0; i < bs.fuegoFatuos.Length; i++){
         //Debug.Log("Deuria entrar");
             //fuego = padreFuegos.transform.GetChild(i);
             fuego = bs.fuegoFatuos[i];
@@ -80,7 +82,6 @@ public class BurbujaController : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
     void fuegosCerca() {
         for(int i = 1; i < bs.fuegoFatuos.Length; i++){
             Transform fuego = bs.fuegoFatuos[i];
@@ -96,8 +97,11 @@ public class BurbujaController : MonoBehaviour
             //fuego.GetComponent<FuegoController>().waypoints[fuego.GetComponent<FuegoController>().indiceVector].GetComponent<WayPoint>().ocupado = false;
             fuego.GetComponent<FuegoController>().liberarSitio();
             //fuego.parent = tr;
-        }
-
+    }
+    void escaparFuego(Transform fuego) {
+        fuego.GetComponent<FuegoStats>().libre = true;
+        fuego.GetComponent<FuegoStats>().teLloc = true;
+    }
     void OnTriggerEnter(Collider other){ 
         //if (other.gameObject.tag == "Fuego") {
           //  other.gameObject.transform.GetComponent<FuegoStats>().libre = false;
