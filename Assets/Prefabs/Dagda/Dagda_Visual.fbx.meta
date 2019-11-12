@@ -3,7 +3,42 @@ guid: 172edd128e8d0f1429bbfe3023b2795c
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Madera11
+    second: {fileID: 2100000, guid: 44526737dee0bc845a67674e1942e874, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.129
+    second: {fileID: 2100000, guid: 3833dde79977c4849b319eb484a8987c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.130
+    second: {fileID: 2100000, guid: cf164ca279670e243808141cb2a5d8f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ojos11
+    second: {fileID: 2100000, guid: daed7625db9553d48bb04ec24b50c958, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Oro13
+    second: {fileID: 2100000, guid: daed7625db9553d48bb04ec24b50c958, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PeloDagda.018
+    second: {fileID: 2100000, guid: e56da44f410b12e488ab8842cd6e152e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PeloDagda11
+    second: {fileID: 2100000, guid: e56da44f410b12e488ab8842cd6e152e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
