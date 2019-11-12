@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\Fuegos\FuegoStats.cs" />
      <Compile Include="Assets\Scripts\Fuegos\WayPoint.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Interfaz\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\playerStats.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
