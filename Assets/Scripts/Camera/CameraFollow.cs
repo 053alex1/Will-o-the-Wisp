@@ -16,6 +16,8 @@ public class CameraFollow : MonoBehaviour
     void Start() {
         maincam = Camera.main;
         target = GameObject.FindGameObjectWithTag("Dagda").transform;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
     {
