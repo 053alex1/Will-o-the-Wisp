@@ -11,6 +11,8 @@ TagManager:
   - Fuego
   - Altar
   - Fuegos
+  - Canvas
+  - Panel
   layers:
   - Default
   - TransparentFX

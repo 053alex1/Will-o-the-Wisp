@@ -6,6 +6,9 @@ public class PausedMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject canvas;
+    public GameObject background;
+    public GameObject panel;
+    public GameObject[] paneles;
     private bool isPaused = false;
     private bool primeraVegada = true;
 
@@ -31,6 +34,7 @@ public class PausedMenu : MonoBehaviour
         Time.timeScale = 0;
         AudioListener.pause = true;
         canvas.SetActive(true);
+        background.SetActive(true);
         if (primeraVegada){
             pauseMenu.SetActive(true);
             primeraVegada = false;
@@ -45,7 +49,13 @@ public class PausedMenu : MonoBehaviour
         Time.timeScale = 1;
         AudioListener.pause = false;
         canvas.SetActive(false);  //Falta fer que per a tots els fills els desacive
-        pauseMenu.SetActive(false);
+        paneles = GameObject.FindGameObjectsWithTag("Panel");
+        foreach (GameObject panel in paneles)
+        {
+            panel.SetActive(false);
+        }
+        //background.SetActive(false);
+        //pauseMenu.SetActive(false);
         primeraVegada = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
