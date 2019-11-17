@@ -9,6 +9,7 @@ public class BurbujaController : MonoBehaviour
     private GameObject bubble;
     private GameObject dagda;
     private GameObject padreFuegos;
+    public GameObject[] fuegosLista;
     private Transform tr;
     private BurbujaStats bs;
     private Transform fuego;
@@ -21,17 +22,18 @@ public class BurbujaController : MonoBehaviour
         dagda = GameObject.FindGameObjectWithTag("Dagda");
         padreFuegos = GameObject.Find("Fuegos");
         dagtr= dagda.GetComponent<Transform>();
-        rb = bubble.GetComponent<Rigidbody>();
+        //rb = bubble.GetComponent<Rigidbody>();
         tr = bubble.GetComponent<Transform>();
         bs = bubble.GetComponent<BurbujaStats>();
-        findFires();
+        fuegosLista = GameObject.FindGameObjectsWithTag("Fuego");
+        //findFires();
     }
     void FixedUpdate()
     {
         bubbleFloat();
-        fuegosCerca();
+        fuegosCerca3();
 
-        if (bs.resistencia <= 0) romperBurbuja2();
+        if (bs.resistencia <= 0) romperBurbuja3();
         
         if (bs.seguir) seguirProta();
         else pararSeguirProta();
@@ -61,6 +63,27 @@ public class BurbujaController : MonoBehaviour
         tr.DetachChildren();
         Destroy(gameObject);
     }
+    
+    void romperBurbuja3() {
+        
+        Destroy(gameObject);
+        foreach (GameObject fuego in fuegosLista)
+        {
+                fuego.GetComponent<FuegoStats>().libre = true;
+        }
+    }
+
+    void fuegosCerca3() {
+        
+        foreach (GameObject fuego in fuegosLista)
+        {
+            
+                if (Vector3.Distance(tr.position, fuego.GetComponent<Transform>().position) < 5) {
+                meterFuego(fuego.GetComponent<Transform>());
+            }
+        }
+    }
+
     void romperBurbuja() {
         //tr.DetachChildren();
         //for(int i = 0; i <= padreFuegos.transform.childCount; i++){
@@ -100,7 +123,7 @@ public class BurbujaController : MonoBehaviour
     }
         //Vector3.Distance(transform.position, otherObject.transform.position) -- cada frame
     void meterFuego(Transform fuego) {
-        fuego.transform.SetParent(bubble.transform);
+        //fuego.transform.SetParent(bubble.transform);
         fuego.GetComponent<FuegoStats>().libre = false;
         fuego.GetComponent<FuegoStats>().teLloc = false;
         //fuego.GetComponent<FuegoController>().waypoints[fuego.GetComponent<FuegoController>().indiceVector].GetComponent<WayPoint>().ocupado = false;

@@ -8,6 +8,8 @@ public class PausedMenu : MonoBehaviour
     public GameObject canvas;
     public GameObject background;
     public GameObject panel;
+    public GameObject controll;
+    public GameObject optionsMenu;
     public GameObject[] paneles;
     private bool isPaused = false;
     private bool primeraVegada = true;
@@ -54,8 +56,11 @@ public class PausedMenu : MonoBehaviour
         {
             panel.SetActive(false);
         }
-        //background.SetActive(false);
-        //pauseMenu.SetActive(false);
+        
+        optionsMenu.SetActive(false);
+        controll.SetActive(false);
+        background.SetActive(false);
+        pauseMenu.SetActive(false);
         primeraVegada = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
