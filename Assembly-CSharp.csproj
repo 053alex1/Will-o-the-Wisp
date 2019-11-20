@@ -191,10 +191,12 @@
     <None Include="Assets\Aura\Shaders\Shaders\BuiltinReplacement\BillboardTree.shader" />
     <None Include="Assets\Aura\Shaders\ComputeShaders\ComputeDataComputeShader.compute" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\Bubble\readme_Jiggly_Bubble_Free.txt" />
     <None Include="Assets\Aura\Shaders\ComputeShaders\Includes\DirectionalLightInjection.cginc" />
     <None Include="Assets\Aura\Examples\Sponza\Fireball\FireballBlendAdd.shader" />
     <None Include="Assets\Aura\Shaders\Includes\AuraParticlesUsage.cginc" />
     <None Include="Assets\Aura\Shaders\Shaders\Particles\AuraParticlesAlphaBlend.shader" />
+    <None Include="Assets\Bubble\Shaders\Particle Alpha Blended Cubemap.shader" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Aura\Shaders\Aura.cginc" />
@@ -213,6 +215,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\Aura\Shaders\ComputeShaders\ComputeMaximumDepthComputeShader.compute" />
     <None Include="Assets\Aura\Shaders\Includes\CommonFunctions.cginc" />
+    <None Include="Assets\Bubble\Shaders\Particle Alpha Blended Cubemap Skybox.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Aura\Shaders\Shaders\StorePointLightShadowMap.shader" />
