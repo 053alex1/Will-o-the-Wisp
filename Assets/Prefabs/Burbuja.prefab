@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ac49d910a9e12ae4b8f3663f436246fb, type: 2}
+  - {fileID: 2100000, guid: 09e5cd3956cf5ba44b5958586d359480, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0734de8da23ee49a2ce312e718032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fuegosLista: []

@@ -13,6 +13,7 @@ TagManager:
   - Fuegos
   - Canvas
   - Panel
+  - spawnPoint
   layers:
   - Default
   - TransparentFX
