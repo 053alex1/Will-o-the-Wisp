@@ -53,7 +53,7 @@ public class FuegoController : MonoBehaviour
         }
         else{
             getBubble();
-            WaitForSeconds(1);
+            //WaitForSeconds(1);
             pillarSitio();
             //seguirBurbuja();
         }
