@@ -5,16 +5,36 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
     private GameObject player;
+    private GameObject bubble;
+
     private GameObject spawnPoint;
-    void Awake() {
+    void Awake()
+    {
         player = GameObject.FindGameObjectWithTag("Dagda");
         spawnPoint = GameObject.FindGameObjectWithTag("spawnPoint");
+        bubble = GameObject.FindGameObjectWithTag("Bubble");
     }
 
-
-    void OnTriggerEnter(Collider col) {
+    void OnTriggerEnter(Collider col)
+    {
         Debug.Log("Something collided");
-        player.transform.position = spawnPoint.transform.position;
-        //Instanciar un efecto de reaparición o algo
+        if (col.gameObject.tag == "Dagda")
+        {
+            player.transform.position = spawnPoint.transform.position;
+            return;
+            //Instanciar un efecto de reaparición o algo
+        }
+        else if (col.gameObject.tag == "Bubble")
+        {
+            if (bubble == null) {
+                bubble = GameObject.FindGameObjectWithTag("Bubble");
+            }
+            bubble.transform.position = spawnPoint.transform.position;
+
+            return;
+        }
+
+        Destroy(col.gameObject);
+
     }
 }
