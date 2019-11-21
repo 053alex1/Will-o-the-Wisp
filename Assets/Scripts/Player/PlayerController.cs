@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private Quaternion aux;
     private Vector3 forward = Vector3.zero;
     private Vector3 movement = Vector3.zero;
+    private Shoot shootScript;
+    private GameObject disparador;
     
 
     //Todos estos valores se moverán a otro script 
@@ -29,6 +31,8 @@ public class PlayerController : MonoBehaviour
         ps = player.GetComponent<playerStats>();
         playerAnimator = GFX.transform.GetComponent<Animator>();
         maincam = Camera.main.transform;
+        disparador = GameObject.Find("Disparador");
+        shootScript = disparador.GetComponent<Shoot>();
     }
 
     void Start()
@@ -72,6 +76,8 @@ public class PlayerController : MonoBehaviour
         tr.Translate(move);
 
         tr.Find("Dagda").transform.rotation = Quaternion.Euler(0f, maincam.eulerAngles.y, 0f);
+        disparador.transform.rotation = Quaternion.Euler(0f, maincam.eulerAngles.y, 0f);
+        
 
         playerAnimator.SetFloat("Walking", Mathf.Abs(move.x + move.z));
         
@@ -95,7 +101,7 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             bool check = Physics.Raycast(ray, out hit, Mathf.Infinity);
-
+            shootScript.lightShoot();
             if (check)
             {
                 Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
@@ -121,7 +127,7 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             bool check = Physics.Raycast(ray, out hit, Mathf.Infinity);
-
+            shootScript.heavyShoot();
             if (check)
             {
                 Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
