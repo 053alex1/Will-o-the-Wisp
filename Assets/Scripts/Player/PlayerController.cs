@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private Transform tr;
     public Animator playerAnimator;
     public GameObject GFX;
-    public bool seg = false;
+    public bool seg = false; //crec que no afecta en res
     GameObject player;
     public Vector3 move = new Vector3(0, 55, -55);
     public GameObject bubblePrefab;
@@ -161,17 +161,16 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.B)){
             burbuja = GameObject.FindGameObjectWithTag("Bubble");
-
             if (burbuja != null) {
                 Debug.Log("La burbuja está creada");
                 if(Vector3.Distance(tr.position, burbuja.GetComponent<Transform>().position) < 16) {
                     Debug.Log("Burbuja Cerca");
-                    if (burbuja.GetComponent<BurbujaStats>().getSeguir() == true) {
+                    if (burbuja.GetComponent<BurbujaStats>().seguir == true) {
                         Debug.Log("Dejando de seguir a Dagda");
-                        burbuja.GetComponent<BurbujaStats>().setSeguir(false);
+                        burbuja.GetComponent<BurbujaStats>().seguir =false;
                     } else {
                         Debug.Log("Siguiendo a Dagda");
-                        burbuja.GetComponent<BurbujaStats>().setSeguir(true);
+                        burbuja.GetComponent<BurbujaStats>().seguir =true;
                     }
                 } else {
                     Debug.Log("Ya has creado una burbuja y estás muy lejos de ella para que te siga");

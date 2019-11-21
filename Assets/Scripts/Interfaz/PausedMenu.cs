@@ -56,7 +56,6 @@ public class PausedMenu : MonoBehaviour
         {
             panel.SetActive(false);
         }
-        
         optionsMenu.SetActive(false);
         controll.SetActive(false);
         background.SetActive(false);

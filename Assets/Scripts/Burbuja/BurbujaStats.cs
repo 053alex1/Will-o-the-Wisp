@@ -11,6 +11,7 @@ public class BurbujaStats : MonoBehaviour
     public bool seguir = false;
     public float speed = 50f;
     public bool exist;
+    public bool quet = true;
     public const float maxRes = 15f;
 
     void Awake() {

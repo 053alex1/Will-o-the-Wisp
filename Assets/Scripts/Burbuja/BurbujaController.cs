@@ -16,6 +16,7 @@ public class BurbujaController : MonoBehaviour
     private FuegoStats fs;
     private Transform dagtr;
     private Transform[] fuegos;
+    private Vector3 posQueta;
 
     void Awake() {
         bubble = GameObject.FindGameObjectWithTag("Bubble");
@@ -26,6 +27,7 @@ public class BurbujaController : MonoBehaviour
         tr = bubble.GetComponent<Transform>();
         bs = bubble.GetComponent<BurbujaStats>();
         fuegosLista = GameObject.FindGameObjectsWithTag("Fuego");
+        posQueta = dagtr.position  + new Vector3(15, 0, 0);
         //findFires();
     }
     void FixedUpdate()
@@ -35,8 +37,16 @@ public class BurbujaController : MonoBehaviour
 
         if (bs.resistencia <= 0) romperBurbuja3();
         
-        if (bs.seguir) seguirProta();
-        else pararSeguirProta();
+        if (bs.seguir) {
+            seguirProta();
+            bs.quet = false;
+        }
+        else if (bs.quet){
+                pararSeguirProta();
+            }else {
+                posQueta = tr.position;
+                bs.quet = true;
+            }
     }
 
     void findFires() {
@@ -51,6 +61,7 @@ public class BurbujaController : MonoBehaviour
             A mayor frecuencia (f), más oscilaciones por unidad de tiempo
         */
     }
+    /*
     void romperBurbuja2() {
         foreach (Transform fireChild in tr.GetComponentsInChildren<Transform>()) {
             if (fireChild.gameObject.name != "Burbuja(Clone)") {
@@ -63,14 +74,15 @@ public class BurbujaController : MonoBehaviour
         tr.DetachChildren();
         Destroy(gameObject);
     }
+    */
     
     void romperBurbuja3() {
-        
-        Destroy(gameObject);
+        tr.DetachChildren();
         foreach (GameObject fuego in fuegosLista)
         {
                 fuego.GetComponent<FuegoStats>().libre = true;
         }
+        Destroy(gameObject);
     }
 
     void fuegosCerca3() {
@@ -78,12 +90,12 @@ public class BurbujaController : MonoBehaviour
         foreach (GameObject fuego in fuegosLista)
         {
             
-                if (Vector3.Distance(tr.position, fuego.GetComponent<Transform>().position) < 5) {
+                if (Vector3.Distance(tr.position, fuego.GetComponent<Transform>().position) < 5 && fuego.GetComponent<FuegoStats>().libre) {
                 meterFuego(fuego.GetComponent<Transform>());
             }
         }
     }
-
+/*
     void romperBurbuja() {
         //tr.DetachChildren();
         //for(int i = 0; i <= padreFuegos.transform.childCount; i++){
@@ -113,6 +125,7 @@ public class BurbujaController : MonoBehaviour
         }
         Destroy(gameObject);
     }
+    */
     void fuegosCerca() {
         for(int i = 1; i < bs.fuegoFatuos.Length; i++){
             Transform fuego = bs.fuegoFatuos[i];
@@ -128,12 +141,15 @@ public class BurbujaController : MonoBehaviour
         fuego.GetComponent<FuegoStats>().teLloc = false;
         //fuego.GetComponent<FuegoController>().waypoints[fuego.GetComponent<FuegoController>().indiceVector].GetComponent<WayPoint>().ocupado = false;
         fuego.GetComponent<FuegoController>().liberarSitio();
-        //fuego.parent = tr;
+        fuego.position = Vector3.MoveTowards (fuego.position, tr.position, Time.deltaTime * bs.speed);
+        fuego.parent = tr;
     }
+    /*
     void escaparFuego(Transform fuego) {
         fuego.GetComponent<FuegoStats>().libre = true;
         fuego.GetComponent<FuegoStats>().teLloc = true;
     }
+    */
     void OnTriggerEnter(Collider other){ 
         //if (other.gameObject.tag == "Fuego") {
           //  other.gameObject.transform.GetComponent<FuegoStats>().libre = false;
@@ -154,9 +170,10 @@ public class BurbujaController : MonoBehaviour
         }
     }
     void seguirProta(){
-        tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(0, 15, 0), Time.deltaTime * bs.speed);
+        tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(15, 0, 0), Time.deltaTime * bs.speed);
     }
     void pararSeguirProta(){
+        //tr.position = Vector3.MoveTowards (tr.position, posQueta, Time.deltaTime * bs.speed);
         tr.position = Vector3.MoveTowards (tr.position, tr.position, Time.deltaTime * bs.speed);
     }
 }
