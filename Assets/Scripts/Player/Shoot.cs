@@ -17,16 +17,40 @@ public class Shoot : MonoBehaviour
     }
     public void lightShoot()
     {
+        Debug.Log("Light Attack triggered - Mana is " + ps.mana);
         shoot(lightPrefab);
     }
     public void heavyShoot()
     {
+        Debug.Log("Heavy Attack triggered - Mana is " + ps.mana);
         shoot(heavyPrefab);
     }
     void shoot(GameObject bullet)
     {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2));
+        bool check = Physics.Raycast(ray, out hit, Mathf.Infinity);
+
+         if (check)
+            {
+                Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
+                Debug.Log("Attack did Hit");
+
+                ps.reduceMana(ps.lightDamage);
+                
+                if (hit.collider.tag == "Enemy") {
+                    hit.collider.GetComponent<BaseEnemy>().getHit(ps.lightDamage);
+                    Debug.Log(hit.collider.GetComponent<BaseEnemy>().hp);
+                }
+            }
+            else
+            {
+                Debug.DrawRay(transform.position, ray.direction * 1000, Color.white, 10f);
+                Debug.Log("Attack did not Hit");
+            }
+
         Rigidbody rbullet = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Rigidbody>();
-        rbullet.AddForce(transform.forward * bulletForce * Time.deltaTime, ForceMode.Impulse);
+        rbullet.AddForce(ray.direction * bulletForce * Time.deltaTime, ForceMode.Impulse);
     }
 
 }

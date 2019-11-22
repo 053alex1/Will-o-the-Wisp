@@ -22,9 +22,6 @@ public class PlayerController : MonoBehaviour
     private GameObject disparador;
     
 
-    //Todos estos valores se moverán a otro script 
-    
-
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Dagda");
@@ -93,58 +90,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    //!!!!!!!!!! ------------- CAMBIAR EL ATAQUE EN VEZ DE AL PUNTO DEL RATÓN, AL PUNTO DEL CROSSHAIR
     void LightAttack() {
         if (ps.mana >= 2) {
-            Debug.Log("Light Attack triggered - Mana is " + ps.mana);
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            bool check = Physics.Raycast(ray, out hit, Mathf.Infinity);
             shootScript.lightShoot();
-            if (check)
-            {
-                Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
-                Debug.Log("Light attack did Hit");
-
-                ps.reduceMana(ps.lightDamage);
-                
-                if (hit.collider.tag == "Enemy") {
-                    hit.collider.GetComponent<BaseEnemy>().getHit(ps.lightDamage);
-                }
-            }
-            else
-            {
-                Debug.DrawRay(transform.position, ray.direction * 1000, Color.white, 10f);
-                Debug.Log("Light attack did not Hit");
-            }
-        } else Debug.Log("Not enough mana - Mana is " + ps.mana);
+        } else Debug.Log("Not enough mana for light attack - Mana is " + ps.mana);
     }
 
     void HeavyAttack() {
         if (ps.mana >= 5) {
-            Debug.Log("Heavy Attack triggered - Mana is " + ps.mana);
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            bool check = Physics.Raycast(ray, out hit, Mathf.Infinity);
             shootScript.heavyShoot();
-            if (check)
-            {
-                Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
-                Debug.Log("Heavy attack did Hit");
-
-                ps.reduceMana(ps.heavyDamage);
-
-                if (hit.collider.tag == "Enemy") {
-                    hit.collider.GetComponent<BaseEnemy>().getHit(ps.heavyDamage);
-                }
-            }
-            else
-            {
-                Debug.DrawRay(transform.position, ray.direction * 1000, Color.white, 10f);
-                Debug.Log("Heavy attack did not Hit");
-            }
-        } else Debug.Log("Not enough mana - Mana is " + ps.mana);
+        } else Debug.Log("Not enough mana for heavy attack - Mana is " + ps.mana);
     }
 
     void Attack() {
