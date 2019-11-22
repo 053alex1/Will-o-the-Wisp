@@ -20,6 +20,7 @@ public class Respawn : MonoBehaviour
         Debug.Log("Something collided");
         if (col.gameObject.tag == "Dagda")
         {
+            //Teletransportar burbuja
             player.transform.position = spawnPoint.transform.position;
             return;
             //Instanciar un efecto de reaparición o algo
