@@ -16,7 +16,7 @@ public class BurbujaController : MonoBehaviour
     private FuegoStats fs;
     private Transform dagtr;
     private Transform[] fuegos;
-    private Vector3 posQueta;
+    //private Vector3 posQueta;
 
     void Awake() {
         bubble = GameObject.FindGameObjectWithTag("Bubble");
@@ -27,7 +27,7 @@ public class BurbujaController : MonoBehaviour
         tr = bubble.GetComponent<Transform>();
         bs = bubble.GetComponent<BurbujaStats>();
         fuegosLista = GameObject.FindGameObjectsWithTag("Fuego");
-        posQueta = dagtr.position  + new Vector3(15, 0, 0);
+        tr.position = dagtr.position  + new Vector3(15, 0, 0);
         //findFires();
     }
     void FixedUpdate()
@@ -44,7 +44,7 @@ public class BurbujaController : MonoBehaviour
         else if (bs.quet){
                 pararSeguirProta();
             }else {
-                posQueta = tr.position;
+                //posQueta = tr.position;
                 bs.quet = true;
             }
     }
@@ -168,6 +168,10 @@ public class BurbujaController : MonoBehaviour
                 Debug.Log("Has reunido todos los fuegos YEEEAA");
             }
         }
+    }
+
+    public void transmisionInstantanea() {
+        tr.position = dagtr.position  + new Vector3(15, 0, 0);
     }
     void seguirProta(){
         tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(15, 0, 0), Time.deltaTime * bs.speed);
