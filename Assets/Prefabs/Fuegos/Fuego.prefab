@@ -4763,9 +4763,11 @@ GameObject:
   - component: {fileID: 4731861580502952}
   - component: {fileID: 198696392922457284}
   - component: {fileID: 199374976460404498}
+  - component: {fileID: 1290305150760181579}
+  - component: {fileID: 5458272155803344094}
   m_Layer: 0
   m_Name: Magic fire pro blue
-  m_TagString: Untagged
+  m_TagString: Fuego
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9507,6 +9509,39 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1290305150760181579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223526616464650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ba56cd07d83644f8adf55966b94653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints: []
+  indiceVector: 0
+  speed: 1
+--- !u!114 &5458272155803344094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223526616464650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4438c9a6a75264f91e1e5a7cddf432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitud: 0.05
+  frecuencia: 0.5
+  waypoints: []
+  speed: 50
+  libre: 1
+  teLloc: 0
 --- !u!1 &1430769185673144
 GameObject:
   m_ObjectHideFlags: 0
