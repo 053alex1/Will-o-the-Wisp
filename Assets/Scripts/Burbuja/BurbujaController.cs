@@ -5,6 +5,9 @@ using UnityEngine;
 public class BurbujaController : MonoBehaviour
 {
     private Vector3 pos;
+    private Vector3 posMov;
+    public float distance;
+    public float pushStrength;
     private Rigidbody rb;
     private GameObject bubble;
     private GameObject dagda;
@@ -16,6 +19,7 @@ public class BurbujaController : MonoBehaviour
     private FuegoStats fs;
     private Transform dagtr;
     private Transform[] fuegos;
+    float radius = 3f;
     //private Vector3 posQueta;
 
     void Awake() {
@@ -174,7 +178,27 @@ public class BurbujaController : MonoBehaviour
         tr.position = dagtr.position  + new Vector3(15, 0, 0);
     }
     void seguirProta(){
-        tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(15, 0, 0), Time.deltaTime * bs.speed);
+        
+        //float angle = Vector3.Angle(targetDir, tr.forward);
+        //tr.position.Angle(targetDir, tr.forward) = 4.0f;
+
+    //     var dist = Vector3.Distance(tr.position, dagtr.position);
+
+    //     if (dist < distance)
+    //  {
+    //      //Calculate the vector between the object and the player
+    //     Vector3 targetDir = dagtr.position - tr.position;
+    //      //Cancel out the vertical difference
+    //      targetDir.y = 0;
+    //      //Translate the object in the direction of the vector
+    //      tr.Translate(targetDir.normalized * pushStrength);
+    //  }
+
+
+        tr.position = Vector3.MoveTowards (tr.position, dagtr.forward, Time.deltaTime * bs.speed);
+        //tr.position = Vector3.MoveTowards (tr.position, dagtr.forward, Time.deltaTime * bs.speed);
+    
+        //tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(15, 0, 0), Time.deltaTime * bs.speed);
     }
     void pararSeguirProta(){
         //tr.position = Vector3.MoveTowards (tr.position, posQueta, Time.deltaTime * bs.speed);
