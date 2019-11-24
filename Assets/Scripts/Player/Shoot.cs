@@ -34,19 +34,14 @@ public class Shoot : MonoBehaviour
          if (check)
             {
                 Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
-                Debug.Log("Attack did Hit");
-
+                Debug.Log("Attack did hit something");
                 ps.reduceMana(ps.lightDamage);
                 
-                if (hit.collider.tag == "Enemy") {
-                    hit.collider.GetComponent<BaseEnemy>().getHit(ps.lightDamage);
-                    Debug.Log(hit.collider.GetComponent<BaseEnemy>().hp);
-                }
             }
             else
             {
                 Debug.DrawRay(transform.position, ray.direction * 1000, Color.white, 10f);
-                Debug.Log("Attack did not Hit");
+                Debug.Log("Attack did not hit");
             }
 
         Rigidbody rbullet = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Rigidbody>();
