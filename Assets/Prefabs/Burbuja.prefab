@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 5956468708454806437}
   - component: {fileID: 5956468708454806436}
   - component: {fileID: 5956468708454806439}
+  - component: {fileID: 5956468708454806441}
   - component: {fileID: 5956468708454806440}
+  - component: {fileID: 7071602136992474725}
   - component: {fileID: 2940202626828370802}
-  - component: {fileID: 5448085393192174708}
-  - component: {fileID: 3422125586014390813}
   m_Layer: 0
   m_Name: Burbuja
   m_TagString: Bubble
@@ -95,6 +95,32 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5956468708454806441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5956468708454806443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb48823ba30caf44994d60447a9e365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitud: 0.02
+  frecuencia: 0.2
+  resistencia: 15
+  fuegoFatuos:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  seguir: 0
+  speed: 50
+  exist: 0
+  quet: 1
 --- !u!54 &5956468708454806440
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -111,6 +137,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7071602136992474725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5956468708454806443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0734de8da23ee49a2ce312e718032d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuegosLista: []
 --- !u!95 &2940202626828370802
 Animator:
   serializedVersion: 3
@@ -130,36 +169,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5448085393192174708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5956468708454806443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0734de8da23ee49a2ce312e718032d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fuegosLista: []
---- !u!114 &3422125586014390813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5956468708454806443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcb48823ba30caf44994d60447a9e365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amplitud: 0.02
-  frecuencia: 0.2
-  resistencia: 15
-  fuegoFatuos: []
-  seguir: 0
-  speed: 50
-  exist: 0
-  quet: 1
