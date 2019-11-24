@@ -66,33 +66,30 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("isRunning", false);
         }
 
-        /* forward = Vector3.Scale(maincam.forward, new Vector3(1, 0, 1)).normalized;    //Indica hacia dónde está el frente respecto a la cámara
-        move = (Input.GetAxis("Vertical") * forward + Input.GetAxis("Horizontal") * maincam.right).normalized;
-        move.y = rb.velocity.y; */
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
-        //movement = Vector3.Scale(movement, Vector3.Scale(maincam.forward, maincam.right));
+        // Calculate the forward vector
+        Vector3 camForward_Dir = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+        Vector3 move = v * camForward_Dir + h * Camera.main.transform.right;
+        //move.y = rb.velocity.y;
 
-        if (movement != Vector3.zero)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15F);
-            transform.Translate(movement * ps.speed * Time.deltaTime, Space.World);
-            playerAnimator.SetFloat("Walking", Mathf.Abs(move.x + move.z));
+        if (move.magnitude > 1f) move.Normalize();
 
-        }
+        // Calculate the rotation for the player
+        move = transform.InverseTransformDirection(move);
 
-        /* tr.Translate(move * Time.deltaTime * ps.speed, Space.World);
-        tr.Find("Dagda").transform.rotation = Quaternion.Euler(0f, 0f, 0f); */
+        // Get Euler angles
+        float turnAmount = Mathf.Atan2(move.x, move.z);
 
-        /* if (move != Vector3.zero)
-        {
-            movegfx = move;
-            //movegfx.y = 0f;
-            tr.Find("Dagda").transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(movegfx), Time.fixedDeltaTime * 1f);
-        } */
+        transform.Rotate(0, turnAmount * 250.0f * Time.deltaTime, 0);
+        movegfx = tr.forward * move.magnitude;
+        movegfx.y = rb.velocity.y;
+
+        transform.Translate(movegfx * ps.speed * Time.deltaTime, Space.World);
+
         disparador.transform.rotation = Quaternion.Euler(0f, maincam.eulerAngles.y, 0f);
-        //tr.Find("Dagda").transform.rotation = Quaternion.Euler(0f, maincam.eulerAngles.y, 0f);    //Rota el GFX hacia donde mira la cámara
-
+        playerAnimator.SetFloat("Walking", Mathf.Abs(movegfx.x + movegfx.z));
     }
 
     void Jump()
