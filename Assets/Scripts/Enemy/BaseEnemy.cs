@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseEnemy : MonoBehaviour
 {
+    private float Maxhp ;
     public float hp = 10f;
     private Transform target;
-    GameObject canvas;
-
-    GameObject x;
+    private GameObject canvas;
+    private Scrollbar vida;
+    private GameObject x;
     // Use this for initialization
     void Start() {
        target = Camera.main.transform;
        canvas = transform.Find("Canvas").gameObject;
+       vida =canvas.transform.Find("Health").GetComponent<Scrollbar>();
+       Maxhp=hp;
     }
    
     // Update is called once per frame
@@ -28,5 +32,6 @@ public class BaseEnemy : MonoBehaviour
         hp -= damage;
         Debug.Log("ouch - " + hp + " hp left");
         if (hp <= 0) Destroy(gameObject);
+        vida.size = hp/Maxhp;
     }
 }
