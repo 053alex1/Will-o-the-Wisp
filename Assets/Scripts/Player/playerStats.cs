@@ -13,7 +13,7 @@ public class playerStats : MonoBehaviour
     public bool isGrounded;
     public bool isRunning;
     private const float maxHealth = 100f;
-    private float manaRegenPerSec = 0.5f;
+    private float manaRegenPerSec = 1.5f;
     private float delay = 3f;   //Tiempo entre el último ataque de maná y la regeneración de este
     private const float maxMana = 20f;
     private float timestamp = 0f;

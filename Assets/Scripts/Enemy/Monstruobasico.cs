@@ -19,7 +19,8 @@ public float fov = 90f;
 public float disAtqDis=20;
 
     public Animator playerAnimator;
-    public GameObject GFX;
+    public GameObject GFX,burbuja;
+    private bool hayBurbuja=false;
     //Usados para el calculo(igual luego los quito de aquí
     protected Transform target;
     protected NavMeshAgent agent;
@@ -38,8 +39,8 @@ private bool follow= false,atq= false,atqDis= false;
     target = GameObject.FindWithTag("Dagda").transform;
         timer = wanderTimer;
         timerAttack=TimerCDAttack;
-        agent.speed = 40f;
-        agent.acceleration = 18;
+        agent.speed = 30f;
+        agent.acceleration = 15;
         agent.stoppingDistance = 10;
 }
  
@@ -57,6 +58,15 @@ void Update()
 
         if(!follow){
             wander();
+        }
+}
+private void encontrarBurbuja(){
+    if (!hayBurbuja){
+            burbuja = GameObject.FindGameObjectWithTag("Bubble");
+            if (burbuja != null)
+                burbuja =true;
+            else
+                burbuja=false;
         }
 }
 private void ataca(){

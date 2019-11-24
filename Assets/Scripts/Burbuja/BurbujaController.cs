@@ -22,11 +22,12 @@ public class BurbujaController : MonoBehaviour
     float radius = 3f;
     //private Vector3 posQueta;
 
-    void Awake() {
+    void Awake()
+    {
         bubble = GameObject.FindGameObjectWithTag("Bubble");
         dagda = GameObject.FindGameObjectWithTag("Dagda");
         padreFuegos = GameObject.Find("Fuegos");
-        dagtr= dagda.GetComponent<Transform>();
+        dagtr = dagda.GetComponent<Transform>();
         //rb = bubble.GetComponent<Rigidbody>();
         tr = bubble.GetComponent<Transform>();
         bs = bubble.GetComponent<BurbujaStats>();
@@ -40,8 +41,9 @@ public class BurbujaController : MonoBehaviour
         fuegosCerca3();
 
         if (bs.resistencia <= 0) romperBurbuja3();
-        
-        if (bs.seguir) {
+
+        if (bs.seguir)
+        {
             seguirProta();
             bs.quet = false;
         }
@@ -53,12 +55,14 @@ public class BurbujaController : MonoBehaviour
             }
     }
 
-    void findFires() {
+    void findFires()
+    {
         bs.fuegoFatuos = padreFuegos.GetComponentsInChildren<Transform>();
     }
-    void bubbleFloat() {
+    void bubbleFloat()
+    {
         pos = tr.position;
-        pos.y += Mathf.Sin (2 * Time.fixedTime * Mathf.PI * bs.frecuencia) * bs.amplitud;
+        pos.y += Mathf.Sin(2 * Time.fixedTime * Mathf.PI * bs.frecuencia) * bs.amplitud;
         tr.position = pos;
         /*  La fórmula de la onda del seno es y(t) = A * sin(2 * pi * f * t + fase)
             A mayor amplitud (A), mayor será altura de los picos
@@ -79,73 +83,80 @@ public class BurbujaController : MonoBehaviour
         Destroy(gameObject);
     }
     */
-    
-    void romperBurbuja3() {
+
+    void romperBurbuja3()
+    {
         tr.DetachChildren();
         foreach (GameObject fuego in fuegosLista)
         {
-                fuego.GetComponent<FuegoStats>().libre = true;
+            fuego.GetComponent<FuegoStats>().libre = true;
         }
         Destroy(gameObject);
     }
 
-    void fuegosCerca3() {
-        
+    void fuegosCerca3()
+    {
+
         foreach (GameObject fuego in fuegosLista)
         {
-            
-                if (Vector3.Distance(tr.position, fuego.GetComponent<Transform>().position) < 5 && fuego.GetComponent<FuegoStats>().libre) {
+
+            if (Vector3.Distance(tr.position, fuego.GetComponent<Transform>().position) < 5 && fuego.GetComponent<FuegoStats>().libre)
+            {
                 meterFuego(fuego.GetComponent<Transform>());
             }
         }
     }
-/*
-    void romperBurbuja() {
-        //tr.DetachChildren();
-        //for(int i = 0; i <= padreFuegos.transform.childCount; i++){
-        for(int i = 1; i <= bs.fuegoFatuos.Length; i++){
-        //Debug.Log("Deuria entrar");
-            //fuego = padreFuegos.transform.GetChild(i);
-            fuego = bs.fuegoFatuos[i];
-        //if(fuego != null) {
-        //    Debug.Log("El foc existeix");
-        //}
-        //Transform fuego1 = padreFuegos.transform.GetChild(1);
-        //Transform fuego2 = padreFuegos.transform.GetChild(2);
-        //Transform fuego3 = padreFuegos.transform.GetChild(3);
-        //Transform fuego4 = padreFuegos.transform.GetChild(4);
-            fs = fuego.GetComponent<FuegoStats>();
-            fs.libre = true;
-        //if(fuego.GetComponent<FuegoStats>().libre == true) {
-        //    Debug.Log("Fuego Liberado");
-        //}
-        //fuego1.GetComponent<FuegoStats>().libre = true;
-        //fuego2.GetComponent<FuegoStats>().libre = true;
-        //fuego3.GetComponent<FuegoStats>().libre = true;
-        //fuego4.GetComponent<FuegoStats>().libre = true;
-            //fuego.parent = null;
-            //fuego.parent = padreFuegos.GetComponent<Transform>();
-            //fuego.GetComponent<FuegoController>().changeTarget();
+    /*
+        void romperBurbuja() {
+            //tr.DetachChildren();
+            //for(int i = 0; i <= padreFuegos.transform.childCount; i++){
+            for(int i = 1; i <= bs.fuegoFatuos.Length; i++){
+            //Debug.Log("Deuria entrar");
+                //fuego = padreFuegos.transform.GetChild(i);
+                fuego = bs.fuegoFatuos[i];
+            //if(fuego != null) {
+            //    Debug.Log("El foc existeix");
+            //}
+            //Transform fuego1 = padreFuegos.transform.GetChild(1);
+            //Transform fuego2 = padreFuegos.transform.GetChild(2);
+            //Transform fuego3 = padreFuegos.transform.GetChild(3);
+            //Transform fuego4 = padreFuegos.transform.GetChild(4);
+                fs = fuego.GetComponent<FuegoStats>();
+                fs.libre = true;
+            //if(fuego.GetComponent<FuegoStats>().libre == true) {
+            //    Debug.Log("Fuego Liberado");
+            //}
+            //fuego1.GetComponent<FuegoStats>().libre = true;
+            //fuego2.GetComponent<FuegoStats>().libre = true;
+            //fuego3.GetComponent<FuegoStats>().libre = true;
+            //fuego4.GetComponent<FuegoStats>().libre = true;
+                //fuego.parent = null;
+                //fuego.parent = padreFuegos.GetComponent<Transform>();
+                //fuego.GetComponent<FuegoController>().changeTarget();
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
-    }
-    */
-    void fuegosCerca() {
-        for(int i = 1; i < bs.fuegoFatuos.Length; i++){
+        */
+    void fuegosCerca()
+    {
+        for (int i = 1; i < bs.fuegoFatuos.Length; i++)
+        {
             Transform fuego = bs.fuegoFatuos[i];
-            if (Vector3.Distance(tr.position, fuego.position) < 5) {
+            if (Vector3.Distance(tr.position, fuego.position) < 5)
+            {
                 meterFuego(fuego);
             }
         }
     }
-        //Vector3.Distance(transform.position, otherObject.transform.position) -- cada frame
-    void meterFuego(Transform fuego) {
+    //Vector3.Distance(transform.position, otherObject.transform.position) -- cada frame
+    void meterFuego(Transform fuego)
+    {
         //fuego.transform.SetParent(bubble.transform);
         fuego.GetComponent<FuegoStats>().libre = false;
         fuego.GetComponent<FuegoStats>().teLloc = false;
         //fuego.GetComponent<FuegoController>().waypoints[fuego.GetComponent<FuegoController>().indiceVector].GetComponent<WayPoint>().ocupado = false;
         fuego.GetComponent<FuegoController>().liberarSitio();
-        fuego.position = Vector3.MoveTowards (fuego.position, tr.position, Time.deltaTime * bs.speed);
+        fuego.position = Vector3.MoveTowards(fuego.position, tr.position, Time.deltaTime * bs.speed);
         fuego.parent = tr;
     }
     /*
@@ -154,21 +165,26 @@ public class BurbujaController : MonoBehaviour
         fuego.GetComponent<FuegoStats>().teLloc = true;
     }
     */
-    void OnTriggerEnter(Collider other){ 
+    void OnTriggerEnter(Collider other)
+    {
         //if (other.gameObject.tag == "Fuego") {
-          //  other.gameObject.transform.GetComponent<FuegoStats>().libre = false;
-            //other.gameObject.transform.parent = tr;
+        //  other.gameObject.transform.GetComponent<FuegoStats>().libre = false;
+        //other.gameObject.transform.parent = tr;
         //}
 
-        if (other.gameObject.tag == "Altar") {
+        if (other.gameObject.tag == "Altar")
+        {
             int cont = 0;
-            for(int i = 1; i < bs.fuegoFatuos.Length; i++){
+            for (int i = 1; i < bs.fuegoFatuos.Length; i++)
+            {
                 Transform fuego = bs.fuegoFatuos[i];
-                if (fuego.GetComponent<FuegoStats>().libre == false) {
-                   cont++;
+                if (fuego.GetComponent<FuegoStats>().libre == false)
+                {
+                    cont++;
                 }
             }
-            if(cont == bs.fuegoFatuos.Length - 1) {
+            if (cont == bs.fuegoFatuos.Length - 1)
+            {
                 Debug.Log("Has reunido todos los fuegos YEEEAA");
             }
         }
@@ -200,8 +216,9 @@ public class BurbujaController : MonoBehaviour
     
         //tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(15, 0, 0), Time.deltaTime * bs.speed);
     }
-    void pararSeguirProta(){
+    void pararSeguirProta()
+    {
         //tr.position = Vector3.MoveTowards (tr.position, posQueta, Time.deltaTime * bs.speed);
-        tr.position = Vector3.MoveTowards (tr.position, tr.position, Time.deltaTime * bs.speed);
+        tr.position = Vector3.MoveTowards(tr.position, tr.position, Time.deltaTime * bs.speed);
     }
 }
