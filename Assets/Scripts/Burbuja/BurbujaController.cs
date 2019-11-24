@@ -5,6 +5,9 @@ using UnityEngine;
 public class BurbujaController : MonoBehaviour
 {
     private Vector3 pos;
+    private Vector3 posMov;
+    public float distance;
+    public float pushStrength;
     private Rigidbody rb;
     private GameObject bubble;
     private GameObject dagda;
@@ -16,7 +19,8 @@ public class BurbujaController : MonoBehaviour
     private FuegoStats fs;
     private Transform dagtr;
     private Transform[] fuegos;
-    private Vector3 posQueta;
+    float radius = 3f;
+    //private Vector3 posQueta;
 
     void Awake()
     {
@@ -28,7 +32,7 @@ public class BurbujaController : MonoBehaviour
         tr = bubble.GetComponent<Transform>();
         bs = bubble.GetComponent<BurbujaStats>();
         fuegosLista = GameObject.FindGameObjectsWithTag("Fuego");
-        posQueta = dagtr.position + new Vector3(1f, 0, 0);
+        tr.position = dagtr.position  + new Vector3(15, 0, 0);
         //findFires();
     }
     void FixedUpdate()
@@ -43,15 +47,12 @@ public class BurbujaController : MonoBehaviour
             seguirProta();
             bs.quet = false;
         }
-        else if (bs.quet)
-        {
-            pararSeguirProta();
-        }
-        else
-        {
-            posQueta = tr.position;
-            bs.quet = true;
-        }
+        else if (bs.quet){
+                pararSeguirProta();
+            }else {
+                //posQueta = tr.position;
+                bs.quet = true;
+            }
     }
 
     void findFires()
@@ -188,9 +189,32 @@ public class BurbujaController : MonoBehaviour
             }
         }
     }
-    void seguirProta()
-    {
-        tr.position = Vector3.MoveTowards(tr.position, dagtr.position + new Vector3(15, 0, 0), Time.deltaTime * bs.speed);
+
+    public void transmisionInstantanea() {
+        tr.position = dagtr.position  + new Vector3(15, 0, 0);
+    }
+    void seguirProta(){
+        
+        //float angle = Vector3.Angle(targetDir, tr.forward);
+        //tr.position.Angle(targetDir, tr.forward) = 4.0f;
+
+    //     var dist = Vector3.Distance(tr.position, dagtr.position);
+
+    //     if (dist < distance)
+    //  {
+    //      //Calculate the vector between the object and the player
+    //     Vector3 targetDir = dagtr.position - tr.position;
+    //      //Cancel out the vertical difference
+    //      targetDir.y = 0;
+    //      //Translate the object in the direction of the vector
+    //      tr.Translate(targetDir.normalized * pushStrength);
+    //  }
+
+
+        tr.position = Vector3.MoveTowards (tr.position, dagtr.forward, Time.deltaTime * bs.speed);
+        //tr.position = Vector3.MoveTowards (tr.position, dagtr.forward, Time.deltaTime * bs.speed);
+    
+        //tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(15, 0, 0), Time.deltaTime * bs.speed);
     }
     void pararSeguirProta()
     {

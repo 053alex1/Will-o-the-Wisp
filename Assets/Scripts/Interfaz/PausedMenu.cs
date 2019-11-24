@@ -10,8 +10,9 @@ public class PausedMenu : MonoBehaviour
     public GameObject panel;
     public GameObject controll;
     public GameObject optionsMenu;
+    public GameObject deathMenu;
     public GameObject[] paneles;
-    private bool isPaused = false;
+    public bool isPaused = false;
     private bool primeraVegada = true;
 
     void Update()
@@ -27,6 +28,10 @@ public class PausedMenu : MonoBehaviour
         else
         {
             DesactivarMenu();
+        }
+
+        if (GameObject.Find("Dagda").GetComponent<playerStats>().isDead) {
+            ActivarMenuMuerte();
         }
     }
     public void ActivarMenu() 
@@ -67,5 +72,22 @@ public class PausedMenu : MonoBehaviour
     public void CambiarPausa() 
     {
         isPaused = false;
+    }
+    public void ActivarMenuMuerte() {
+        
+        optionsMenu.SetActive(false);
+        controll.SetActive(false);
+        background.SetActive(false);
+        pauseMenu.SetActive(false);
+        primeraVegada = true;
+        GameObject.Find("Camera").GetComponent<CameraFollow>().enabled = false;
+        GameObject.Find("Dagda").GetComponent<PlayerController>().enabled = false;
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+        canvas.SetActive(true);
+        background.SetActive(true);
+        deathMenu.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 }
