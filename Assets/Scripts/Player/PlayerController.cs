@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 movement = Vector3.zero;
     private Shoot shootScript;
     private GameObject disparador;
-    
+    private Vector3 movegfx;
+
 
     void Awake()
     {
@@ -51,38 +52,52 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             ps.isRunning = true;
             ps.speed *= 2;
             playerAnimator.SetBool("isRunning", true);
         }
 
-        else if(Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             ps.isRunning = false;
             ps.speed /= 2;
             playerAnimator.SetBool("isRunning", false);
         }
-        
-        forward = Vector3.Scale(maincam.forward, new Vector3(1,0,1)).normalized;    //Indica hacia dónde está el frente respecto a la cámara
+
+        /* forward = Vector3.Scale(maincam.forward, new Vector3(1, 0, 1)).normalized;    //Indica hacia dónde está el frente respecto a la cámara
         move = (Input.GetAxis("Vertical") * forward + Input.GetAxis("Horizontal") * maincam.right).normalized;
-        move.x = move.x * Time.deltaTime * ps.speed;
-        move.z = move.z * Time.deltaTime * ps.speed;
-        move.y = rb.velocity.y;
-        tr.Translate(move);
+        move.y = rb.velocity.y; */
 
-        tr.Find("Dagda").transform.rotation = Quaternion.Euler(0f, maincam.eulerAngles.y, 0f);
+        Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
+        //movement = Vector3.Scale(movement, Vector3.Scale(maincam.forward, maincam.right));
+
+        if (movement != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15F);
+            transform.Translate(movement * ps.speed * Time.deltaTime, Space.World);
+            playerAnimator.SetFloat("Walking", Mathf.Abs(move.x + move.z));
+
+        }
+
+        /* tr.Translate(move * Time.deltaTime * ps.speed, Space.World);
+        tr.Find("Dagda").transform.rotation = Quaternion.Euler(0f, 0f, 0f); */
+
+        /* if (move != Vector3.zero)
+        {
+            movegfx = move;
+            //movegfx.y = 0f;
+            tr.Find("Dagda").transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(movegfx), Time.fixedDeltaTime * 1f);
+        } */
         disparador.transform.rotation = Quaternion.Euler(0f, maincam.eulerAngles.y, 0f);
-        
+        //tr.Find("Dagda").transform.rotation = Quaternion.Euler(0f, maincam.eulerAngles.y, 0f);    //Rota el GFX hacia donde mira la cámara
 
-        playerAnimator.SetFloat("Walking", Mathf.Abs(move.x + move.z));
-        
     }
 
     void Jump()
     {
-        if(Input.GetButtonDown("Jump") && ps.isGrounded)
+        if (Input.GetButtonDown("Jump") && ps.isGrounded)
         {
             rb.velocity += -1f * Physics.gravity.normalized * this.CalculateJumpVerticalSpeed(this.ps.jumpHeight);
             ps.isGrounded = false;
@@ -90,24 +105,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void LightAttack() {
-        if (ps.mana >= 2) {
+    void LightAttack()
+    {
+        if (ps.mana >= 2)
+        {
             shootScript.lightShoot();
-        } else Debug.Log("Not enough mana for light attack - Mana is " + ps.mana);
+        }
+        else Debug.Log("Not enough mana for light attack - Mana is " + ps.mana);
     }
 
-    void HeavyAttack() {
-        if (ps.mana >= 5) {
+    void HeavyAttack()
+    {
+        if (ps.mana >= 5)
+        {
             shootScript.heavyShoot();
-        } else Debug.Log("Not enough mana for heavy attack - Mana is " + ps.mana);
+        }
+        else Debug.Log("Not enough mana for heavy attack - Mana is " + ps.mana);
     }
 
-    void Attack() {
+    void Attack()
+    {
         playerAnimator.SetBool("isAttacking", true);
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0))
+        {
             LightAttack();
         }
-        else if (Input.GetMouseButtonDown(1)) {
+        else if (Input.GetMouseButtonDown(1))
+        {
             HeavyAttack();
         }
         playerAnimator.SetBool("isAttacking", false);
@@ -120,25 +144,37 @@ public class PlayerController : MonoBehaviour
 
     void bubbleFunction()
     {
-        if(Input.GetKeyDown(KeyCode.B)){
+        if (Input.GetKeyDown(KeyCode.B))
+        {
             burbuja = GameObject.FindGameObjectWithTag("Bubble");
-            if (burbuja != null) {
+            if (burbuja != null)
+            {
                 Debug.Log("La burbuja está creada");
-                if(Vector3.Distance(tr.position, burbuja.GetComponent<Transform>().position) < 16) {
+                if (Vector3.Distance(tr.position, burbuja.GetComponent<Transform>().position) < 16)
+                {
                     Debug.Log("Burbuja Cerca");
-                    if (burbuja.GetComponent<BurbujaStats>().seguir == true) {
+                    if (burbuja.GetComponent<BurbujaStats>().seguir == true)
+                    {
                         Debug.Log("Dejando de seguir a Dagda");
-                        burbuja.GetComponent<BurbujaStats>().seguir =false;
-                    } else {
-                        Debug.Log("Siguiendo a Dagda");
-                        burbuja.GetComponent<BurbujaStats>().seguir =true;
+                        burbuja.GetComponent<BurbujaStats>().seguir = false;
                     }
-                } else {
+                    else
+                    {
+                        Debug.Log("Siguiendo a Dagda");
+                        burbuja.GetComponent<BurbujaStats>().seguir = true;
+                    }
+                }
+                else
+                {
                     Debug.Log("Ya has creado una burbuja y estás muy lejos de ella para que te siga");
                     //Hacer algo para que el jugador se dé cuenta
                 }
-            } else {
-                Instantiate(bubblePrefab, getBubblePosition(), Quaternion.identity);
+            }
+            else
+            {
+                var b = Instantiate(bubblePrefab);
+                b.transform.position = getBubblePosition();
+                b.transform.rotation = Quaternion.identity;
                 Debug.Log("La burbuja no estaba creada");
             }
         }
@@ -151,7 +187,7 @@ public class PlayerController : MonoBehaviour
 
     Vector3 getBubblePosition()
     {
-        return getPlayerPosition() + new Vector3(0, 15, 0); //Falta por determinar la altura de Dagda
+        return getPlayerPosition() + new Vector3(0, 0, 0); //Falta por determinar la altura de Dagda
     }
 
     void OnCollisionEnter(Collision collision)
@@ -161,8 +197,8 @@ public class PlayerController : MonoBehaviour
             ps.isGrounded = true;
             playerAnimator.SetBool("isJumping", false);
         }
-        
-        if(collision.collider.tag == "Enemy")
+
+        if (collision.collider.tag == "Enemy")
         {
             Debug.Log("Has sido dañado");
             playerAnimator.SetBool("isHurting", true);
