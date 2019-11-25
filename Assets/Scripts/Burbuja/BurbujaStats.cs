@@ -13,11 +13,14 @@ public class BurbujaStats : MonoBehaviour
     public bool exist;
     public bool quet = true;
     public const float maxRes = 15f;
+    public float radio;
 
     void Awake() {
         resistencia = maxRes;
         exist = true;
         seguir = true;
+        //radio = GetComponent<SphereCollider>().radius;
+        radio = 2f;
     }
     public void setExist(bool exist) {
         this.exist = exist;

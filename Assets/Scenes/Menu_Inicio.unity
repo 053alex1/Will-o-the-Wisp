@@ -480,6 +480,7 @@ GameObject:
   - component: {fileID: 171697422}
   - component: {fileID: 171697421}
   - component: {fileID: 171697420}
+  - component: {fileID: 171697424}
   m_Layer: 5
   m_Name: Nivel 2
   m_TagString: Untagged
@@ -609,6 +610,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171697418}
   m_CullTransparentMesh: 0
+--- !u!95 &171697424
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171697418}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 030b99a1ee3cde34a960d734c1fa18d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &291356326
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,6 +799,7 @@ GameObject:
   - component: {fileID: 460159134}
   - component: {fileID: 460159133}
   - component: {fileID: 460159132}
+  - component: {fileID: 460159135}
   m_Layer: 5
   m_Name: Continuar
   m_TagString: Untagged
@@ -888,6 +909,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460159130}
   m_CullTransparentMesh: 0
+--- !u!95 &460159135
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460159130}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 030b99a1ee3cde34a960d734c1fa18d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &503748307
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +1019,7 @@ GameObject:
   - component: {fileID: 583740115}
   - component: {fileID: 583740114}
   - component: {fileID: 583740113}
+  - component: {fileID: 583740116}
   m_Layer: 5
   m_Name: Salir
   m_TagString: Untagged
@@ -1099,6 +1140,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583740111}
   m_CullTransparentMesh: 0
+--- !u!95 &583740116
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583740111}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 030b99a1ee3cde34a960d734c1fa18d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &586788423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,6 +1245,7 @@ GameObject:
   - component: {fileID: 650322760}
   - component: {fileID: 650322759}
   - component: {fileID: 650322758}
+  - component: {fileID: 650322761}
   m_Layer: 5
   m_Name: Nivel 1
   m_TagString: Untagged
@@ -1305,6 +1366,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650322756}
   m_CullTransparentMesh: 0
+--- !u!95 &650322761
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650322756}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 030b99a1ee3cde34a960d734c1fa18d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &686981967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,6 +1776,7 @@ GameObject:
   - component: {fileID: 842074056}
   - component: {fileID: 842074055}
   - component: {fileID: 842074054}
+  - component: {fileID: 842074057}
   m_Layer: 5
   m_Name: Opciones
   m_TagString: Untagged
@@ -1827,6 +1908,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842074052}
   m_CullTransparentMesh: 0
+--- !u!95 &842074057
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842074052}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 030b99a1ee3cde34a960d734c1fa18d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &877771002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,6 +2021,7 @@ GameObject:
   - component: {fileID: 881354907}
   - component: {fileID: 881354906}
   - component: {fileID: 881354905}
+  - component: {fileID: 881354909}
   m_Layer: 5
   m_Name: Nivel 3
   m_TagString: Untagged
@@ -2050,6 +2151,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881354903}
   m_CullTransparentMesh: 0
+--- !u!95 &881354909
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881354903}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 030b99a1ee3cde34a960d734c1fa18d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &888879248
 GameObject:
   m_ObjectHideFlags: 0
@@ -2833,6 +2953,7 @@ GameObject:
   - component: {fileID: 1380281600}
   - component: {fileID: 1380281599}
   - component: {fileID: 1380281602}
+  - component: {fileID: 1380281603}
   m_Layer: 5
   m_Name: NuevaPartida
   m_TagString: Untagged
@@ -2973,6 +3094,25 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!95 &1380281603
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380281597}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 030b99a1ee3cde34a960d734c1fa18d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1381020619
 GameObject:
   m_ObjectHideFlags: 0
@@ -3601,6 +3741,7 @@ GameObject:
   - component: {fileID: 1945789283}
   - component: {fileID: 1945789282}
   - component: {fileID: 1945789281}
+  - component: {fileID: 1945789284}
   m_Layer: 5
   m_Name: VOLVER
   m_TagString: Untagged
@@ -3732,6 +3873,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945789279}
   m_CullTransparentMesh: 0
+--- !u!95 &1945789284
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945789279}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 030b99a1ee3cde34a960d734c1fa18d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1997966855
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,6 +4065,7 @@ GameObject:
   - component: {fileID: 2035234034}
   - component: {fileID: 2035234033}
   - component: {fileID: 2035234036}
+  - component: {fileID: 2035234037}
   m_Layer: 5
   m_Name: Seleccionar Nivel
   m_TagString: Untagged
@@ -4056,6 +4217,25 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!95 &2035234037
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035234031}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 030b99a1ee3cde34a960d734c1fa18d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2037415185
 GameObject:
   m_ObjectHideFlags: 0
