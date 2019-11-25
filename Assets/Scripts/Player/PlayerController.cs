@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class PlayerController : MonoBehaviour
     public Animator playerAnimator;
     public GameObject GFX;
     public bool seg = false; //crec que no afecta en res
+    public GameObject msgPanel;
+    public Text msgText;
+    public GameObject canvas;
+    public GameObject npc;
     GameObject player;
     public Vector3 move = new Vector3(0, 55, -55);
     public GameObject bubblePrefab;
@@ -35,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        msgPanel.SetActive(false);
         print("Let\'s get this bread.");
         tr = player.transform.GetComponent<Transform>();
         rb = player.GetComponent<Rigidbody>();
@@ -48,6 +54,7 @@ public class PlayerController : MonoBehaviour
         Jump();
         bubbleFunction();
         Attack();
+        Interaction();
     }
 
     void Move()
@@ -203,6 +210,33 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("isHurting", false);
             Debug.Log("Ya no eres dañado");
 
+        }
+    }
+    void Interaction() {
+        if (Input.GetKeyDown(KeyCode.I)){
+            npc = GameObject.FindGameObjectWithTag("NPC");
+            if (npc != null){
+                if (Vector3.Distance(tr.position, npc.GetComponent<Transform>().position) < 16)
+                {
+                    //canvas.SetActive(true);
+                    //msgText.text = "Cuánto tiempo Dagda!";
+                    //string msg = npc.GetComponent<MsgNPC>().GetMsg();
+                    //msgText.text = "Cuánto tiempo Dagda!";
+                    if(msgPanel.activeSelf == true) {
+                        npc.GetComponent<MsgNPC>().okButon();
+                        string msg = npc.GetComponent<MsgNPC>().GetMsg();
+                        msgText.text = msg;
+                    }else{
+                    msgPanel.SetActive(true);
+                        string msg = npc.GetComponent<MsgNPC>().GetMsg();
+                        msgText.text = msg;
+                    }
+
+
+                }else {
+                    msgPanel.SetActive(false);
+                }
+            }
         }
     }
 }

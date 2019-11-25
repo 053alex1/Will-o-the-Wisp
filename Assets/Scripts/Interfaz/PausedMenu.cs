@@ -40,7 +40,7 @@ public class PausedMenu : MonoBehaviour
         GameObject.Find("Dagda").GetComponent<PlayerController>().enabled = false;
         Time.timeScale = 0;
         AudioListener.pause = true;
-        canvas.SetActive(true);
+        //canvas.SetActive(true);
         background.SetActive(true);
         if (primeraVegada){
             pauseMenu.SetActive(true);
@@ -55,7 +55,7 @@ public class PausedMenu : MonoBehaviour
         GameObject.Find("Dagda").GetComponent<PlayerController>().enabled = true;
         Time.timeScale = 1;
         AudioListener.pause = false;
-        canvas.SetActive(false);  //Falta fer que per a tots els fills els desacive
+        //canvas.SetActive(false);  //Falta fer que per a tots els fills els desacive
         paneles = GameObject.FindGameObjectsWithTag("Panel");
         foreach (GameObject panel in paneles)
         {
@@ -84,7 +84,7 @@ public class PausedMenu : MonoBehaviour
         GameObject.Find("Dagda").GetComponent<PlayerController>().enabled = false;
         Time.timeScale = 0;
         AudioListener.pause = true;
-        canvas.SetActive(true);
+        //canvas.SetActive(true);
         background.SetActive(true);
         deathMenu.SetActive(true);
         Cursor.visible = true;
