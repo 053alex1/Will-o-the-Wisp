@@ -17,6 +17,7 @@ public class playerStats : MonoBehaviour
     private float delay = 3f;   //Tiempo entre el último ataque de maná y la regeneración de este
     private const float maxMana = 20f;
     private float timestamp = 0f;
+    public bool isDead;
     public void reduceHp(float amount) {
         hp -= amount;
     }
@@ -42,6 +43,7 @@ public class playerStats : MonoBehaviour
     void Awake() {  
         hp = maxHealth;
         mana = maxMana;
+        isDead = false;
     }
     void Update() {
         regenMana();
@@ -54,7 +56,13 @@ public class playerStats : MonoBehaviour
         hp -= damage;
         if(hp>=0)
             Debug.Log("ouch - " + hp + " hp left");
-        if (hp <= 0) gameObject.SetActive(false);
+        if (hp <= 0) 
+            gameObject.SetActive(false);
+            isDead = true;
+    }
+
+    public void dead() {
+        isDead = true;
     }
 
 }

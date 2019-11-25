@@ -23,9 +23,9 @@ public class FuegoController : MonoBehaviour
         findWaypoints();
         tr = gameObject.GetComponent<Transform>();
         fs = gameObject.GetComponent<FuegoStats>();
-        x = Random.Range(-2, 2);
-        y = Random.Range(-2, 2);
-        z = Random.Range(-2, 2);
+        //x = Random.Range(-2, 2);
+        //y = Random.Range(-2, 2);
+        //z = Random.Range(-2, 2);
     }
     void Start()
     {
@@ -52,7 +52,10 @@ public class FuegoController : MonoBehaviour
             }
         }
         else{
-            seguirBurbuja();
+            getBubble();
+            //WaitForSeconds(1);
+            pillarSitio();
+            //seguirBurbuja();
         }
     }
     void fireFloat() {
@@ -76,8 +79,9 @@ public class FuegoController : MonoBehaviour
     public void liberarSitio() {
         waypoints[indiceVector].GetComponent<WayPoint>().ocupado = false;
     }
-    GameObject getBubble() {
-        return burbuja = GameObject.FindGameObjectWithTag("Bubble");
+    void getBubble() {
+        burbuja = GameObject.FindGameObjectWithTag("Bubble");
+        burbujatr = burbuja.transform;
     }
     void changeTarget(){
         indiceVector = Random.Range(1, waypoints.Length);
@@ -88,9 +92,18 @@ public class FuegoController : MonoBehaviour
         waypoints[indiceVector].GetComponent<WayPoint>().ocupado = true;
         fs.teLloc = true;
     }
+
+    void pillarSitio(){
+        x = Random.Range(-2, 2);
+        y = Random.Range(-2, 2);
+        z = Random.Range(-2, 2);
+        tr.position = Vector3.MoveTowards (tr.position, burbujatr.position + new Vector3(x, y, z), Time.deltaTime * fs.speed/10);
+    }
+    /*
     void seguirBurbuja(){
         if (getBubble() != null) {
-            tr.position = Vector3.MoveTowards (tr.position, burbuja.transform.position + new Vector3(x, y, z), Time.deltaTime * fs.speed);
+            tr.position = Vector3.MoveTowards (tr.position, burbujatr.position + new Vector3(x, y, z), Time.deltaTime * fs.speed);
         }
     }
+    */
 }
