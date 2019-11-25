@@ -34,4 +34,8 @@ public class BurbujaStats : MonoBehaviour
     public bool getSeguir() {
         return seguir; 
     }
+    
+    public void dañoRecibido() {
+        resistencia =- 1;
+    }
 }

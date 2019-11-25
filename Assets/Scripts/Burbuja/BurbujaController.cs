@@ -34,6 +34,7 @@ public class BurbujaController : MonoBehaviour
         tr.position = dagtr.position  + new Vector3(15, 0, 0);
         //findFires();
     }
+
     void FixedUpdate()
     {
         bubbleFloat();
@@ -51,6 +52,7 @@ public class BurbujaController : MonoBehaviour
                 //posQueta = tr.position;
                 bs.quet = true;
             }
+        tr.Rotate(0.0f, 360.0f / 5.0f * Time.deltaTime, 0.0f);
     }
 
     void findFires() {
@@ -145,7 +147,7 @@ public class BurbujaController : MonoBehaviour
         fuego.GetComponent<FuegoStats>().teLloc = false;
         //fuego.GetComponent<FuegoController>().waypoints[fuego.GetComponent<FuegoController>().indiceVector].GetComponent<WayPoint>().ocupado = false;
         fuego.GetComponent<FuegoController>().liberarSitio();
-        fuego.position = Vector3.MoveTowards (fuego.position, tr.position, Time.deltaTime * bs.speed);
+        fuego.position = Vector3.MoveTowards (fuego.position, tr.position + new Vector3(2,0,0), Time.deltaTime * bs.speed);
         fuego.parent = tr;
     }
     /*
@@ -195,13 +197,14 @@ public class BurbujaController : MonoBehaviour
     //  }
 
 
-        tr.position = Vector3.MoveTowards (tr.position, dagtr.forward, Time.deltaTime * bs.speed);
+        //tr.position = Vector3.MoveTowards (tr.position, dagtr.forward, Time.deltaTime * bs.speed);
         //tr.position = Vector3.MoveTowards (tr.position, dagtr.forward, Time.deltaTime * bs.speed);
     
-        //tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(15, 0, 0), Time.deltaTime * bs.speed);
+        tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(7, 0, 0), Time.deltaTime * bs.speed);
     }
     void pararSeguirProta(){
         //tr.position = Vector3.MoveTowards (tr.position, posQueta, Time.deltaTime * bs.speed);
         tr.position = Vector3.MoveTowards (tr.position, tr.position, Time.deltaTime * bs.speed);
     }
+
 }
