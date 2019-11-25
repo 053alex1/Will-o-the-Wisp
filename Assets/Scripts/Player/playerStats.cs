@@ -13,8 +13,9 @@ public class playerStats : MonoBehaviour
     public bool isGrounded;
     public bool isRunning;
     private const float maxHealth = 100f;
-    private float manaRegenPerSec = 0.5f;
-    private float delay = 3f;   //Tiempo entre el último ataque de maná y la regeneración de este
+    private float manaRegenPerSec = 20f;
+    private float sec2Call = 0.5f;
+    private float delay = 2f;   //Tiempo entre el último ataque de maná y la regeneración de este
     private const float maxMana = 20f;
     private float timestamp = 0f;
     public bool isDead;
@@ -34,6 +35,10 @@ public class playerStats : MonoBehaviour
     {
         hp = maxHealth;
     }
+    public void fillMana()
+    {
+        mana = maxMana;
+    }
     public void reduceMana(float amount)
     {
         timestamp = Time.time;              // Cuando se 
@@ -44,32 +49,32 @@ public class playerStats : MonoBehaviour
         if (Time.time > (timestamp + delay))
         {      // Sólo se recupera el maná cuando hayan pasado los segundos del delay
             mana = Mathf.Min(maxMana, mana + (manaRegenPerSec * Time.deltaTime)); // (* Time.deltaTime) ?
-            //Debug.Log("Mana is " + mana);
+            Debug.Log("Mana is " + mana);
         }
     }
     void Awake()
     {
-        hp = maxHealth;
-        mana = maxMana;
+        fillHp();
+        fillMana();
         isDead = false;
     }
     void Update()
     {
-        regenMana();
+        //regenMana();
     }
     void Start()
     {
-        InvokeRepeating("regenMana", 0f, manaRegenPerSec);  // Con esta función se invoca a regenMana() cada 0.5 segundos
+        InvokeRepeating("regenMana", 0f, sec2Call);  // Con esta función se invoca a regenMana() cada sec2Call segundos
         fillHp();
     }
     public void getHit(float damage)
     {
-        hp -= damage;
+        reduceHp(damage);
         if (hp > 0) Debug.Log("ouch - " + hp + " hp left");
         else if (hp <= 0)
         {
             gameObject.SetActive(false);
-            isDead = true;
+            dead();
         }
     }
 
