@@ -3541,7 +3541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb48823ba30caf44994d60447a9e365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitud: 0.5
+  amplitud: 0
   frecuencia: 1
   resistencia: 0
   fuegoFatuos: []
@@ -3549,6 +3549,7 @@ MonoBehaviour:
   speed: 50
   exist: 0
   quet: 1
+  radio: 0
 --- !u!114 &2094064483
 MonoBehaviour:
   m_ObjectHideFlags: 0

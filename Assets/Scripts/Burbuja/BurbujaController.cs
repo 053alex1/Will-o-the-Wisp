@@ -20,6 +20,7 @@ public class BurbujaController : MonoBehaviour
     private Transform dagtr;
     private Transform[] fuegos;
     float radius = 3f;
+    private int cont;
     //private Vector3 posQueta;
 
     void Awake() {
@@ -32,6 +33,7 @@ public class BurbujaController : MonoBehaviour
         bs = bubble.GetComponent<BurbujaStats>();
         fuegosLista = GameObject.FindGameObjectsWithTag("Fuego");
         tr.position = dagtr.position  + new Vector3(15, 0, 0);
+        cont = 0;
         //findFires();
     }
 
@@ -39,6 +41,7 @@ public class BurbujaController : MonoBehaviour
     {
         bubbleFloat();
         fuegosCerca3();
+        Debug.Log(bs.radio);
 
         if (bs.resistencia <= 0) romperBurbuja3();
         
@@ -83,10 +86,11 @@ public class BurbujaController : MonoBehaviour
     */
     
     void romperBurbuja3() {
+        cont = 0;
         tr.DetachChildren();
         foreach (GameObject fuego in fuegosLista)
         {
-                fuego.GetComponent<FuegoStats>().libre = true;
+            fuego.GetComponent<FuegoStats>().libre = true;
         }
         Destroy(gameObject);
     }
@@ -96,7 +100,7 @@ public class BurbujaController : MonoBehaviour
         foreach (GameObject fuego in fuegosLista)
         {
             
-                if (Vector3.Distance(tr.position, fuego.GetComponent<Transform>().position) < 5 && fuego.GetComponent<FuegoStats>().libre) {
+            if (Vector3.Distance(tr.position, fuego.GetComponent<Transform>().position) < 5 && fuego.GetComponent<FuegoStats>().libre) {
                 meterFuego(fuego.GetComponent<Transform>());
             }
         }
@@ -131,7 +135,7 @@ public class BurbujaController : MonoBehaviour
         }
         Destroy(gameObject);
     }
-    */
+    
     void fuegosCerca() {
         for(int i = 1; i < bs.fuegoFatuos.Length; i++){
             Transform fuego = bs.fuegoFatuos[i];
@@ -141,13 +145,18 @@ public class BurbujaController : MonoBehaviour
         }
     }
         //Vector3.Distance(transform.position, otherObject.transform.position) -- cada frame
+    
+    
+    */
     void meterFuego(Transform fuego) {
         //fuego.transform.SetParent(bubble.transform);
         fuego.GetComponent<FuegoStats>().libre = false;
         fuego.GetComponent<FuegoStats>().teLloc = false;
         //fuego.GetComponent<FuegoController>().waypoints[fuego.GetComponent<FuegoController>().indiceVector].GetComponent<WayPoint>().ocupado = false;
         fuego.GetComponent<FuegoController>().liberarSitio();
-        fuego.position = Vector3.MoveTowards (fuego.position, tr.position + new Vector3(2,0,0), Time.deltaTime * bs.speed);
+        cont++;
+        fuego.position = Vector3.MoveTowards (fuego.position, tr.position, Time.deltaTime * bs.speed);
+        recalcularPos();
         fuego.parent = tr;
     }
     /*
@@ -157,12 +166,9 @@ public class BurbujaController : MonoBehaviour
     }
     */
     void OnTriggerEnter(Collider other){ 
-        //if (other.gameObject.tag == "Fuego") {
-          //  other.gameObject.transform.GetComponent<FuegoStats>().libre = false;
-            //other.gameObject.transform.parent = tr;
-        //}
 
         if (other.gameObject.tag == "Altar") {
+            /*
             int cont = 0;
             for(int i = 1; i < bs.fuegoFatuos.Length; i++){
                 Transform fuego = bs.fuegoFatuos[i];
@@ -170,6 +176,7 @@ public class BurbujaController : MonoBehaviour
                    cont++;
                 }
             }
+            */
             if(cont == bs.fuegoFatuos.Length - 1) {
                 Debug.Log("Has reunido todos los fuegos YEEEAA");
             }
@@ -200,11 +207,23 @@ public class BurbujaController : MonoBehaviour
         //tr.position = Vector3.MoveTowards (tr.position, dagtr.forward, Time.deltaTime * bs.speed);
         //tr.position = Vector3.MoveTowards (tr.position, dagtr.forward, Time.deltaTime * bs.speed);
     
-        tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(7, 0, 0), Time.deltaTime * bs.speed);
+        tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(7, 5, 0), Time.deltaTime * bs.speed);
     }
     void pararSeguirProta(){
-        //tr.position = Vector3.MoveTowards (tr.position, posQueta, Time.deltaTime * bs.speed);
         tr.position = Vector3.MoveTowards (tr.position, tr.position, Time.deltaTime * bs.speed);
+    }
+
+    void recalcularPos(){
+        int contador = 0;
+        foreach (GameObject fuego in fuegosLista)
+        {
+            if (fuego.GetComponent<FuegoStats>().libre == false) {
+                float angle = contador * (Mathf.PI*2 / cont);
+                Vector3 posic = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * bs.radio/2;
+                fuego.GetComponent<Transform>().position = posic + tr.position;
+                contador++;
+            }
+        }
     }
 
 }
