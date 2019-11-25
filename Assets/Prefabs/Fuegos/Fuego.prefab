@@ -4763,6 +4763,8 @@ GameObject:
   - component: {fileID: 4131437023405378}
   - component: {fileID: 198853902749890928}
   - component: {fileID: 199034871832436634}
+  - component: {fileID: 3570707315787693070}
+  - component: {fileID: 705716675466784361}
   m_Layer: 0
   m_Name: Fuego
   m_TagString: Untagged
@@ -9507,6 +9509,39 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &3570707315787693070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654736843778140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4438c9a6a75264f91e1e5a7cddf432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitud: 0.05
+  frecuencia: 0.5
+  waypoints: []
+  speed: 50
+  libre: 1
+  teLloc: 0
+--- !u!114 &705716675466784361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654736843778140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ba56cd07d83644f8adf55966b94653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints: []
+  indiceVector: 0
+  speed: 1
 --- !u!1 &1675696825032014
 GameObject:
   m_ObjectHideFlags: 0

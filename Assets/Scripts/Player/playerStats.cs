@@ -18,50 +18,63 @@ public class playerStats : MonoBehaviour
     private const float maxMana = 20f;
     private float timestamp = 0f;
     public bool isDead;
-    public void reduceHp(float amount) {
+    public void reduceHp(float amount)
+    {
         hp -= amount;
     }
-    public float getHp() {
+    public float getHp()
+    {
         return hp;
     }
-    public float getMana() {
+    public float getMana()
+    {
         return mana;
     }
-    public void fillHp() {
+    public void fillHp()
+    {
         hp = maxHealth;
     }
-    public void reduceMana(float amount) {
+    public void reduceMana(float amount)
+    {
         timestamp = Time.time;              // Cuando se 
         mana = Mathf.Max(0, mana - amount);
     }
-    public void regenMana() {
-        if (Time.time > (timestamp + delay)) {      // Sólo se recupera el maná cuando hayan pasado los segundos del delay
+    public void regenMana()
+    {
+        if (Time.time > (timestamp + delay))
+        {      // Sólo se recupera el maná cuando hayan pasado los segundos del delay
             mana = Mathf.Min(maxMana, mana + (manaRegenPerSec * Time.deltaTime)); // (* Time.deltaTime) ?
             //Debug.Log("Mana is " + mana);
         }
     }
-    void Awake() {  
+    void Awake()
+    {
         hp = maxHealth;
         mana = maxMana;
         isDead = false;
     }
-    void Update() {
+    void Update()
+    {
         regenMana();
     }
-    void Start() {
+    void Start()
+    {
         InvokeRepeating("regenMana", 0f, manaRegenPerSec);  // Con esta función se invoca a regenMana() cada 0.5 segundos
         fillHp();
     }
-    public void getHit(float damage) {
+    public void getHit(float damage)
+    {
         hp -= damage;
-        if(hp>=0)
-            Debug.Log("ouch - " + hp + " hp left");
-        if (hp <= 0) 
+        if (hp > 0) Debug.Log("ouch - " + hp + " hp left");
+        else if (hp <= 0)
+        {
             gameObject.SetActive(false);
             isDead = true;
+        }
     }
 
-    public void dead() {
+    public void dead()
+    {
         isDead = true;
     }
 
