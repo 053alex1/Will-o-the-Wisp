@@ -42,7 +42,6 @@ public class PausedMenu : MonoBehaviour
         AudioListener.pause = true;
         canvas.SetActive(true);
         background.SetActive(true);
-        deathMenu.SetActive(false);
         if (primeraVegada){
             pauseMenu.SetActive(true);
             primeraVegada = false;
@@ -66,7 +65,6 @@ public class PausedMenu : MonoBehaviour
         controll.SetActive(false);
         background.SetActive(false);
         pauseMenu.SetActive(false);
-        deathMenu.SetActive(false);
         primeraVegada = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

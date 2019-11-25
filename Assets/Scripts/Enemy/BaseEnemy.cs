@@ -23,7 +23,7 @@ public class BaseEnemy : MonoBehaviour
     void Update() {
         Vector3 v = target.position - transform.position;
         v.Normalize();
-        //canvas.transform.rotation = Quaternion.LookRotation(new Vector3(v.x,0,v.z));
+        canvas.transform.rotation = Quaternion.LookRotation(new Vector3(v.x,0,v.z));
     }
 
     public void getHit(float damage) {

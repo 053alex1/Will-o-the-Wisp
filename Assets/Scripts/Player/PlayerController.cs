@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 var b = Instantiate(bubblePrefab);
-                //b.transform.position = getBubblePosition();
+                b.transform.position = getBubblePosition();
                 b.transform.rotation = Quaternion.identity;
                 Debug.Log("La burbuja no estaba creada");
             }
