@@ -19,7 +19,9 @@ public class Summon : MonoBehaviour
             Debug.Log("Fire length: " + fuegosLength);
             if(bc.cont == fuegosLength) {
                 var inst = Instantiate(cernunnos);
-                Instantiate(summonEffect, new Vector3(-29f, 2f, -53f), Quaternion.identity);
+                GameObject  effect = Instantiate(summonEffect, new Vector3(-29f, 2f, -53f), Quaternion.identity) as GameObject;
+                ParticleSystem part = effect.GetComponent<ParticleSystem>();
+                Destroy(effect, part.main.duration);
                 Debug.Log("Has reunido todos los fuegos");
             }
         }
