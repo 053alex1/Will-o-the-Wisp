@@ -22,7 +22,7 @@ public class BaseEnemy : MonoBehaviour
    
     // Update is called once per frame
     void Update() {
-        Vector3 v = target.position - transform.position;
+        Vector3 v = target.position - canvas.transform.position;
         v.Normalize();
         canvas.transform.rotation = Quaternion.LookRotation(new Vector3(v.x,0,v.z));
     }
