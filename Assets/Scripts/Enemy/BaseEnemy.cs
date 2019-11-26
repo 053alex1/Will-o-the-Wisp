@@ -32,6 +32,6 @@ public class BaseEnemy : MonoBehaviour
         Debug.Log("ouch - " + hp + " hp left");
         if (hp <= 0) Destroy(gameObject);
         vida.size = hp/Maxhp;
-        vida1.size = hp/Maxhp;
+        //vida1.size = hp/Maxhp;
     }
 }
