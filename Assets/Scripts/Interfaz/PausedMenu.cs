@@ -83,6 +83,7 @@ public class PausedMenu : MonoBehaviour
         }
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+        Screen.lockCursor = false;
     }
     public void DesactivarMenu()
     {
@@ -110,6 +111,8 @@ public class PausedMenu : MonoBehaviour
     }
     public void ActivarMenuMuerte() {
         
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         panelOptions.SetActive(false);
         panelControll.SetActive(false);
         pauseMenu.SetActive(false);
@@ -119,8 +122,7 @@ public class PausedMenu : MonoBehaviour
         AudioListener.pause = true;
         background.SetActive(true);
         panelDeath.SetActive(true);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        Screen.lockCursor = false;
     }
 
     public void ActivarMenuStart() {
@@ -137,6 +139,7 @@ public class PausedMenu : MonoBehaviour
         panelStart.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+        Screen.lockCursor = false;
     }
 
 }
