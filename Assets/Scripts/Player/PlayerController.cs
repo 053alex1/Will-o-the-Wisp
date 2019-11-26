@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
         Jump();
         bubbleFunction();
         Attack();
-        Interaction();
     }
 
     void Move()
@@ -212,41 +211,5 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-    void Interaction()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            npc = GameObject.FindGameObjectWithTag("NPC");
-            if (npc != null)
-            {
-                if (Vector3.Distance(tr.position, npc.GetComponent<Transform>().position) < 16)
-                {
-                    npc.GetComponentInChildren<Animator>().SetTrigger("interaction");
-                    if (msgPanel.activeSelf == true)
-                    {
-                        npc.GetComponent<MsgNPC>().okButon();
-                        if (!ps.Ultim) {
-                            string msg = npc.GetComponent<MsgNPC>().GetMsg();
-                            msgText.text = msg;
-                        }else{
-                            npc.GetComponent<MsgNPC>().resetIndex();
-                            msgPanel.SetActive(false);
-                            ps.Ultim = false;
-                        }
-                    }
-                    else
-                    {
-                        msgPanel.SetActive(true);
-                        string msg = npc.GetComponent<MsgNPC>().GetMsg();
-                        msgText.text = msg;
-                    }
-                }
-                else
-                {
-                    npc.GetComponent<MsgNPC>().resetIndex();
-                    msgPanel.SetActive(false);
-                }
-            }
-        }
-    }
+    
 }

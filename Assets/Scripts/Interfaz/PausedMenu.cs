@@ -65,7 +65,7 @@ public class PausedMenu : MonoBehaviour
         }
 
 
-        if (dagdaStats.isDead || GameObject.Find("Dagda") == null ) {
+        if (dagdaStats.isDead || GameObject.Find("Dagda") == null || !GameObject.Find("Dagda").active) {
             ActivarMenuMuerte();
         }
     }
@@ -112,7 +112,6 @@ public class PausedMenu : MonoBehaviour
         
         panelOptions.SetActive(false);
         panelControll.SetActive(false);
-        background.SetActive(false);
         pauseMenu.SetActive(false);
         cameraScript.enabled = false;
         dagdaControll.enabled = false;
