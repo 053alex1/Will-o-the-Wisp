@@ -10,8 +10,6 @@ public class PlayerController : MonoBehaviour
     public Animator playerAnimator;
     public GameObject GFX;
     public bool seg = false; //crec que no afecta en res
-    public GameObject msgPanel;
-    public Text msgText;
     public GameObject canvas;
     public GameObject npc;
     GameObject player;
@@ -40,7 +38,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        msgPanel.SetActive(false);
         print("Let\'s get this bread.");
         tr = player.transform.GetComponent<Transform>();
         rb = player.GetComponent<Rigidbody>();
