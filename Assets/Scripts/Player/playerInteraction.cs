@@ -31,7 +31,6 @@ public class playerInteraction : MonoBehaviour
     }  
     void Update()
     {
-
         Interaction();
     }
 
@@ -42,7 +41,7 @@ public class playerInteraction : MonoBehaviour
             npc = GameObject.FindGameObjectWithTag("NPC");
             if (npc != null)
             {
-                if (Vector3.Distance(tr.position, npc.GetComponent<Transform>().position) < 16)
+                if (Vector3.Distance(tr.position, npc.transform.position) < 16)
                 {
                     npc.GetComponentInChildren<Animator>().SetTrigger("interaction");
                     if (msgPanel.activeSelf == true)

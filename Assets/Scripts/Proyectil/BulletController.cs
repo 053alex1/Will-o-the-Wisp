@@ -20,6 +20,7 @@ public class BulletController : MonoBehaviour
 
     void Start()
     {
+        Destroy(gameObject.GetComponent<ParticleSystem>(), bulletDuration);
         Destroy(gameObject, bulletDuration);
         Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), player.GetComponent<Collider>());
     }
@@ -28,7 +29,6 @@ public class BulletController : MonoBehaviour
         Rigidbody rbtarget = col.gameObject.GetComponent<Rigidbody>();
         if (rbtarget != null)
         {
-
             rbtarget.AddExplosionForce(bulletForce, transform.position, bulletRadius);
             if (col.collider.tag == "Enemy") {
                     col.collider.GetComponent<BaseEnemy>().getHit(ps.lightDamage);
@@ -40,5 +40,6 @@ public class BulletController : MonoBehaviour
         Instantiate(effect, pos, rot);
 
         Destroy(gameObject);
+        Destroy(gameObject.GetComponent<ParticleSystem>(), bulletDuration);
     }
 }
