@@ -212,28 +212,37 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-    void Interaction() {
-        if (Input.GetKeyDown(KeyCode.I)){
+    void Interaction()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
             npc = GameObject.FindGameObjectWithTag("NPC");
-            if (npc != null){
+            if (npc != null)
+            {
                 if (Vector3.Distance(tr.position, npc.GetComponent<Transform>().position) < 16)
                 {
+                    npc.GetComponentInChildren<Animator>().SetTrigger("interaction");
                     //canvas.SetActive(true);
                     //msgText.text = "Cuánto tiempo Dagda!";
                     //string msg = npc.GetComponent<MsgNPC>().GetMsg();
                     //msgText.text = "Cuánto tiempo Dagda!";
-                    if(msgPanel.activeSelf == true) {
+                    if (msgPanel.activeSelf == true)
+                    {
                         npc.GetComponent<MsgNPC>().okButon();
                         string msg = npc.GetComponent<MsgNPC>().GetMsg();
                         msgText.text = msg;
-                    }else{
-                    msgPanel.SetActive(true);
+                    }
+                    else
+                    {
+                        msgPanel.SetActive(true);
                         string msg = npc.GetComponent<MsgNPC>().GetMsg();
                         msgText.text = msg;
                     }
 
 
-                }else {
+                }
+                else
+                {
                     msgPanel.SetActive(false);
                 }
             }
