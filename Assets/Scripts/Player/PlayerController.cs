@@ -222,10 +222,6 @@ public class PlayerController : MonoBehaviour
                 if (Vector3.Distance(tr.position, npc.GetComponent<Transform>().position) < 16)
                 {
                     npc.GetComponentInChildren<Animator>().SetTrigger("interaction");
-                    //canvas.SetActive(true);
-                    //msgText.text = "Cuánto tiempo Dagda!";
-                    //string msg = npc.GetComponent<MsgNPC>().GetMsg();
-                    //msgText.text = "Cuánto tiempo Dagda!";
                     if (msgPanel.activeSelf == true)
                     {
                         npc.GetComponent<MsgNPC>().okButon();
@@ -238,8 +234,6 @@ public class PlayerController : MonoBehaviour
                         string msg = npc.GetComponent<MsgNPC>().GetMsg();
                         msgText.text = msg;
                     }
-
-
                 }
                 else
                 {
