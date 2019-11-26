@@ -5,15 +5,35 @@ using UnityEngine;
 public class PausedMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public GameObject canvas;
+    public CameraFollow cameraScript;
+    public GameObject dagda;
+    public PlayerController dagdaControll;
+    public playerStats dagdaStats;
     public GameObject background;
     public GameObject panel;
-    public GameObject controll;
-    public GameObject optionsMenu;
-    public GameObject deathMenu;
+    public GameObject panelStart;
+    public GameObject panelControll;
+    public GameObject panelOptions;
+    public GameObject panelDeath;
     public GameObject[] paneles;
     public bool isPaused = false;
-    private bool primeraVegada = true;
+    private bool primeraVegada;
+    private bool startTime = true;
+    private bool started = false;
+
+    void Start() {
+        //paneles = GameObject.FindGameObjectsWithTag("Panel");
+        panelStart = GameObject.FindGameObjectWithTag("panelStart");
+        dagda = GameObject.Find("Dagda");
+        cameraScript = GameObject.Find("Camera").GetComponent<CameraFollow>();
+        dagdaStats = dagda.GetComponent<playerStats>();
+        dagdaControll = dagda.GetComponent<PlayerController>();
+        panelOptions = GameObject.FindGameObjectWithTag("panelOptions");
+        panelControll = GameObject.FindGameObjectWithTag("panelControll");
+        panelDeath = GameObject.FindGameObjectWithTag("panelDeath");
+        background = GameObject.FindGameObjectWithTag("background");
+        pauseMenu = GameObject.FindGameObjectWithTag("pauseMenu");
+    }
 
     void Update()
     {
@@ -21,6 +41,7 @@ public class PausedMenu : MonoBehaviour
         {
             isPaused = !isPaused;
         }
+
         if(isPaused)
         {
             ActivarMenu();
@@ -30,14 +51,28 @@ public class PausedMenu : MonoBehaviour
             DesactivarMenu();
         }
 
-        if (GameObject.Find("Dagda").GetComponent<playerStats>().isDead) {
+        if(startTime){
+            ActivarMenuStart();
+            started = true;
+        }
+        if(started) {
+            if (Input.anyKey)
+            {
+                DesactivarMenu();
+                startTime = false;
+                started = false; 
+            }
+        }
+
+
+        if (dagdaStats.isDead || GameObject.Find("Dagda") == null ) {
             ActivarMenuMuerte();
         }
     }
     public void ActivarMenu() 
     {
-        GameObject.Find("Camera").GetComponent<CameraFollow>().enabled = false;
-        GameObject.Find("Dagda").GetComponent<PlayerController>().enabled = false;
+        cameraScript.enabled = false;
+        dagdaControll.enabled = false;
         Time.timeScale = 0;
         AudioListener.pause = true;
         //canvas.SetActive(true);
@@ -51,20 +86,20 @@ public class PausedMenu : MonoBehaviour
     }
     public void DesactivarMenu()
     {
-        GameObject.Find("Camera").GetComponent<CameraFollow>().enabled = true;
-        GameObject.Find("Dagda").GetComponent<PlayerController>().enabled = true;
+        cameraScript.enabled = true;
+        dagdaControll.enabled = true;
         Time.timeScale = 1;
         AudioListener.pause = false;
-        //canvas.SetActive(false);  //Falta fer que per a tots els fills els desacive
-        paneles = GameObject.FindGameObjectsWithTag("Panel");
-        foreach (GameObject panel in paneles)
-        {
-            panel.SetActive(false);
-        }
-        optionsMenu.SetActive(false);
-        controll.SetActive(false);
+        // foreach (GameObject panel in paneles)
+        // {
+        //     panel.SetActive(false);
+        // }
+        panelOptions.SetActive(false);
+        panelControll.SetActive(false);
         background.SetActive(false);
         pauseMenu.SetActive(false);
+        panelStart.SetActive(false);
+        panelDeath.SetActive(false);
         primeraVegada = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -75,19 +110,34 @@ public class PausedMenu : MonoBehaviour
     }
     public void ActivarMenuMuerte() {
         
-        optionsMenu.SetActive(false);
-        controll.SetActive(false);
+        panelOptions.SetActive(false);
+        panelControll.SetActive(false);
         background.SetActive(false);
         pauseMenu.SetActive(false);
-        primeraVegada = true;
-        GameObject.Find("Camera").GetComponent<CameraFollow>().enabled = false;
-        GameObject.Find("Dagda").GetComponent<PlayerController>().enabled = false;
+        cameraScript.enabled = false;
+        dagdaControll.enabled = false;
         Time.timeScale = 0;
         AudioListener.pause = true;
-        //canvas.SetActive(true);
         background.SetActive(true);
-        deathMenu.SetActive(true);
+        panelDeath.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
     }
+
+    public void ActivarMenuStart() {
+        
+        primeraVegada = true;
+        panelOptions.SetActive(false);
+        panelControll.SetActive(false);
+        pauseMenu.SetActive(false);
+        cameraScript.enabled = false;
+        dagdaControll.enabled = false;
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+        background.SetActive(true);
+        panelStart.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
 }

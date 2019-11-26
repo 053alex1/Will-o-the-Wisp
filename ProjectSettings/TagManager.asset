@@ -16,6 +16,12 @@ TagManager:
   - spawnPoint
   - health
   - NPC
+  - panelStart
+  - panelOptions
+  - panelDeath
+  - background
+  - pauseMenu
+  - panelControll
   layers:
   - Default
   - TransparentFX
