@@ -72,7 +72,6 @@ public class BurbujaController : MonoBehaviour
     }
 
     void fuegosCerca3() {
-        
         foreach (GameObject fuego in fuegosLista)
         {
             

@@ -3471,10 +3471,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 86b2f700cbcdb934682db9c8f40d0588, type: 3}
-    m_FontSize: 70
+    m_FontSize: 50
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 5
     m_MaxSize: 70
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -3482,7 +3482,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "SELEC\xD3N NIVELES"
+  m_Text: "Selecci\U000EE8E4\xF3n de nivel"
 --- !u!222 &1826869851
 CanvasRenderer:
   m_ObjectHideFlags: 0

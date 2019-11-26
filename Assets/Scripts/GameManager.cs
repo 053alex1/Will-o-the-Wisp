@@ -7,10 +7,13 @@ public class GameManager : MonoBehaviour
     public GameManager instance = null;
     public GameObject playerObject = null;
     public PlayerController playerController;
+    public GameObject burbujaObject = null;
+    public BurbujaController burbujaController;
     void Awake()
     {
         singleton();
         getPlayer();
+        getBurbuja();
     }
 
     void singleton() {
@@ -33,5 +36,19 @@ public class GameManager : MonoBehaviour
             playerController = getPlayer().GetComponent<PlayerController>();
 
         return playerController;
+    }
+    public GameObject getBurbuja()
+    {
+        if (burbujaObject == null)
+            burbujaObject = GameObject.FindGameObjectWithTag("Bubble");
+
+        return burbujaObject;
+    }
+    public BurbujaController getBurbujaController()
+    {
+        if (burbujaController == null)
+            burbujaController = getBurbuja().GetComponent<BurbujaController>();
+
+        return burbujaController;
     }
 }
