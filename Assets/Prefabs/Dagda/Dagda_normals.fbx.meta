@@ -17,7 +17,22 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material.138
+    second: {fileID: 2100000, guid: 3833dde79977c4849b319eb484a8987c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.139
+    second: {fileID: 2100000, guid: cf164ca279670e243808141cb2a5d8f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Ojos
+    second: {fileID: 2100000, guid: daed7625db9553d48bb04ec24b50c958, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ojos12
     second: {fileID: 2100000, guid: daed7625db9553d48bb04ec24b50c958, type: 2}
   - first:
       type: UnityEngine:Material
@@ -28,6 +43,16 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: PeloDagda.001
+    second: {fileID: 2100000, guid: e56da44f410b12e488ab8842cd6e152e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PeloDagda.019
+    second: {fileID: 2100000, guid: e56da44f410b12e488ab8842cd6e152e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PeloDagda12
     second: {fileID: 2100000, guid: e56da44f410b12e488ab8842cd6e152e, type: 2}
   materials:
     importMaterials: 1
