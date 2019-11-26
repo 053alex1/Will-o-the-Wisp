@@ -18,6 +18,7 @@ public class playerStats : MonoBehaviour
     private const float maxMana = 20f;
     private float timestamp = 0f;
     public bool isDead;
+    public bool Ultim = false;
     public void reduceHp(float amount)
     {
         hp -= amount;

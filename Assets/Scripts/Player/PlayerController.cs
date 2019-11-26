@@ -225,8 +225,14 @@ public class PlayerController : MonoBehaviour
                     if (msgPanel.activeSelf == true)
                     {
                         npc.GetComponent<MsgNPC>().okButon();
-                        string msg = npc.GetComponent<MsgNPC>().GetMsg();
-                        msgText.text = msg;
+                        if (!ps.Ultim) {
+                            string msg = npc.GetComponent<MsgNPC>().GetMsg();
+                            msgText.text = msg;
+                        }else{
+                            npc.GetComponent<MsgNPC>().resetIndex();
+                            msgPanel.SetActive(false);
+                            ps.Ultim = false;
+                        }
                     }
                     else
                     {
@@ -237,6 +243,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
+                    npc.GetComponent<MsgNPC>().resetIndex();
                     msgPanel.SetActive(false);
                 }
             }
