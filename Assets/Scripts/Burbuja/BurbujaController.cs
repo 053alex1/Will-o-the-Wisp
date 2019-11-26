@@ -20,8 +20,7 @@ public class BurbujaController : MonoBehaviour
     private Transform dagtr;
     private Transform[] fuegos;
     float radius = 3f;
-    private int cont;
-    public GameObject cernunnos;
+    public int cont;
     void Awake() {
         bubble = GameObject.FindGameObjectWithTag("Bubble");
         dagda = GameObject.FindGameObjectWithTag("Dagda");
@@ -40,7 +39,6 @@ public class BurbujaController : MonoBehaviour
     {
         bubbleFloat();
         fuegosCerca3();
-        //Debug.Log(bs.radio);
 
         if (bs.resistencia <= 0) romperBurbuja3();
         
@@ -164,16 +162,6 @@ public class BurbujaController : MonoBehaviour
         fuego.GetComponent<FuegoStats>().teLloc = true;
     }
     */
-    void OnTriggerEnter(Collider other){ 
-        Debug.Log("Collided with something: " + other.tag);
-        if (other.gameObject.tag == "Altar") {
-            Debug.Log("Collided with Altar, fire count: " + cont);
-            if(cont == bs.fuegoFatuos.Length - 1) {
-                var inst = Instantiate(cernunnos);
-                Debug.Log("Has reunido todos los fuegos");
-            }
-        }
-    }
 
     public void transmisionInstantanea() {
         tr.position = dagtr.position  + new Vector3(15, 0, 0);

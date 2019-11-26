@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5956468708454806440}
   - component: {fileID: 7071602136992474725}
   - component: {fileID: 2940202626828370802}
+  - component: {fileID: -6032477226289423393}
   m_Layer: 0
   m_Name: Burbuja
   m_TagString: Bubble
@@ -153,8 +154,7 @@ MonoBehaviour:
   distance: 0
   pushStrength: 0
   fuegosLista: []
-  cernunnos: {fileID: 7739468254832004147, guid: c902539473475924bb5742abd83a0b0c,
-    type: 3}
+  cont: 0
 --- !u!95 &2940202626828370802
 Animator:
   serializedVersion: 3
@@ -174,3 +174,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-6032477226289423393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5956468708454806443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa99a3cda9c2464db45b086f3064f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cernunnos: {fileID: 7739468254832004147, guid: c902539473475924bb5742abd83a0b0c,
+    type: 3}
+  summonEffect: {fileID: 1789005739015704, guid: bec1f133b07f34245a4f056ac2397c3f,
+    type: 3}
