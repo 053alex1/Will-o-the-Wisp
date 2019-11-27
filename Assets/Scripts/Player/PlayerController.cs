@@ -258,11 +258,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.collider.tag == "Enemy")
         {
-            playerAnimator.SetBool("isHurting", true);
-            ps.reduceHp(10.0f);
-            gui.ChangeLife(ps.getHp());
-            playerAnimator.SetBool("isHurting", false);
-
+            playerAnimator.SetTrigger("isHurt");
+            ps.getHit(10.0f);
         }
     }
 
