@@ -11,7 +11,7 @@ public class BaseEnemy : MonoBehaviour
     private GameObject canvas;
     private Scrollbar vida, vida1;
     private GameObject x;
-    // Use this for initialization
+    private Animator myAnimator;
     void Start()
     {
         target = Camera.main.transform;
@@ -19,9 +19,8 @@ public class BaseEnemy : MonoBehaviour
         vida = canvas.transform.Find("Health").GetComponent<Scrollbar>();
         vida1 = canvas.transform.Find("Health1").GetComponent<Scrollbar>();
         Maxhp = hp;
+        myAnimator = GetComponentInChildren<Animator>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         Vector3 v = target.position - canvas.transform.position;
@@ -31,8 +30,10 @@ public class BaseEnemy : MonoBehaviour
 
     public void getHit(float damage)
     {
+        if (gameObject.name == "Fuath") {myAnimator.SetTrigger("isHurt");}
+        //Animación de recibir daño setTrigger
         hp -= damage;
-        Debug.Log("ouch - " + hp + " hp left");
+        Debug.Log("Enemy ouch - " + hp + " hp left");
         if (hp <= 0) Destroy(gameObject);
         vida.size = hp / Maxhp;
         //vida1.size = hp/Maxhp;

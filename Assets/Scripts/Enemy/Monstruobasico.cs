@@ -17,8 +17,8 @@ public class Monstruobasico : MonoBehaviour
     //Angulo de vision de busqueda de dagda
     public float fov = 90f;
     public float disAtqDis = 20;
-
     public Animator playerAnimator;
+    private Animator myAnimator;
     public GameObject GFX;
     //Usados para el calculo(igual luego los quito de aquí
     protected Transform target;
@@ -26,12 +26,11 @@ public class Monstruobasico : MonoBehaviour
     private float timer, timerAttack;
     private bool follow = false, atq = false, atqDis = false;
     //   private MetodosGenerales m;
-
     private void Awake()
     {
         playerAnimator = GFX.transform.GetComponent<Animator>();
+        myAnimator = GetComponentInChildren<Animator>();
     }
-    // Use this for initialization
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -43,9 +42,6 @@ public class Monstruobasico : MonoBehaviour
         agent.stoppingDistance = 10;
     }
 
-
-
-    // Update is called once per frame
     void Update()
     {
         timerAttack += Time.deltaTime;
@@ -64,11 +60,16 @@ public class Monstruobasico : MonoBehaviour
     {
         if (timerAttack > TimerCDAttack)
         {
+            myAnimator.SetBool("isWalking", false);
             timerAttack = 0;
 
+            //ANIMACIÓN DE ATAQUE setTrigger
+            myAnimator.SetTrigger("isAttacking");
+            Debug.Log("Soy " + gameObject.name + " y he desactivado el walking y he hecho un ataque");
             playerStats targetStats = target.GetComponent<playerStats>();
             targetStats.getHit(1f);
         }
+        myAnimator.SetBool("isWalking", false);
     }
 
     void OnDrawGizmosSelected()
@@ -78,7 +79,8 @@ public class Monstruobasico : MonoBehaviour
     }
     private void seguir()
     {
-
+        //Animación de caminar
+        myAnimator.SetBool("isWalking", true);
         float dis, dot, dotfov;
         follow = false;
         //funciones para calcular si dagda esta en tu rango de vision y a tu distancia maxima de vision 
@@ -129,7 +131,7 @@ public class Monstruobasico : MonoBehaviour
 
     public void wander()
     {
-
+        //Animación de caminar setBool
         timer += Time.deltaTime;
         // Cada vez que el timer supera el wander time busca una nueva posicion aleatoria a la que ir
         if (timer >= wanderTimer)

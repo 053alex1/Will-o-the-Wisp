@@ -248,8 +248,6 @@ public class PlayerController : MonoBehaviour
         return getPlayerPosition() + new Vector3(0, 0, 0); //Falta por determinar la altura de Dagda
     }
 
-   
-
     void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Ground")
@@ -260,13 +258,11 @@ public class PlayerController : MonoBehaviour
 
         if (collision.collider.tag == "Enemy")
         {
-            Debug.Log("Has sido dañado");
             playerAnimator.SetBool("isHurting", true);
-            ps.reduceHp(20.0f);
+            ps.reduceHp(10.0f);
             playerAnimator.SetBool("isHurting", false);
-            Debug.Log("Ya no eres dañado");
 
         }
     }
-    
+
 }
