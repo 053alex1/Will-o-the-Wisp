@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        print("Let\'s get this bread.");
         tr = player.transform.GetComponent<Transform>();
         rb = player.GetComponent<Rigidbody>();
         ps.isGrounded = true;
@@ -234,6 +233,7 @@ public class PlayerController : MonoBehaviour
                 //b.transform.position = getBubblePosition();
                 b.transform.rotation = Quaternion.identity;
                 Debug.Log("La burbuja no estaba creada");
+                gui.CreateEnergyBar();
             }
         }
     }
@@ -260,6 +260,7 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.SetBool("isHurting", true);
             ps.reduceHp(10.0f);
+            gui.ChangeLife(ps.getHp());
             playerAnimator.SetBool("isHurting", false);
 
         }

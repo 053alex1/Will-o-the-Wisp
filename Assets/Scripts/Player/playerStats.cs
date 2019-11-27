@@ -19,6 +19,8 @@ public class playerStats : MonoBehaviour
     private float timestamp = 0f;
     public bool isDead;
     public bool Ultim = false;
+    public GUIInteraction gui;
+
     public void reduceHp(float amount)
     {
         hp -= amount;
@@ -45,6 +47,7 @@ public class playerStats : MonoBehaviour
         if (Time.time > (timestamp + delay))
         {      // Sólo se recupera el maná cuando hayan pasado los segundos del delay
             mana = Mathf.Min(maxMana, mana + (manaRegenPerSec * Time.deltaTime)); // (* Time.deltaTime) ?
+            gui.ChangeMagic(mana);
             //Debug.Log("Mana is " + mana);
         }
     }

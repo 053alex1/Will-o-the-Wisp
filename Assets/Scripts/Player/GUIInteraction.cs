@@ -11,6 +11,8 @@ public class GUIInteraction : MonoBehaviour
     public Image magicBar;
     public Image energyBar;
 
+    public GameObject bubbleBar;
+
     public Text spirits;
 
     // Start is called before the first frame update
@@ -32,7 +34,7 @@ public class GUIInteraction : MonoBehaviour
 
     public void ChangeEnergy(float energy)
     {
-        energyBar.fillAmount = energy / 100f;
+        energyBar.fillAmount = energy / 15f;
     }
 
     public void ChangeMagic(float magic)
@@ -44,5 +46,17 @@ public class GUIInteraction : MonoBehaviour
     {
         counterSpirit++;
         spirits.text = counterSpirit.ToString();
+    }
+
+    public void CreateEnergyBar()
+    {
+        energyBar.fillAmount = 1;
+        bubbleBar.SetActive(true);
+    }
+
+    public void DestroyEnergyBar()
+    {
+        bubbleBar.SetActive(false);
+
     }
 }
