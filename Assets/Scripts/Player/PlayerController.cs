@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public enum Sounds { JUMP, HIT, TOTAL_SOUNDS };
+    public enum Sounds { JUMP, HIT, HITB, TOTAL_SOUNDS };
 
     private Rigidbody rb;
     private Transform tr;
@@ -117,11 +117,15 @@ public class PlayerController : MonoBehaviour
     void LightAttack()
     {
         shootScript.lightShoot();
+        Audios[(int)Sounds.HIT].Play(); //Reproducir audio
+
     }
 
     void HeavyAttack()
     {
         shootScript.heavyShoot();
+        Audios[(int)Sounds.HITB].Play(); //Reproducir audio
+
     }
 
     void Attack()
