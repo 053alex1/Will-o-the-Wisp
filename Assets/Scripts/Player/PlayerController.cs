@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum Sounds { JUMP, HIT, TOTAL_SOUNDS };
+
     private Rigidbody rb;
     private Transform tr;
     public Animator playerAnimator;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private GameObject disparador;
     private Vector3 movegfx;
     private BurbujaStats bs;
+    public AudioSource[] Audios;
 
 
     void Awake()
@@ -45,6 +48,8 @@ public class PlayerController : MonoBehaviour
         rb = player.GetComponent<Rigidbody>();
         ps.isGrounded = true;
         ps.isRunning = false;
+        Audios = GetComponents<AudioSource>();
+
     }
 
     void Update()
@@ -103,6 +108,9 @@ public class PlayerController : MonoBehaviour
             rb.velocity += -1f * Physics.gravity.normalized * this.CalculateJumpVerticalSpeed(this.ps.jumpHeight);
             ps.isGrounded = false;
             playerAnimator.SetBool("isJumping", true);
+          
+            Audios[(int)Sounds.JUMP].Play(); //Reproducir audio
+
         }
     }
 
