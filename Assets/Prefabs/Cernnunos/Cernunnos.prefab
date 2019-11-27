@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7739468254832004147}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -29, y: 7.5, z: -57}
+  m_LocalPosition: {x: -29, y: 7.3, z: -57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3319902318940323874}
@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c964a13e53f9f7040970ea612523e929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dagda: {fileID: 0}
+  ps: {fileID: 0}
   msg:
   - "Cu\xE1nto tiempo Dagda!!"
   - Hemos estado esperando tu regreso.
@@ -92,11 +94,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cernnunos
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 2fcd5009a554b154e80cc01bff4d743c,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 372c67b9626afbf4e92b3adc4533a450, type: 2}
     - target: {fileID: -4216859302048453862, guid: 2fcd5009a554b154e80cc01bff4d743c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -167,6 +164,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 2fcd5009a554b154e80cc01bff4d743c,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 372c67b9626afbf4e92b3adc4533a450, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fcd5009a554b154e80cc01bff4d743c, type: 3}
 --- !u!4 &3319902318940323874 stripped

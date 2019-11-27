@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
         Jump();
         bubbleFunction();
         Attack();
-        
     }
 
     void Move()
@@ -79,7 +78,6 @@ public class PlayerController : MonoBehaviour
         // Calculate the forward vector
         Vector3 camForward_Dir = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
         Vector3 move = v * camForward_Dir + h * Camera.main.transform.right;
-        //move.y = rb.velocity.y;
 
         if (move.magnitude > 1f) move.Normalize();
 
@@ -107,7 +105,7 @@ public class PlayerController : MonoBehaviour
             ps.isGrounded = false;
             playerAnimator.SetBool("isJumping", true);
         }
-        SoundManager.instance.RandomizeSfx(test,test);
+        SoundManager.instance.RandomizeSfx(test, test);
     }
 
     void LightAttack()
@@ -122,14 +120,16 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
+        burbuja = GameObject.FindGameObjectWithTag("Bubble");
         //Debug.Log("!bs.seguir is: " + bs.seguir);
         if (Input.GetMouseButtonDown(0))
         {
             if (burbuja != null)
             {
-
+                Debug.Log("Burbuja no es null");
                 if (!bs.seguir)
                 {
+                    Debug.Log("Burbuja no es null - la burbuja no me está siguiendo");
                     if (ps.mana >= 2)
                     {
                         if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
@@ -137,25 +137,47 @@ public class PlayerController : MonoBehaviour
 
                     }
                     else { Debug.Log("Not enough mana for light attack - Mana is " + ps.mana); }
-                }
+                } else { Debug.Log("Burbuja no es null - la burbuja me está siguiendo"); }
 
             }
-            else { Debug.Log("Burbuja es null??"); }
+            else if (burbuja == null)
+            {
+                Debug.Log("Burbuja es null pero puedo atacar igualmente");
+                if (ps.mana >= 2)
+                {
+                    if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
+                    LightAttack();
+
+                }
+                else { Debug.Log("Not enough mana for light attack - Mana is " + ps.mana); }
+            }
         }
         else if (Input.GetMouseButtonDown(1))
         {
             if (burbuja != null)
             {
+                Debug.Log("Burbuja no es null");
                 if (!bs.seguir)
                 {
+                    Debug.Log("Burbuja no es null - la burbuja no me está siguiendo");
                     if (ps.mana >= 5)
                     {
                         if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
                         HeavyAttack();
                     }
                     else Debug.Log("Not enough mana for heavy attack - Mana is " + ps.mana);
+                } else { Debug.Log("Burbuja no es null - la burbuja me está siguiendo"); }
+            }
+            else if (burbuja == null)
+            {
+                Debug.Log("Burbuja es null pero puedo atacar igualmente");
+                if (ps.mana >= 5)
+                {
+                    if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
+                    HeavyAttack();
                 }
-            } else { Debug.Log("Burbuja es null"); }
+                else Debug.Log("Not enough mana for heavy attack - Mana is " + ps.mana);
+            }
         }
     }
 
