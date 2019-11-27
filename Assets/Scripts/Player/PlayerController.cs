@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private GameObject disparador;
     private Vector3 movegfx;
     private BurbujaStats bs;
+    public AudioClip test;
 
 
     void Awake()
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour
         Jump();
         bubbleFunction();
         Attack();
+        
     }
 
     void Move()
@@ -99,6 +101,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
+        sound();
         if (Input.GetButtonDown("Jump") && ps.isGrounded)
         {
             rb.velocity += -1f * Physics.gravity.normalized * this.CalculateJumpVerticalSpeed(this.ps.jumpHeight);
@@ -208,6 +211,14 @@ public class PlayerController : MonoBehaviour
     Vector3 getBubblePosition()
     {
         return getPlayerPosition() + new Vector3(0, 0, 0); //Falta por determinar la altura de Dagda
+    }
+
+    void sound()
+    {
+        if (tag == "jump")
+        {
+            SoundManager.instance.RandomizeSfx(test);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
