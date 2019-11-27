@@ -16,10 +16,9 @@ public class MsgNPC : MonoBehaviour
     public string[] msg = { 
         "Cuánto tiempo Dagda.",
         "Hemos estado esperando tu regreso.",
-        "Confío en que puedas rescatar a los otros.",
         "No tengas miedo de lo que te hace estremecerte.",
         "Mantente de pie valiente, defiéndete, eres un guerrero.",
-        "Siempre estaré en deuda contigo, amgio mío."
+        "Siempre estaré en deuda contigo, amigo mío."
     };
     public string GetMsg() {
         return msg[index];
