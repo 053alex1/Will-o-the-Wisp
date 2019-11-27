@@ -17,7 +17,7 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 72338dee3f7c03b46ab044f57584dd06
-    name: volume
+    name: MyExposedParam
   m_AudioMixerGroupViews:
   - guids:
     - 635983ccaed14e044be9611923b2dd29
@@ -67,19 +67,5 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: f13d69efdb46d984b8cf7796e16d93e3
   m_FloatValues:
-    72338dee3f7c03b46ab044f57584dd06: -9.332112
+    72338dee3f7c03b46ab044f57584dd06: -5.7224774
   m_TransitionOverrides: {}
---- !u!244 &9020493509310039710
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: f0aeaa91a0c37c24bbc15ef0e5807ffc
-  m_EffectName: Send
-  m_MixLevel: db5d6fbf38befaa4bb92948db2e34a57
-  m_Parameters: []
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
