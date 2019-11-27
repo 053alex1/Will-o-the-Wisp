@@ -23,6 +23,7 @@ TagManager:
   - pauseMenu
   - panelControll
   - panelMensaje
+  - life
   layers:
   - Default
   - TransparentFX
