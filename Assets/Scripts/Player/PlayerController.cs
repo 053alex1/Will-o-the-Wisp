@@ -120,13 +120,16 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
+        burbuja = GameObject.FindGameObjectWithTag("Bubble");
         //Debug.Log("!bs.seguir is: " + bs.seguir);
         if (Input.GetMouseButtonDown(0))
         {
             if (burbuja != null)
             {
+                Debug.Log("Burbuja no es null");
                 if (!bs.seguir)
                 {
+                    Debug.Log("Burbuja no es null - la burbuja no me está siguiendo");
                     if (ps.mana >= 2)
                     {
                         if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
@@ -134,11 +137,12 @@ public class PlayerController : MonoBehaviour
 
                     }
                     else { Debug.Log("Not enough mana for light attack - Mana is " + ps.mana); }
-                }
+                } else { Debug.Log("Burbuja no es null - la burbuja me está siguiendo"); }
 
             }
             else if (burbuja == null)
             {
+                Debug.Log("Burbuja es null pero puedo atacar igualmente");
                 if (ps.mana >= 2)
                 {
                     if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
@@ -152,18 +156,21 @@ public class PlayerController : MonoBehaviour
         {
             if (burbuja != null)
             {
+                Debug.Log("Burbuja no es null");
                 if (!bs.seguir)
                 {
+                    Debug.Log("Burbuja no es null - la burbuja no me está siguiendo");
                     if (ps.mana >= 5)
                     {
                         if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
                         HeavyAttack();
                     }
                     else Debug.Log("Not enough mana for heavy attack - Mana is " + ps.mana);
-                }
+                } else { Debug.Log("Burbuja no es null - la burbuja me está siguiendo"); }
             }
             else if (burbuja == null)
             {
+                Debug.Log("Burbuja es null pero puedo atacar igualmente");
                 if (ps.mana >= 5)
                 {
                     if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
