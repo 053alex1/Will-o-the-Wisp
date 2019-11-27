@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
         Jump();
         bubbleFunction();
         Attack();
-        
     }
 
     void Move()
@@ -79,7 +78,6 @@ public class PlayerController : MonoBehaviour
         // Calculate the forward vector
         Vector3 camForward_Dir = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
         Vector3 move = v * camForward_Dir + h * Camera.main.transform.right;
-        //move.y = rb.velocity.y;
 
         if (move.magnitude > 1f) move.Normalize();
 
@@ -107,7 +105,7 @@ public class PlayerController : MonoBehaviour
             ps.isGrounded = false;
             playerAnimator.SetBool("isJumping", true);
         }
-        SoundManager.instance.RandomizeSfx(test,test);
+        SoundManager.instance.RandomizeSfx(test, test);
     }
 
     void LightAttack()
@@ -127,7 +125,6 @@ public class PlayerController : MonoBehaviour
         {
             if (burbuja != null)
             {
-
                 if (!bs.seguir)
                 {
                     if (ps.mana >= 2)
@@ -140,7 +137,16 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
-            else { Debug.Log("Burbuja es null??"); }
+            else if (burbuja == null)
+            {
+                if (ps.mana >= 2)
+                {
+                    if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
+                    LightAttack();
+
+                }
+                else { Debug.Log("Not enough mana for light attack - Mana is " + ps.mana); }
+            }
         }
         else if (Input.GetMouseButtonDown(1))
         {
@@ -155,7 +161,16 @@ public class PlayerController : MonoBehaviour
                     }
                     else Debug.Log("Not enough mana for heavy attack - Mana is " + ps.mana);
                 }
-            } else { Debug.Log("Burbuja es null"); }
+            }
+            else if (burbuja == null)
+            {
+                if (ps.mana >= 5)
+                {
+                    if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
+                    HeavyAttack();
+                }
+                else Debug.Log("Not enough mana for heavy attack - Mana is " + ps.mana);
+            }
         }
     }
 
