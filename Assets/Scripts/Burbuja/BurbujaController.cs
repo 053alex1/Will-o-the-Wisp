@@ -21,6 +21,8 @@ public class BurbujaController : MonoBehaviour
     private Transform[] fuegos;
     float radius = 3f;
     public int cont;
+    public GUIInteraction gui;
+
     void Awake() {
         bubble = GameObject.FindGameObjectWithTag("Bubble");
         dagda = GameObject.FindGameObjectWithTag("Dagda");
@@ -68,6 +70,7 @@ public class BurbujaController : MonoBehaviour
         {
             fuego.GetComponent<FuegoStats>().libre = true;
         }
+        gui.DestroyEnergyBar();
         Destroy(gameObject);
     }
 

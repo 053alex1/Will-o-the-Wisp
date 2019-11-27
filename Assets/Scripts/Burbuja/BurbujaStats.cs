@@ -14,8 +14,10 @@ public class BurbujaStats : MonoBehaviour
     public bool quet = true;
     public const float maxRes = 15f;
     public float radio;
+    public GUIInteraction gui;
 
     void Awake() {
+        gui = GameObject.Find("GUI").GetComponent<GUIInteraction>();
         resistencia = maxRes;
         exist = true;
         seguir = true;
@@ -40,5 +42,6 @@ public class BurbujaStats : MonoBehaviour
     
     public void dañoRecibido() {
         resistencia =- 1;
+        gui.ChangeEnergy(resistencia);
     }
 }

@@ -19,10 +19,10 @@ public class playerStats : MonoBehaviour
     private float timestamp = 0f;
     public bool isDead;
     public bool Ultim = false;
-    public void reduceHp(float amount)
-    {
-        hp -= amount;
-    }
+    private Animator myAnim;
+    public GUIInteraction gui;
+
+
     public float getHp()
     {
         return hp;
@@ -45,6 +45,7 @@ public class playerStats : MonoBehaviour
         if (Time.time > (timestamp + delay))
         {      // Sólo se recupera el maná cuando hayan pasado los segundos del delay
             mana = Mathf.Min(maxMana, mana + (manaRegenPerSec * Time.deltaTime)); // (* Time.deltaTime) ?
+            gui.ChangeMagic(mana);
             //Debug.Log("Mana is " + mana);
         }
     }
@@ -53,6 +54,8 @@ public class playerStats : MonoBehaviour
         hp = maxHealth;
         mana = maxMana;
         isDead = false;
+        myAnim = GetComponentInChildren<Animator>();
+        gui = GameObject.Find("GUI").GetComponent<GUIInteraction>();
     }
     void Update()
     {
@@ -60,13 +63,14 @@ public class playerStats : MonoBehaviour
     }
     void Start()
     {
-        InvokeRepeating("regenMana", 0f, manaRegenPerSec);  // Con esta función se invoca a regenMana() cada 0.5 segundos
+        InvokeRepeating("regenMana", 0f, manaRegenPerSec);  // Con esta función se invoca a regenMana() cada manaRegenPerSec segundos
         fillHp();
     }
     public void getHit(float damage)
     {
+        myAnim.SetTrigger("isHurt");
         hp -= damage;
-        if (hp > 0) Debug.Log("ouch - " + hp + " hp left");
+        if (hp > 0) Debug.Log("Player ouch - " + hp + " hp left");
         else if (hp <= 0)
         {
             gameObject.SetActive(false);
