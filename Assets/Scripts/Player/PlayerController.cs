@@ -101,13 +101,13 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        sound();
         if (Input.GetButtonDown("Jump") && ps.isGrounded)
         {
             rb.velocity += -1f * Physics.gravity.normalized * this.CalculateJumpVerticalSpeed(this.ps.jumpHeight);
             ps.isGrounded = false;
             playerAnimator.SetBool("isJumping", true);
         }
+        SoundManager.instance.RandomizeSfx(test,test);
     }
 
     void LightAttack()
