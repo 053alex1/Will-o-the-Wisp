@@ -5,7 +5,13 @@ using UnityEngine.UI;
 
 public class GUIInteraction : MonoBehaviour
 {
+    private int counterSpirit = 0;
+    
     public Image healthBar;
+    public Image magicBar;
+    public Image energyBar;
+
+    public Text spirits;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +27,22 @@ public class GUIInteraction : MonoBehaviour
 
     public void ChangeLife(float health)
     {
-        Debug.Log("2");
         healthBar.fillAmount = health / 100f;
+    }
+
+    public void ChangeEnergy(float energy)
+    {
+        energyBar.fillAmount = energy / 100f;
+    }
+
+    public void ChangeMagic(float magic)
+    {
+        magicBar.fillAmount = magic / 20f;
+    }
+
+    public void AddSpirit()
+    {
+        counterSpirit++;
+        spirits.text = counterSpirit.ToString();
     }
 }
