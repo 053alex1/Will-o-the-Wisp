@@ -10,7 +10,7 @@ public class Monstruobasico : MonoBehaviour
     public float RadioMov = 40;
     //Tiempo que tarda en buscar una nueva posicion a la que ir en Wander
     public float wanderTimer = 4;
-    public float TimerCDAttack = 1;
+    public float TimerCDAttack = 2;
     //Radio(distancia) maxima a la que busca a dagda
     public float RadioVision = 80;
     public float RadioSentido = 30;
@@ -39,7 +39,7 @@ public class Monstruobasico : MonoBehaviour
         timerAttack = TimerCDAttack;
         agent.speed = 40f;
         agent.acceleration = 18;
-        agent.stoppingDistance = 10;
+    //    agent.stoppingDistance = 10;
     }
 
     void Update()
@@ -57,7 +57,7 @@ public class Monstruobasico : MonoBehaviour
         }
     }
     private void ataca()
-    {
+    {   
         if (timerAttack > TimerCDAttack)
         {
             myAnimator.SetBool("isWalking", false);
