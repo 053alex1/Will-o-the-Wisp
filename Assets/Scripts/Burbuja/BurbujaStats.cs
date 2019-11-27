@@ -17,6 +17,7 @@ public class BurbujaStats : MonoBehaviour
     public GUIInteraction gui;
 
     void Awake() {
+        gui = GameObject.Find("GUI").GetComponent<GUIInteraction>();
         resistencia = maxRes;
         exist = true;
         seguir = true;
