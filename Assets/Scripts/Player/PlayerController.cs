@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
     private GameObject disparador;
     private Vector3 movegfx;
     private BurbujaStats bs;
-    public AudioClip test;
 
 
     void Awake()
@@ -105,7 +104,6 @@ public class PlayerController : MonoBehaviour
             ps.isGrounded = false;
             playerAnimator.SetBool("isJumping", true);
         }
-        SoundManager.instance.RandomizeSfx(test, test);
     }
 
     void LightAttack()
@@ -235,13 +233,7 @@ public class PlayerController : MonoBehaviour
         return getPlayerPosition() + new Vector3(0, 0, 0); //Falta por determinar la altura de Dagda
     }
 
-    void sound()
-    {
-        if (tag == "jump")
-        {
-            SoundManager.instance.RandomizeSfx(test);
-        }
-    }
+   
 
     void OnCollisionEnter(Collision collision)
     {
