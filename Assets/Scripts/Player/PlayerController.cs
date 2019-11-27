@@ -215,10 +215,8 @@ public class PlayerController : MonoBehaviour
 
     void sound()
     {
-        if (tag == "jump")
-        {
+    
             SoundManager.instance.RandomizeSfx(test);
-        }
     }
 
     void OnCollisionEnter(Collision collision)
