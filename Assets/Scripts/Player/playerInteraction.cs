@@ -43,7 +43,7 @@ public class playerInteraction : MonoBehaviour
             {
                 if (Vector3.Distance(tr.position, npc.transform.position) < 16)
                 {
-                    npc.GetComponentInChildren<Animator>().SetTrigger("interaction");
+                    //npc.GetComponentInChildren<Animator>().SetTrigger("interaction");
                     if (msgPanel.activeSelf == true)
                     {
                         npc.GetComponent<MsgNPC>().okButon();
