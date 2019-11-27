@@ -113,7 +113,7 @@ public class BurbujaController : MonoBehaviour
 
 
         //tr.position = Vector3.MoveTowards (tr.position, dagtr.forward, Time.deltaTime * bs.speed);
-        //tr.position = Vector3.MoveTowards (tr.position, dagtr.forward, Time.deltaTime * bs.speed);
+        //tr.Translate(dagtr.forward * Time.deltaTime * bs.speed);
     
         tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(7, 5, 0), Time.deltaTime * bs.speed);
     }

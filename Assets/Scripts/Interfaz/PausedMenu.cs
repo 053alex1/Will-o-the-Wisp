@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PausedMenu : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PausedMenu : MonoBehaviour
     private bool primeraVegada;
     private bool startTime = true;
     private bool started = false;
+    public AudioMixer audioMixer;
 
     void Start() {
         //paneles = GameObject.FindGameObjectsWithTag("Panel");
@@ -140,6 +142,10 @@ public class PausedMenu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         Screen.lockCursor = false;
+    }
+
+    public void SetVolume (float volume) {
+        audioMixer.SetFloat("volume", volume);
     }
 
 }
