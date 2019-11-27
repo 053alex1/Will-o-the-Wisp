@@ -20,6 +20,9 @@ public class playerStats : MonoBehaviour
     public bool isDead;
     public bool Ultim = false;
     private Animator myAnim;
+    public GUIInteraction gui;
+
+
     public float getHp()
     {
         return hp;
@@ -52,6 +55,7 @@ public class playerStats : MonoBehaviour
         mana = maxMana;
         isDead = false;
         myAnim = GetComponentInChildren<Animator>();
+        gui = GameObject.Find("GUI").GetComponent<GUIInteraction>();
     }
     void Update()
     {
