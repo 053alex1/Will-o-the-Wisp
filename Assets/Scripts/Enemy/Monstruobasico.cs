@@ -69,7 +69,7 @@ public class Monstruobasico : MonoBehaviour
             playerStats targetStats = target.GetComponent<playerStats>();
             targetStats.getHit(1f);
         }
-        myAnimator.SetBool("isWalking", false);
+        myAnimator.SetBool("isWalking", true);
     }
 
     void OnDrawGizmosSelected()
