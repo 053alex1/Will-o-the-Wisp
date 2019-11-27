@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 movegfx;
     private BurbujaStats bs;
     public AudioSource[] Audios;
+    public GUIInteraction gui;
 
 
     void Awake()
@@ -118,6 +119,7 @@ public class PlayerController : MonoBehaviour
     {
         shootScript.lightShoot();
         Audios[(int)Sounds.HIT].Play(); //Reproducir audio
+        gui.ChangeMagic(ps.mana);
 
     }
 
@@ -125,6 +127,7 @@ public class PlayerController : MonoBehaviour
     {
         shootScript.heavyShoot();
         Audios[(int)Sounds.HITB].Play(); //Reproducir audio
+        gui.ChangeMagic(ps.mana);
 
     }
 
