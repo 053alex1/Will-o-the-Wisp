@@ -42,6 +42,7 @@ public class playerStats : MonoBehaviour
         if (Time.time > (timestamp + delay))
         {      // Sólo se recupera el maná cuando hayan pasado los segundos del delay
             mana = Mathf.Min(maxMana, mana + (manaRegenPerSec * Time.deltaTime)); // (* Time.deltaTime) ?
+            gui.ChangeMagic(mana);
             //Debug.Log("Mana is " + mana);
         }
     }
