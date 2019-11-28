@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+
 
 public class playerInteraction : MonoBehaviour
 {
@@ -15,26 +15,28 @@ public class playerInteraction : MonoBehaviour
     GameObject player;
     public GameObject burbuja;
     public playerStats ps;
+    private changelayer cl;
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Dagda");
         ps = player.GetComponent<playerStats>();
         msgPanel = GameObject.FindGameObjectWithTag("panelMensaje");
+        cl = GameObject.Find("LevelChanger").GetComponentInChildren<changelayer>();
     }
-     void Start()
+    void Start()
     {
         msgPanel.SetActive(false);
         tr = player.transform.GetComponent<Transform>();
         rb = player.GetComponent<Rigidbody>();
         ps.isGrounded = true;
         ps.isRunning = false;
-    }  
+    }
     void Update()
     {
         Interaction();
     }
 
-   void Interaction()
+    void Interaction()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -47,14 +49,17 @@ public class playerInteraction : MonoBehaviour
                     if (msgPanel.activeSelf == true)
                     {
                         npc.GetComponent<MsgNPC>().okButon();
-                        if (!ps.Ultim) {
+                        if (!ps.Ultim)
+                        {
                             string msg = npc.GetComponent<MsgNPC>().GetMsg();
                             msgText.text = msg;
-                        }else{
+                        }
+                        else
+                        {
                             npc.GetComponent<MsgNPC>().resetIndex();
                             msgPanel.SetActive(false);
                             ps.Ultim = false;
-                            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                            cl.FadeToLevel();
                         }
                     }
                     else
