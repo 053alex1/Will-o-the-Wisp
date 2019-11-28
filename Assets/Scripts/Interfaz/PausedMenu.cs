@@ -76,7 +76,7 @@ public class PausedMenu : MonoBehaviour
         cameraScript.enabled = false;
         dagdaControll.enabled = false;
         Time.timeScale = 0;
-        AudioListener.pause = true;
+        //AudioListener.pause = true;
         //canvas.SetActive(true);
         background.SetActive(true);
         if (primeraVegada){
@@ -121,7 +121,7 @@ public class PausedMenu : MonoBehaviour
         cameraScript.enabled = false;
         dagdaControll.enabled = false;
         Time.timeScale = 0;
-        AudioListener.pause = true;
+        //AudioListener.pause = true;
         background.SetActive(true);
         panelDeath.SetActive(true);
         Screen.lockCursor = false;
@@ -136,7 +136,7 @@ public class PausedMenu : MonoBehaviour
         cameraScript.enabled = false;
         dagdaControll.enabled = false;
         Time.timeScale = 0;
-        AudioListener.pause = true;
+        //AudioListener.pause = true;
         background.SetActive(true);
         panelStart.SetActive(true);
         Cursor.visible = true;
