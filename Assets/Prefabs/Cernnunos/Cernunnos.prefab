@@ -49,9 +49,11 @@ MonoBehaviour:
   dagda: {fileID: 0}
   ps: {fileID: 0}
   msg:
-  - "Cu\xE1nto tiempo Dagda!!"
+  - "Cu\xE1nto tiempo Dagda."
   - Hemos estado esperando tu regreso.
   - "Conf\xEDo en que puedas rescatar a los otros."
+  - "Mantente de pie valiente, defi\xE9ndete, eres un guerrero."
+  - "Siempre estar\xE9 en deuda contigo, amgio m\xEDo."
 --- !u!136 &7739468254832004145
 CapsuleCollider:
   m_ObjectHideFlags: 0
