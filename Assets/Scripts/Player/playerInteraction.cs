@@ -40,12 +40,16 @@ public class playerInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
+            Debug.Log("Interaction triggered");
             npc = GameObject.FindGameObjectWithTag("NPC");
             if (npc != null)
             {
+                Debug.Log("Found Cernunnos");
+                Debug.Log("Distance: " + Vector3.Distance(tr.position, npc.transform.position));
                 if (Vector3.Distance(tr.position, npc.transform.position) < 16)
                 {
-                    //npc.GetComponentInChildren<Animator>().SetTrigger("interaction");
+                    Debug.Log("Cernunnos talking");
+                    npc.GetComponentInChildren<Animator>().SetTrigger("interaction");
                     if (msgPanel.activeSelf == true)
                     {
                         npc.GetComponent<MsgNPC>().okButon();
