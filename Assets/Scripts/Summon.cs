@@ -8,9 +8,13 @@ public class Summon : MonoBehaviour
     public GameObject summonEffect;
     private BurbujaController bc;
     private int fuegosLength;
+
+    private GameObject bubble;
+
     void Awake() {
         bc = GetComponent<BurbujaController>();
         fuegosLength = GetComponent<BurbujaStats>().fuegoFatuos.Length - 1;
+        bubble = GameObject.Find("Burbuja(Clone)");
     }
     void OnTriggerEnter(Collider other){ 
         Debug.Log("Collided with something: " + other.tag);
@@ -23,11 +27,18 @@ public class Summon : MonoBehaviour
                 ParticleSystem part = effect.GetComponent<ParticleSystem>();
                 Destroy(effect, part.main.duration);
                 Debug.Log("Has reunido todos los fuegos");
+                DestroyBubbleAndFires();
             }
         }
     }
 
     void CernunnosSummon() {
         Instantiate(cernunnos);
+    }
+
+    void DestroyBubbleAndFires()
+    {
+        bc.gui.DestroyEnergyBar();
+        bubble.SetActive(false);
     }
 }

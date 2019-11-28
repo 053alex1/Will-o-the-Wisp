@@ -23,9 +23,11 @@ public class BurbujaController : MonoBehaviour
     public int cont;
     public GUIInteraction gui;
 
-    void Awake() {
+    void Awake()
+    {
         bubble = GameObject.FindGameObjectWithTag("Bubble");
         dagda = GameObject.FindGameObjectWithTag("Dagda");
+        gui = GameObject.Find("GUI").GetComponent<GUIInteraction>();
         padreFuegos = GameObject.Find("Fuegos");
         dagtr= dagda.GetComponent<Transform>();
         //rb = bubble.GetComponent<Rigidbody>();
@@ -92,6 +94,7 @@ public class BurbujaController : MonoBehaviour
         //fuego.position = Vector3.MoveTowards (fuego.position, tr.position, Time.deltaTime * bs.speed);
         recalcularPos();
         fuego.parent = tr;
+        gui.AddSpirit();
     }
 
     public void transmisionInstantanea() {

@@ -260,6 +260,7 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.SetTrigger("isHurt");
             ps.getHit(10.0f);
+            gui.ChangeLife(ps.getHp());
         }
     }
 
