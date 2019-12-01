@@ -24,10 +24,13 @@ public class Monstruobasico : MonoBehaviour
     protected Transform target;
     protected NavMeshAgent agent;
     private float timer, timerAttack;
-    private bool follow = false, atq = false, atqDis = false;
+ 
+    private enum Estados { ATACA_DIS, ATACA, CAMINANDO, SIGUIENDO };
+    private Estados MaqEstados;
     //   private MetodosGenerales m;
     private void Awake()
     {
+        MaqEstados = Estados.CAMINANDO;
         playerAnimator = GFX.transform.GetComponent<Animator>();
         myAnimator = GetComponentInChildren<Animator>();
     }
@@ -39,6 +42,7 @@ public class Monstruobasico : MonoBehaviour
         timerAttack = TimerCDAttack;
         agent.speed = 40f;
         agent.acceleration = 18;
+        
     //    agent.stoppingDistance = 10;
     }
 
@@ -47,14 +51,32 @@ public class Monstruobasico : MonoBehaviour
         timerAttack += Time.deltaTime;
         //logica sencilla: si no estas siguiendo al protagonista tu recorrido es aleatorio
 
-        seguir();
-        if (atq) ataca();
-        //else if(atqDis) //atacaDis();
-
-        if (!follow)
-        {
-            wander();
-        }
+        switch (MaqEstados) {
+            case (Estados.CAMINANDO):
+                {
+                    wander();
+                    MaqEstados = Estados.SIGUIENDO;
+                    break;
+                }
+            case (Estados.SIGUIENDO):
+                {
+                    MaqEstados = Estados.CAMINANDO;
+                    seguir();
+                    break;
+                }
+            case (Estados.ATACA):
+                {
+                    ataca();
+                    MaqEstados = Estados.SIGUIENDO;
+                    break;
+                }
+            case (Estados.ATACA_DIS):
+                {
+                    MaqEstados = Estados.SIGUIENDO;
+                    break;
+                }
+        };
+       
     }
     private void ataca()
     {   
@@ -82,7 +104,7 @@ public class Monstruobasico : MonoBehaviour
         //Animación de caminar
         myAnimator.SetBool("isWalking", true);
         float dis, dot, dotfov;
-        follow = false;
+        bool follow = false;
         //funciones para calcular si dagda esta en tu rango de vision y a tu distancia maxima de vision 
         Vector3 v = target.position - transform.position;
         dis = Mathf.Sqrt(v.sqrMagnitude);
@@ -99,7 +121,7 @@ public class Monstruobasico : MonoBehaviour
             {
                 if (hit.collider.gameObject.tag == "Dagda")
                 {
-
+                    MaqEstados = Estados.SIGUIENDO;
                     follow = true;
                     agent.SetDestination(target.position);
                 }
@@ -108,6 +130,7 @@ public class Monstruobasico : MonoBehaviour
         //Sentir
         if (!follow && dis < RadioSentido)
         {
+            MaqEstados = Estados.SIGUIENDO;
             follow = true;
             agent.SetDestination(target.position);
 
@@ -115,18 +138,16 @@ public class Monstruobasico : MonoBehaviour
         //atacar+
         if (follow && dis <= disAtqDis)
         {
-            atqDis = true;
             if (dis <= agent.stoppingDistance)
             {
-                atq = true;
+                MaqEstados = Estados.ATACA;
                 //Mirar al enemigo
                 Quaternion lookRotation = Quaternion.LookRotation(new Vector3(v.x, 0, v.z));
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
             }
 
-            else atq = false;
+            else MaqEstados = Estados.ATACA_DIS;
         }
-        else atqDis = false;
     }
 
     public void wander()

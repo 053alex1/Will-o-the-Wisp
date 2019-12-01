@@ -19,6 +19,7 @@ public class BaseEnemy : MonoBehaviour
         vida = canvas.transform.Find("Health").GetComponent<Scrollbar>();
         vida1 = canvas.transform.Find("Health1").GetComponent<Scrollbar>();
         Maxhp = hp;
+        canvas.SetActive(false);
         myAnimator = GetComponentInChildren<Animator>();
     }
     void Update()
@@ -30,7 +31,8 @@ public class BaseEnemy : MonoBehaviour
 
     public void getHit(float damage)
     {
-        if (gameObject.name == "Fuath") {myAnimator.SetTrigger("isHurt");}
+        canvas.SetActive(true);
+       // if (gameObject.name == "Fuath") {myAnimator.SetTrigger("isHurt");}
         //Animación de recibir daño setTrigger
         hp -= damage;
         Debug.Log("Enemy ouch - " + hp + " hp left");
