@@ -70,7 +70,7 @@ public class playerStats : MonoBehaviour
     {
         myAnim.SetTrigger("isHurt");
         hp -= damage;
-        if (hp > 0) Debug.Log("Player ouch - " + hp + " hp left");
+        if (hp > 0) { gui.ChangeLife(hp); Debug.Log("Player ouch - " + hp + " hp left"); }
         else if (hp <= 0)
         {
             gameObject.SetActive(false);

@@ -20,11 +20,14 @@ public class Monstruobasico : MonoBehaviour
     public Animator playerAnimator;
     private Animator myAnimator;
     public GameObject GFX;
+    public GameObject burbuja;
     //Usados para el calculo(igual luego los quito de aquí
     protected Transform target;
     protected NavMeshAgent agent;
-    private float timer, timerAttack;
- 
+    private float timer, timerAttack, obj;
+    private Vector3 posAntigua;
+
+
     private enum Estados { ATACA_DIS, ATACA, CAMINANDO, SIGUIENDO };
     private Estados MaqEstados;
     //   private MetodosGenerales m;
@@ -42,8 +45,10 @@ public class Monstruobasico : MonoBehaviour
         timerAttack = TimerCDAttack;
         agent.speed = 40f;
         agent.acceleration = 18;
-        
-    //    agent.stoppingDistance = 10;
+        burbuja = GameObject.FindGameObjectWithTag("Bubble");
+        obj = 0;
+
+        //    agent.stoppingDistance = 10;
     }
 
     void Update()
@@ -60,13 +65,19 @@ public class Monstruobasico : MonoBehaviour
                 }
             case (Estados.SIGUIENDO):
                 {
+                    float dis = float.MaxValue;
                     MaqEstados = Estados.CAMINANDO;
-                    seguir();
+                    burbuja = GameObject.FindGameObjectWithTag("Bubble");
+                    if (burbuja)
+                        dis = seguir(burbuja.transform,float.MaxValue);
+                    obj = seguir(target, dis);
+
                     break;
                 }
             case (Estados.ATACA):
                 {
-                    ataca();
+                    
+                    ataca(obj);
                     MaqEstados = Estados.SIGUIENDO;
                     break;
                 }
@@ -78,8 +89,8 @@ public class Monstruobasico : MonoBehaviour
         };
        
     }
-    private void ataca()
-    {   
+    private void ataca(float obj)
+    {
         if (timerAttack > TimerCDAttack)
         {
             myAnimator.SetBool("isWalking", false);
@@ -87,9 +98,17 @@ public class Monstruobasico : MonoBehaviour
 
             //ANIMACIÓN DE ATAQUE setTrigger
             myAnimator.SetTrigger("isAttacking");
-            Debug.Log("Soy " + gameObject.name + " y he desactivado el walking y he hecho un ataque");
-            playerStats targetStats = target.GetComponent<playerStats>();
-            targetStats.getHit(1f);
+            // Debug.Log("Soy " + gameObject.name + " y he desactivado el walking y he hecho un ataque");
+            if (obj == -1)
+            {
+                BurbujaStats b = burbuja.transform.GetComponent<BurbujaStats>();
+                b.dañoRecibido();
+            }
+            else
+            {
+                playerStats targetStats = target.GetComponent<playerStats>();
+                targetStats.getHit(1f);
+            }
         }
         myAnimator.SetBool("isWalking", true);
     }
@@ -99,55 +118,69 @@ public class Monstruobasico : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, RadioVision);
     }
-    private void seguir()
+    private float seguir(Transform target,float d)
     {
-        //Animación de caminar
-        myAnimator.SetBool("isWalking", true);
+        
+        
         float dis, dot, dotfov;
         bool follow = false;
         //funciones para calcular si dagda esta en tu rango de vision y a tu distancia maxima de vision 
         Vector3 v = target.position - transform.position;
         dis = Mathf.Sqrt(v.sqrMagnitude);
-        v.Normalize();
-        dot = Vector3.Dot(transform.forward, v);
-        dotfov = Mathf.Cos(fov * 0.5f * Mathf.Deg2Rad);
-
-        Debug.DrawRay(transform.position + transform.up, v * dis, Color.red);
-        //Mirar
-        if (dis < RadioVision && dot >= dotfov)
+        if (dis <= d)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position + transform.up, v, out hit))
+            //Animación de caminar
+            v.Normalize();
+            dot = Vector3.Dot(transform.forward, v);
+            dotfov = Mathf.Cos(fov * 0.5f * Mathf.Deg2Rad);
+
+            Debug.DrawRay(transform.position + transform.up, v * dis, Color.red);
+            //Mirar
+
+            if (dis < RadioVision && dot >= dotfov)
             {
-                if (hit.collider.gameObject.tag == "Dagda")
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position + transform.up, v, out hit))
                 {
-                    MaqEstados = Estados.SIGUIENDO;
-                    follow = true;
-                    agent.SetDestination(target.position);
+                    if (hit.collider.gameObject.tag == "Dagda" || hit.collider.gameObject.tag == "Bubble")
+                    {
+
+                        myAnimator.SetBool("isWalking", true);
+                        MaqEstados = Estados.SIGUIENDO;
+                        follow = true;
+                        agent.SetDestination(target.position);
+                    }
                 }
             }
-        }
-        //Sentir
-        if (!follow && dis < RadioSentido)
-        {
-            MaqEstados = Estados.SIGUIENDO;
-            follow = true;
-            agent.SetDestination(target.position);
-
-        }
-        //atacar+
-        if (follow && dis <= disAtqDis)
-        {
-            if (dis <= agent.stoppingDistance)
+            //Sentir
+            if (!follow && dis < RadioSentido)
             {
-                MaqEstados = Estados.ATACA;
-                //Mirar al enemigo
-                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(v.x, 0, v.z));
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-            }
 
-            else MaqEstados = Estados.ATACA_DIS;
+                myAnimator.SetBool("isWalking", true);
+                MaqEstados = Estados.SIGUIENDO;
+                follow = true;
+                agent.SetDestination(target.position);
+
+            }
+            //atacar+
+
+
+            if (follow && dis <= disAtqDis)
+            {
+                if (dis <= agent.stoppingDistance)
+                {
+                    myAnimator.SetBool("isWalking", false);
+                    MaqEstados = Estados.ATACA;
+                    //Mirar al enemigo
+                    Quaternion lookRotation = Quaternion.LookRotation(new Vector3(v.x, 0, v.z));
+                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+                }
+
+                else MaqEstados = Estados.ATACA_DIS;
+            }
+            return dis;
         }
+        else return -1;
     }
 
     public void wander()
@@ -159,8 +192,17 @@ public class Monstruobasico : MonoBehaviour
         {
             Vector3 newPos = RandomNavSphere(transform.position, RadioMov, -1);
             agent.SetDestination(newPos);
+            posAntigua = newPos;
             timer = 0;
+            myAnimator.SetBool("isWalking", true);
         }
+         
+        else if (posAntigua.x == transform.position.x && posAntigua.z == transform.position.z)
+        {
+            Debug.Log("Soy " + gameObject.name);
+            myAnimator.SetBool("isWalking", false);
+        }
+        //Debug.Log(transform.position.x + transform.position.z + "Tengo q ir a"+ posAntigua  );
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
