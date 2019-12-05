@@ -110,6 +110,7 @@ MonoBehaviour:
   disAtqDis: 20
   playerAnimator: {fileID: 0}
   GFX: {fileID: 9190493479286565801}
+  burbuja: {fileID: 0}
 --- !u!114 &912783999695408736
 MonoBehaviour:
   m_ObjectHideFlags: 0

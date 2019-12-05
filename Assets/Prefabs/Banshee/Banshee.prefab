@@ -484,6 +484,7 @@ MonoBehaviour:
   disAtqDis: 20
   playerAnimator: {fileID: 0}
   GFX: {fileID: 5811491574613121393}
+  burbuja: {fileID: 0}
 --- !u!114 &2560153304871006932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,11 +782,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: banshee_rest
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 46b7d0855bb0fe841afff90d9bfbccd3,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: a28ffcafeda74bf40adcdc8923b3eb9d, type: 2}
     - target: {fileID: -4216859302048453862, guid: 46b7d0855bb0fe841afff90d9bfbccd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -856,6 +852,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.1646418
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 46b7d0855bb0fe841afff90d9bfbccd3,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a28ffcafeda74bf40adcdc8923b3eb9d, type: 2}
     - target: {fileID: 1928325445687434024, guid: 46b7d0855bb0fe841afff90d9bfbccd3,
         type: 3}
       propertyPath: m_LocalRotation.x
