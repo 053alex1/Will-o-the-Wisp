@@ -126,13 +126,15 @@ namespace UnityStandardAssets.Water
                 refractionCamera.projectionMatrix = cam.CalculateObliqueMatrix(clipPlane);
 
 				// Set custom culling matrix from the current camera
-				refractionCamera.cullingMatrix = cam.projectionMatrix * cam.worldToCameraMatrix;
+				/*
+                refractionCamera.cullingMatrix = cam.projectionMatrix * cam.worldToCameraMatrix;
 
 				refractionCamera.cullingMask = ~(1 << 4) & refractLayers.value; // never render water layer
                 refractionCamera.targetTexture = m_RefractionTexture;
                 refractionCamera.transform.position = cam.transform.position;
                 refractionCamera.transform.rotation = cam.transform.rotation;
                 refractionCamera.Render();
+                */
                 GetComponent<Renderer>().sharedMaterial.SetTexture("_RefractionTex", m_RefractionTexture);
             }
 

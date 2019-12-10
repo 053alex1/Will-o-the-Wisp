@@ -25,16 +25,16 @@ public class PausedMenu : MonoBehaviour
 
     void Start() {
         //paneles = GameObject.FindGameObjectsWithTag("Panel");
-        panelStart = GameObject.FindGameObjectWithTag("panelStart");
+        panelStart = GameObject.Find("panelStart");
         dagda = GameObject.Find("Dagda");
         cameraScript = GameObject.Find("Camera").GetComponent<CameraFollow>();
         dagdaStats = dagda.GetComponent<playerStats>();
         dagdaControll = dagda.GetComponent<PlayerController>();
-        panelOptions = GameObject.FindGameObjectWithTag("panelOptions");
-        panelControll = GameObject.FindGameObjectWithTag("panelControll");
-        panelDeath = GameObject.FindGameObjectWithTag("panelDeath");
-        background = GameObject.FindGameObjectWithTag("background");
-        pauseMenu = GameObject.FindGameObjectWithTag("pauseMenu");
+        panelOptions = GameObject.Find("panelOptions");
+        panelControll = GameObject.Find("panelControll");
+        panelDeath = GameObject.Find("panelDeath");
+        background = GameObject.Find("background");
+        pauseMenu = GameObject.Find("pauseMenu");
     }
 
     void Update()
