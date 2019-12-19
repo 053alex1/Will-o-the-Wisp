@@ -33,7 +33,7 @@ namespace UnityStandardAssets.ImageEffects
         private Material m_ChromAberrationMaterial;
 
 
-        public override bool CheckResources ()
+      /* public override bool CheckResources ()
         {
             CheckSupport (false);
 
@@ -44,16 +44,20 @@ namespace UnityStandardAssets.ImageEffects
             if (!isSupported)
                 ReportAutoDisable ();
             return isSupported;
-        }
+        }*/
 
+        private void CheckSupport(bool v)
+        {
+            throw new NotImplementedException();
+        }
 
         void OnRenderImage (RenderTexture source, RenderTexture destination)
         {
-            if ( CheckResources () == false)
+            /*if ( CheckResources () == false)
             {
                 Graphics.Blit (source, destination);
                 return;
-            }
+            }*/
 
             int rtW = source.width;
             int rtH = source.height;
@@ -110,5 +114,9 @@ namespace UnityStandardAssets.ImageEffects
             RenderTexture.ReleaseTemporary (color);
             RenderTexture.ReleaseTemporary (color2A);
         }
+    }
+
+    public class PostEffectsBase
+    {
     }
 }
