@@ -17,7 +17,6 @@ public class BaseEnemy : MonoBehaviour
         target = Camera.main.transform;
         canvas = transform.Find("Canvas").gameObject;
         vida = canvas.transform.Find("Health").GetComponent<Scrollbar>();
-        vida1 = canvas.transform.Find("Health1").GetComponent<Scrollbar>();
         Maxhp = hp;
         canvas.SetActive(false);
         myAnimator = GetComponentInChildren<Animator>();
@@ -38,6 +37,5 @@ public class BaseEnemy : MonoBehaviour
         Debug.Log("Enemy ouch - " + hp + " hp left");
         if (hp <= 0) Destroy(gameObject);
         vida.size = hp / Maxhp;
-        //vida1.size = hp/Maxhp;
     }
 }
