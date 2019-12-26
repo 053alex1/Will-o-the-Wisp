@@ -148,4 +148,15 @@ public class PausedMenu : MonoBehaviour
         audioMixer.SetFloat("volume", volume);
     }
 
+    public void SetVolumeEfectos (float volume) {
+        audioMixer.SetFloat("efectos", volume);
+    }
+
+
+    public void SetVolumeMusica (float volume) {
+        audioMixer.SetFloat("musica", volume);
+    }
+
+    
+
 }
