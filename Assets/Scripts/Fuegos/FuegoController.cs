@@ -15,12 +15,16 @@ public class FuegoController : MonoBehaviour
     float z;
     Transform tr;
     Transform burbujatr;
+    GameObject dagda;
+    Transform dagdatr;
     GameObject burbuja;
     FuegoStats fs;
 
     //public float distanceThreshold;
     void Awake() {
         findWaypoints();
+        dagda = GameObject.Find("Dagda");
+        dagdatr = dagda.GetComponent<Transform>();
         tr = gameObject.GetComponent<Transform>();
         fs = gameObject.GetComponent<FuegoStats>();
         //x = Random.Range(-2, 2);
@@ -43,6 +47,8 @@ public class FuegoController : MonoBehaviour
     {
         fireFloat();
 
+        dagdaCerca();
+
         if (fs.libre) {
             if (fs.teLloc == false) {
                     changeTarget();
@@ -56,6 +62,18 @@ public class FuegoController : MonoBehaviour
             //WaitForSeconds(1);
             //pillarSitio();
             //seguirBurbuja();
+        }
+    }
+
+    void dagdaCerca() {
+        if(Vector3.Distance(tr.position, dagdatr.position) <= 100 && fs.libre){
+            fs.amplitud = 0.2f;
+            fs.frecuencia = 0.7f;
+            //transform.localScale = new Vector3(4f,5f,4f);
+        }else {
+            fs.amplitud = 0.05f;
+            fs.frecuencia = 0.5f;
+            //transform.localScale = new Vector3(2f,3f,2f);
         }
     }
     void fireFloat() {
