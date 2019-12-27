@@ -13,7 +13,8 @@ public class MsgTutorial : MonoBehaviour
         dagda = GameObject.FindGameObjectWithTag("Dagda");
         ps = dagda.GetComponent<playerStats>();
     }
-    public string[] msg = { 
+    public string[] msg = {
+        "Bienvenido al modo tuturial, para interactuar con el entorno pulsa I",
         "El hechizo que utilizasteis para encerrar a los Dioses Fomoré se está rompiendo. Su regreso está cerca. Como Dios guardián, tu misión es evitar que escapen",
         "Criaturas malignas están ya escapando. Pero los restos de los Dioses Tuatha De Dannan también; reúnelos a todos y acabad por fin con la amenaza Fomoré",
         "De los Tuatha De Dannan solo quedan restos de magia en forma de Fuegos Fatuos. Cada Dios se ha dividido en 5 Fuegos. Encuéntralos a todos y llévalos hasta su altar para poder revivir a cada uno de tus compañeros",

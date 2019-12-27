@@ -7328,6 +7328,8 @@ MonoBehaviour:
   msgTut: {fileID: 0}
   ps: {fileID: 0}
   condicio1: 0
+  condicio1Prev: 0
+  condicio2Prev: 0
   condicio2: 0
   lliure: 0
   habilitarCondicio2: 0
@@ -7458,6 +7460,7 @@ MonoBehaviour:
   ps: {fileID: 0}
   index: 0
   msg:
+  - Bienvenido al modo tuturial, para interactuar con el entorno pulsa I
   - "El hechizo que utilizasteis para encerrar a los Dioses Fomor\xE9 se est\xE1 rompiendo.
     Su regreso est\xE1 cerca. Como Dios guardi\xE1n, tu misi\xF3n es evitar que escapen"
   - "Criaturas malignas est\xE1n ya escapando. Pero los restos de los Dioses Tuatha

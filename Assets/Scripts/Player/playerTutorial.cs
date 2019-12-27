@@ -60,9 +60,6 @@ public class playerTutorial : MonoBehaviour
         }
         Tutorial();
         comprovantCondicio1();
-        //if (habilitarCondicio2){
-        //    comprovantCondicio2();
-        //}
     }
 
     void bloquejat() {
@@ -82,22 +79,22 @@ public class playerTutorial : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
-                if(msgTut.index < 1) {
+                if(msgTut.index < 2) {
                     if (msgTut.index >= 0){
                     msgTut.okButon();
                     string msg = msgTut.GetMsg();
                     msgText.text = msg;
                     }
-                }else if(msgTut.index < 3) {
-                        if (msgTut.index >= 1){
+                }else if(msgTut.index < 4) {
+                        if (msgTut.index >= 2){
                         lliure = true;
                         msgTut.okButon();
                         string msg = msgTut.GetMsg();
                         msgText.text = msg;
                     }
                 }
-                if(msgTut.index < 6){
-                    if (msgTut.index >= 4){
+                if(msgTut.index < 7){
+                    if (msgTut.index >= 5){
                         if(condicio1){
                             msgTut.okButon();
                             string msg = msgTut.GetMsg();
@@ -105,8 +102,8 @@ public class playerTutorial : MonoBehaviour
                         }
                     }
                 }
-                if(msgTut.index < 8){
-                    if (msgTut.index >= 7){
+                if(msgTut.index < 9){
+                    if (msgTut.index >= 8){
                         if(condicio2){
                             msgTut.okButon();
                             string msg = msgTut.GetMsg();
@@ -117,8 +114,8 @@ public class playerTutorial : MonoBehaviour
             }
             else
             {
-                if(msgTut.index < 4){
-                    if (msgTut.index >= 3){
+                if(msgTut.index < 5){
+                    if (msgTut.index >= 4){
                         if(condicio1Prev){
                             msgTut.okButon();
                             string msg = msgTut.GetMsg();
@@ -137,8 +134,8 @@ public class playerTutorial : MonoBehaviour
                             enemy.SetActive(true);
                         }
                         //habilitarCondicio2 = true;
-                        if(msgTut.index < 7) {
-                            if (msgTut.index >= 6){
+                        if(msgTut.index < 8) {
+                            if (msgTut.index >= 7){
                                 if (condicio2Prev){
                                 msgTut.okButon();
                                 string msg = msgTut.GetMsg();
@@ -164,9 +161,6 @@ public class playerTutorial : MonoBehaviour
                 condicio1Prev = true;
             }
         }
-        
-    }
-    void comprovantCondicio2() {
         
     }
 }
