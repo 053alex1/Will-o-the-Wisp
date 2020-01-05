@@ -20,6 +20,15 @@ public class MsgNPC : MonoBehaviour
         "Mantente de pie valiente, defiéndete, eres un guerrero.",
         "Siempre estaré en deuda contigo, amgio mío."
     };
+
+    public string[] msgPulsaI = {
+        "Pulsa I para interactuar"
+    };
+
+    public string GetMsgPulsaI() {
+        return msgPulsaI[0];
+    }
+
     public string GetMsg() {
         return msg[index];
     }

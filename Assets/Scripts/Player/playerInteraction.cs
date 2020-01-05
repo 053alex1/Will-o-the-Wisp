@@ -16,6 +16,8 @@ public class playerInteraction : MonoBehaviour
     public GameObject burbuja;
     public playerStats ps;
     private changelayer cl;
+    private bool hablando = false;
+    private bool primeraVegada = true;
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Dagda");
@@ -34,12 +36,35 @@ public class playerInteraction : MonoBehaviour
     void Update()
     {
         Interaction();
+        if(!hablando){
+            pulsaI();
+        }
+    }
+
+    void pulsaI() {
+        //Debug.Log("Se activa pulsaI");
+        npc = GameObject.FindGameObjectWithTag("NPC");
+        if (npc != null)
+        {
+        //Debug.Log("Existe cernunos");
+            if (Vector3.Distance(tr.position, npc.transform.position) < 16)
+            {
+                //Debug.Log("Esta cerca");
+                msgPanel.SetActive(true);
+                string msg = npc.GetComponent<MsgNPC>().GetMsgPulsaI();
+                msgText.text = msg;
+            }else {
+                msgPanel.SetActive(false);
+            }
+        }
     }
 
     void Interaction()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
+            hablando = true;
+
             Debug.Log("Interaction triggered");
             npc = GameObject.FindGameObjectWithTag("NPC");
             if (npc != null)
@@ -50,6 +75,11 @@ public class playerInteraction : MonoBehaviour
                 {
                     Debug.Log("Cernunnos talking");
                     npc.GetComponentInChildren<Animator>().SetTrigger("interaction");
+
+                    if (primeraVegada) {
+                        msgPanel.SetActive(false);
+                        primeraVegada = false;
+                    }
                     if (msgPanel.activeSelf == true)
                     {
                         npc.GetComponent<MsgNPC>().okButon();
@@ -63,6 +93,7 @@ public class playerInteraction : MonoBehaviour
                             npc.GetComponent<MsgNPC>().resetIndex();
                             msgPanel.SetActive(false);
                             ps.Ultim = false;
+                            //hablando = false; Com volem canviar el nivell no fa falta canviar esta variable
                             cl.FadeToLevel();
                         }
                     }
@@ -77,6 +108,8 @@ public class playerInteraction : MonoBehaviour
                 {
                     npc.GetComponent<MsgNPC>().resetIndex();
                     msgPanel.SetActive(false);
+                    primeraVegada = true;
+                    hablando = false;
                 }
             }
         }
