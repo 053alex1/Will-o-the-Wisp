@@ -199,7 +199,7 @@ public class Monstruobasico : MonoBehaviour
          
         else if (posAntigua.x == transform.position.x && posAntigua.z == transform.position.z)
         {
-            Debug.Log("Soy " + gameObject.name);
+            //Debug.Log("Soy " + gameObject.name);
             myAnimator.SetBool("isWalking", false);
         }
         //Debug.Log(transform.position.x + transform.position.z + "Tengo q ir a"+ posAntigua  );
