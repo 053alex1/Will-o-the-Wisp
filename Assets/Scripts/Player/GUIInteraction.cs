@@ -15,18 +15,6 @@ public class GUIInteraction : MonoBehaviour
 
     public Text spirits;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //healthBar = GameObject.FindGameObjectWithTag("life");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ChangeLife(float health)
     {
         healthBar.fillAmount = health / 100f;
@@ -39,7 +27,7 @@ public class GUIInteraction : MonoBehaviour
 
     public void ChangeMagic(float magic)
     {
-        magicBar.fillAmount = magic / 20f;
+        magicBar.fillAmount = magic / 15f;
     }
 
     public void AddSpirit()
