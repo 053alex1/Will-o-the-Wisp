@@ -84,6 +84,7 @@ public class MonstruoFuath : MonoBehaviour
             case (Estados.ATACA_DIS):
                 {
                     MaqEstados = Estados.SIGUIENDO;
+                    salto();
                     break;
                 }
         };
@@ -111,6 +112,12 @@ public class MonstruoFuath : MonoBehaviour
             }
         }
         myAnimator.SetBool("isWalking", true);
+    }
+    private void salto()
+    {
+        myAnimator.SetTrigger("Jump");
+        agent.SetDestination(target.position);
+        //transform.position += transform.forward;
     }
 
     void OnDrawGizmosSelected()
