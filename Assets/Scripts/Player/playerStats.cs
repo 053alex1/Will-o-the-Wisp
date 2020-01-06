@@ -13,9 +13,9 @@ public class playerStats : MonoBehaviour
     public bool isGrounded;
     public bool isRunning;
     private const float maxHealth = 100f;
-    private float manaRegenPerSec = 0.5f;
-    private float delay = 3f;   //Tiempo entre el último ataque de maná y la regeneración de este
-    private const float maxMana = 20f;
+    private const float maxMana = 15f;
+    private float manaRegenPerSec = 0.75f;
+    private float delay = 1f;   //Tiempo entre el último ataque de maná y la regeneración de este
     private float timestamp = 0f;
     public bool isDead;
     public bool Ultim = false;
@@ -44,9 +44,8 @@ public class playerStats : MonoBehaviour
     {
         if (Time.time > (timestamp + delay))
         {      // Sólo se recupera el maná cuando hayan pasado los segundos del delay
-            mana = Mathf.Min(maxMana, mana + (manaRegenPerSec * Time.deltaTime)); // (* Time.deltaTime) ?
+            mana = Mathf.Min(maxMana, mana + (manaRegenPerSec * Time.deltaTime));
             gui.ChangeMagic(mana);
-            //Debug.Log("Mana is " + mana);
         }
     }
     void Awake()

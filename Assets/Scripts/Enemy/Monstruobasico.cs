@@ -195,11 +195,12 @@ public class Monstruobasico : MonoBehaviour
             posAntigua = newPos;
             timer = 0;
             myAnimator.SetBool("isWalking", true);
+            //Debug.Log("Soy " + gameObject.name);
         }
          
         else if (posAntigua.x == transform.position.x && posAntigua.z == transform.position.z)
         {
-            Debug.Log("Soy " + gameObject.name);
+            //Debug.Log("Soy " + gameObject.name);
             myAnimator.SetBool("isWalking", false);
         }
         //Debug.Log(transform.position.x + transform.position.z + "Tengo q ir a"+ posAntigua  );

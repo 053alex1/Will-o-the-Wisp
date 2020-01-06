@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 912783999695408738}
   - component: {fileID: 912783999695408739}
   - component: {fileID: 912783999695408736}
+  - component: {fileID: 449225255211466836}
   m_Layer: 0
   m_Name: Fuath
   m_TagString: Enemy
@@ -66,7 +67,7 @@ CapsuleCollider:
   m_Radius: 2.553419
   m_Height: 12.656279
   m_Direction: 1
-  m_Center: {x: -0.10147315, y: -3.912612, z: -2.812516}
+  m_Center: {x: -0.10147315, y: -3.912612, z: 0}
 --- !u!195 &912783999695408738
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -76,17 +77,17 @@ NavMeshAgent:
   m_GameObject: {fileID: 912783999695408740}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.7
+  m_Radius: 2
   m_Speed: 40
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1.2
+  m_Height: 12
+  m_BaseOffset: 10
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &912783999695408739
@@ -96,7 +97,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912783999695408740}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c2bb31123597f54fb9d5f662aa8ed46, type: 3}
   m_Name: 
@@ -124,6 +125,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+--- !u!114 &449225255211466836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912783999695408740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef2299f14de24643a5a7e7870744afc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RadioMov: 40
+  wanderTimer: 4
+  TimerCDAttack: 2
+  RadioVision: 80
+  RadioSentido: 30
+  fov: 90
+  disAtqDis: 20
+  playerAnimator: {fileID: 0}
+  GFX: {fileID: 9190493479286565801}
+  burbuja: {fileID: 0}
 --- !u!1 &912783999728755879
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +174,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912783999728755879}
   m_LocalRotation: {x: -0, y: 0.64512426, z: -0, w: 0.76407766}
-  m_LocalPosition: {x: 0, y: 0, z: 6.0156994}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.99889, y: 5.2849298, z: 1}
   m_Children:
   - {fileID: 912784000782804366}
@@ -161,7 +184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -15.7422695, y: 11.074898}
+  m_AnchoredPosition: {x: 0, y: 3}
   m_SizeDelta: {x: 2, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &912783999728755875
@@ -699,7 +722,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: f2107c448f05eac48ad8ea8e29e28120,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f2107c448f05eac48ad8ea8e29e28120,
         type: 3}
