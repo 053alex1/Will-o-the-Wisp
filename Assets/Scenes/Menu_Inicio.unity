@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 100807747}
   - component: {fileID: 100807746}
   m_Layer: 5
-  m_Name: Nivel 2
+  m_Name: Nivel 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,7 +407,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Nivel 2
+  m_Text: 'Nivel 1
+
+'
 --- !u!222 &100807747
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -571,7 +573,7 @@ GameObject:
   - component: {fileID: 171697420}
   - component: {fileID: 171697424}
   m_Layer: 5
-  m_Name: Nivel 2
+  m_Name: Nivel 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -594,7 +596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -586.4}
+  m_AnchoredPosition: {x: 960, y: -583.2}
   m_SizeDelta: {x: 253.4, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &171697420
@@ -659,7 +661,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 171697422}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1833712190}
+        m_MethodName: PlayGame2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &171697422
@@ -1438,7 +1451,7 @@ GameObject:
   - component: {fileID: 650322758}
   - component: {fileID: 650322761}
   m_Layer: 5
-  m_Name: Nivel 1
+  m_Name: Nivel 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1461,7 +1474,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -463.84}
+  m_AnchoredPosition: {x: 960, y: -461.91998}
   m_SizeDelta: {x: 251.1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &650322758
@@ -2214,7 +2227,7 @@ GameObject:
   - component: {fileID: 881354905}
   - component: {fileID: 881354909}
   m_Layer: 5
-  m_Name: Nivel 3
+  m_Name: Nivel 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2237,7 +2250,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -730.75995}
+  m_AnchoredPosition: {x: 960, y: -726.27997}
   m_SizeDelta: {x: 253.4, y: 43.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &881354905
@@ -2302,7 +2315,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 881354907}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1833712190}
+        m_MethodName: PlayGame3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &881354907
@@ -3147,7 +3171,7 @@ GameObject:
   - component: {fileID: 1277996941}
   - component: {fileID: 1277996940}
   m_Layer: 5
-  m_Name: Nivel 3
+  m_Name: Nivel 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3205,9 +3229,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Nivel 3
-
-'
+  m_Text: Nivel 2
 --- !u!222 &1277996941
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3722,7 +3744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -251.28}
+  m_AnchoredPosition: {x: 960, y: -250.64}
   m_SizeDelta: {x: 400, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1826869850
@@ -4042,8 +4064,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -896.92}
-  m_SizeDelta: {x: 251.1, y: 43.6}
+  m_AnchoredPosition: {x: 960, y: -894.36}
+  m_SizeDelta: {x: 251.1, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1945789281
 MonoBehaviour:
@@ -4607,7 +4629,7 @@ GameObject:
   - component: {fileID: 2145720792}
   - component: {fileID: 2145720791}
   m_Layer: 5
-  m_Name: Nivel 1
+  m_Name: Nivel 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4665,7 +4687,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Nivel 1
+  m_Text: Nivel 0
 --- !u!222 &2145720792
 CanvasRenderer:
   m_ObjectHideFlags: 0
