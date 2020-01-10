@@ -90,7 +90,8 @@ public class playerStats : MonoBehaviour
         isDead = true;
     }
 
-  /  private IEnumerator deadhit()
+  //codigo que funciona pero que quita las animaciones
+    private IEnumerator deadhit()
     {
         isDying = true;
         GameObject m = GameObject.Find("DagdaMesh");
@@ -105,18 +106,14 @@ public class playerStats : MonoBehaviour
         isDead = true;
     }
 
-    private IEnumerator deadhit()
+    //codigo que no funciona:
+   /* private IEnumerator deadhit()
     {
-        //seve.enabled = false;
-        //SkinnedMeshRenderer mesh;
-        //   mesh = GetComponentInChildren<SkinnedMeshRenderer>();
-        //  Debug.Log(mesh);
-        //  mesh.enabled = false;
-        //  Debug.Log("no va");
+       
         Instantiate(deathparticles, transform);
         yield return new WaitForSeconds(3);
         gameObject.SetActive(false);
         isDead = true;
-    }
+    }*/
 
 }
