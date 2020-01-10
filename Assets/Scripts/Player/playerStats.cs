@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class playerStats : MonoBehaviour
 {
+    public ParticleSystem deathparticles;
     public float hp;
     public float mana;
     public float speed = 20f;
@@ -63,7 +64,7 @@ public class playerStats : MonoBehaviour
     void Start()
     {
         InvokeRepeating("regenMana", 0f, manaRegenPerSec);  // Con esta función se invoca a regenMana() cada manaRegenPerSec segundos
-        fillHp();
+        //fillHp();
     }
     public void getHit(float damage)
     {
@@ -72,13 +73,31 @@ public class playerStats : MonoBehaviour
         if (hp > 0) { gui.ChangeLife(hp); Debug.Log("Player ouch - " + hp + " hp left"); }
         else if (hp <= 0)
         {
-            gameObject.SetActive(false);
-            isDead = true;
+            StartCoroutine(deadhit());
+
         }
+
+
     }
+
 
     public void dead()
     {
+        isDead = true;
+    }
+
+    private IEnumerator deadhit()
+    {
+        //seve.enabled = false;
+        SkinnedMeshRenderer mesh;
+        mesh = GetComponentInChildren<SkinnedMeshRenderer>();
+        Debug.Log(mesh);
+        mesh.enabled = false;
+        Debug.Log("no va");
+        Instantiate(deathparticles, transform);
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive(false);
+
         isDead = true;
     }
 

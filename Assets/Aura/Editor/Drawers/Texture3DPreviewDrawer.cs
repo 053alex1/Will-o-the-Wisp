@@ -25,7 +25,7 @@ namespace AuraAPI
     /// <summary>
     /// Custom drawer for Texture3DPreview attribute
     /// </summary>
-    [CustomPropertyDrawer(typeof(Texture3DPreviewAttribute))]
+  [CustomPropertyDrawer(typeof(Texture3DPreviewAttribute))]
     internal sealed class Texture3DPreviewDrawer : PropertyDrawer
     {
         #region Private Members

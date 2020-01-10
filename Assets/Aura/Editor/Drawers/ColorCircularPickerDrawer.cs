@@ -25,7 +25,7 @@ namespace AuraAPI
     /// <summary>
     /// Circular picker drawer attribute for Color properties
     /// </summary>
-    [CustomPropertyDrawer(typeof(ColorCircularPickerAttribute))]
+   [CustomPropertyDrawer(typeof(ColorCircularPickerAttribute))]
     internal sealed class ColorCircularPickerDrawer : PropertyDrawer
     {
         #region Private Members

@@ -394,7 +394,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead607e929d9cb743814bc571fe8f164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  deathparticles: {fileID: 0}
+  hp: 5
   mana: 20
   speed: 15
   jumpHeight: 0.5
@@ -529,7 +530,7 @@ PrefabInstance:
     - target: {fileID: -1899837586321297058, guid: c1c3df42001cc474fa9e302ba61e1196,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 373790013417133310, guid: c1c3df42001cc474fa9e302ba61e1196,
         type: 3}
