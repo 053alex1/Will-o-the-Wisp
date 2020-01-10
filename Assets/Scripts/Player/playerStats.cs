@@ -95,7 +95,7 @@ public class playerStats : MonoBehaviour
         myAnim.SetTrigger("death");
 
         Instantiate(deathparticles, transform);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(7);
         gameObject.SetActive(false);
         isDead = true;
     }
