@@ -22,6 +22,9 @@ public class playerStats : MonoBehaviour
     public bool Ultim = false;
     private Animator myAnim;
     public GUIInteraction gui;
+    public bool isDying = false;  // para saber si estoy en los 3 segundos de espera
+
+
 
 
     public float getHp()
@@ -68,6 +71,7 @@ public class playerStats : MonoBehaviour
     }
     public void getHit(float damage)
     {
+        if (isDead || isDying) return;
         myAnim.SetTrigger("isHurt");
         hp -= damage;
         if (hp > 0) { gui.ChangeLife(hp); Debug.Log("Player ouch - " + hp + " hp left"); }
@@ -86,18 +90,32 @@ public class playerStats : MonoBehaviour
         isDead = true;
     }
 
+  /  private IEnumerator deadhit()
+    {
+        isDying = true;
+        GameObject m = GameObject.Find("DagdaMesh");
+        m.SetActive(false);
+        m = GameObject.Find("DagdaArmature");
+        m.SetActive(false);
+
+        Instantiate(deathparticles, transform);
+
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive(false);
+        isDead = true;
+    }
+
     private IEnumerator deadhit()
     {
         //seve.enabled = false;
-        SkinnedMeshRenderer mesh;
-        mesh = GetComponentInChildren<SkinnedMeshRenderer>();
-        Debug.Log(mesh);
-        mesh.enabled = false;
-        Debug.Log("no va");
+        //SkinnedMeshRenderer mesh;
+        //   mesh = GetComponentInChildren<SkinnedMeshRenderer>();
+        //  Debug.Log(mesh);
+        //  mesh.enabled = false;
+        //  Debug.Log("no va");
         Instantiate(deathparticles, transform);
         yield return new WaitForSeconds(3);
         gameObject.SetActive(false);
-
         isDead = true;
     }
 
