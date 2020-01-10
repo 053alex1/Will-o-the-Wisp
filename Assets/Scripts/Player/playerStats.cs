@@ -96,7 +96,7 @@ public class playerStats : MonoBehaviour
         isDying = true;
         GameObject m = GameObject.Find("DagdaMesh");
         m.SetActive(false);
-        m = GameObject.Find("DagdaArmature");
+        m = GameObject.Find("Armature");
         m.SetActive(false);
 
         Instantiate(deathparticles, transform);
