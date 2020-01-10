@@ -6,7 +6,7 @@ public class BulletController : MonoBehaviour
 {
     public GameObject effect;
     private float bulletDuration = 5.0f;
-    private float bulletForce = 10.0f;
+    private float bulletForce = 8.0f;
     private float bulletRadius = 2.0f;
     private GameObject player;
     private playerStats ps;
@@ -30,16 +30,21 @@ public class BulletController : MonoBehaviour
         if (rbtarget != null)
         {
             rbtarget.AddExplosionForce(bulletForce, transform.position, bulletRadius);
-            if (col.collider.tag == "Enemy") {
-                    col.collider.GetComponent<BaseEnemy>().getHit(ps.lightDamage);
+            if (col.collider.tag == "Enemy")
+            {
+                col.collider.GetComponent<BaseEnemy>().getHit(ps.lightDamage);
             }
         }
         ContactPoint contact = col.GetContact(0);
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
         Vector3 pos = contact.point;
-        Instantiate(effect, pos, rot);
+        effect = (GameObject)Instantiate(effect, pos, rot);
 
         Destroy(gameObject);
-        Destroy(gameObject.GetComponent<ParticleSystem>(), bulletDuration);
+        Destroy(gameObject.GetComponent<GameObject>(), 5);
+        Destroy(effect);
+        Destroy(effect.GetComponent<GameObject>(), 5);
     }
+
+
 }

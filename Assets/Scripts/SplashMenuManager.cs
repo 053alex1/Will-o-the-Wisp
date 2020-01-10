@@ -10,7 +10,7 @@ public class SplashMenuManager : MonoBehaviour
 {
 
     const float ImageWidth = 5000.0f,
-                TimeOut = 19.0f;
+                TimeOut = 15.0f;
 
     public enum SplashStates
     {

@@ -4878,6 +4878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 100004, guid: a89abc0d2591545288f4c041059ae633, type: 3}
+  attack: {fileID: 100002}
 --- !u!54 &8729249398202232997
 Rigidbody:
   m_ObjectHideFlags: 0
