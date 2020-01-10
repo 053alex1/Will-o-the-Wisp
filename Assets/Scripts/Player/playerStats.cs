@@ -90,24 +90,7 @@ public class playerStats : MonoBehaviour
         isDead = true;
     }
 
-  //codigo que funciona pero que quita las animaciones
-  /*  private IEnumerator deadhit()
-    {
-        isDying = true;
-        GameObject m = GameObject.Find("DagdaMesh");
-        m.SetActive(false);
-        m = GameObject.Find("Armature");
-        m.SetActive(false);
-
-        Instantiate(deathparticles, transform);
-
-        yield return new WaitForSeconds(3);
-        gameObject.SetActive(false);
-        isDead = true;
-    }*/
-
-    //codigo que no funciona:
-   private IEnumerator deadhit()
+    private IEnumerator deadhit()
     {
         myAnim.SetTrigger("death");
 
@@ -116,5 +99,24 @@ public class playerStats : MonoBehaviour
         gameObject.SetActive(false);
         isDead = true;
     }
+
+
+    //codigo que no funciona y que quita las animaciones
+    /*  private IEnumerator deadhit()
+      {
+          isDying = true;
+          GameObject m = GameObject.Find("DagdaMesh");
+          m.SetActive(false);
+          m = GameObject.Find("Armature");
+          m.SetActive(false);
+
+          Instantiate(deathparticles, transform);
+
+          yield return new WaitForSeconds(3);
+          gameObject.SetActive(false);
+          isDead = true;
+      }*/
+
+    //codigo que no funciona:
 
 }
