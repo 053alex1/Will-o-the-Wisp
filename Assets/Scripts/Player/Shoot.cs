@@ -42,14 +42,12 @@ public class Shoot : MonoBehaviour
          if (check)
             {
                 Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
-                Debug.Log("Attack did hit something");
                 ps.reduceMana(ps.lightDamage);
                 
             }
             else
             {
                 Debug.DrawRay(transform.position, ray.direction * 1000, Color.white, 10f);
-                Debug.Log("Attack did not hit");
             }
 
         Rigidbody rbullet = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Rigidbody>();

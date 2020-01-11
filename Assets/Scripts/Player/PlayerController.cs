@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour
                     {
                         if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
                         LightAttack();
+                        attackTimestamp = Time.time;
                     }
                     else { Debug.Log("Not enough mana for light attack - Mana is " + ps.mana); }
                 } else { Debug.Log("Burbuja no es null - la burbuja me está siguiendo"); }
@@ -151,10 +152,11 @@ public class PlayerController : MonoBehaviour
             else if (burbuja == null)
             {
                 Debug.Log("Burbuja es null pero puedo atacar igualmente");
-                if (ps.mana >= 2)
+                if (ps.mana >= 2 && (attackTimestamp + attackDelay) < Time.time)
                 {
                     if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
                     LightAttack();
+                    attackTimestamp = Time.time;
                 }
                 else { Debug.Log("Not enough mana for light attack - Mana is " + ps.mana); }
             }
@@ -171,6 +173,7 @@ public class PlayerController : MonoBehaviour
                     {
                         if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
                         HeavyAttack();
+                        attackTimestamp = Time.time;
                     }
                     else Debug.Log("Not enough mana for heavy attack - Mana is " + ps.mana);
                 } else { Debug.Log("Burbuja no es null - la burbuja me está siguiendo"); }
@@ -182,11 +185,11 @@ public class PlayerController : MonoBehaviour
                 {
                     if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
                     HeavyAttack();
+                    attackTimestamp = Time.time;
                 }
                 else Debug.Log("Not enough mana for heavy attack - Mana is " + ps.mana);
             }
         }
-        attackTimestamp = Time.time;
     }
 
     float CalculateJumpVerticalSpeed(float height)
