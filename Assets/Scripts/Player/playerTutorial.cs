@@ -149,10 +149,10 @@ public class playerTutorial : MonoBehaviour
                 }  
             }
         }
-        //else{
-            //cl.FadeToLevel(); 
+        else{
+            cl.FadeToLevel(); 
             //POSAR CODI CANVI ESCENA ACI!!!!!!!
-        //}
+        }
     }
     void comprovantCondicio1() {
         burbuja = GameObject.FindGameObjectWithTag("Bubble");

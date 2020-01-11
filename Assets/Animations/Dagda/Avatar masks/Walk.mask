@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Walk
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 1
+  - m_Path: Armature/Bone.001
+    m_Weight: 1
+  - m_Path: Armature/Bone.001/Foot.Controller.L
+    m_Weight: 1
+  - m_Path: Armature/Bone.001/Foot.Controller.L/Leg.Controller.L
+    m_Weight: 1
+  - m_Path: Armature/Bone.001/Foot.Controller.L/Leg.Controller.L/Leg.Controller.L_end
+    m_Weight: 1
+  - m_Path: Armature/Bone.001/Foot.Controller.R
+    m_Weight: 1
+  - m_Path: Armature/Bone.001/Foot.Controller.R/Leg.Controller.R
+    m_Weight: 1
+  - m_Path: Armature/Bone.001/Foot.Controller.R/Leg.Controller.R/Leg.Controller.R_end
+    m_Weight: 1
+  - m_Path: Armature/Bone.001/Hand.Controller.L
+    m_Weight: 0
+  - m_Path: Armature/Bone.001/Hand.Controller.L/Hand.Controller.L_end
+    m_Weight: 1
+  - m_Path: Armature/Bone.001/Hand.Controller.R
+    m_Weight: 0
+  - m_Path: Armature/Bone.001/Hand.Controller.R/Hand.Controller.R_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/UpperLeg.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/UpperLeg.L/LowerLegr.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/UpperLeg.L/LowerLegr.L/Foot.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/UpperLeg.L/LowerLegr.L/Foot.L/Foot.L_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/UpperLeg.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/UpperLeg.R/LowerLegr.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/UpperLeg.R/LowerLegr.R/Foot.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/UpperLeg.R/LowerLegr.R/Foot.R/Foot.R_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist
+    m_Weight: 0
+  - m_Path: Armature/HipsController/Hips/Waist/Chest
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/Elbow.Controller.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/Elbow.Controller.L/Elbow.Controller.L_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger1.1.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger1.1.L/Finger1.2.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger1.1.L/Finger1.2.L/Finger1.3.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger1.1.L/Finger1.2.L/Finger1.3.L/Finger1.3.L_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger2.1.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger2.1.L/Finger2.2.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger2.1.L/Finger2.2.L/Finger2.3.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger2.1.L/Finger2.2.L/Finger2.3.L/Finger2.3.L_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger3.1.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger3.1.L/Finger3.2.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger3.1.L/Finger3.2.L/Finfer3.3.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger3.1.L/Finger3.2.L/Finfer3.3.L/Finfer3.3.L_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger4.1.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger4.1.L/Finger4.2.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger4.1.L/Finger4.2.L/Finger4.3.L
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.L/UpperArm.L/LowerArm.L/Hand.L/Finger4.1.L/Finger4.2.L/Finger4.3.L/Finger4.3.L_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/Elbow.Controller.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/Elbow.Controller.R/Elbow.Controller.R_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger1.1.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger1.1.R/Finger1.2.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger1.1.R/Finger1.2.R/Finger1.3.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger1.1.R/Finger1.2.R/Finger1.3.R/Finger1.3.R_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger2.1.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger2.1.R/Finger2.2.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger2.1.R/Finger2.2.R/Finger2.3.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger2.1.R/Finger2.2.R/Finger2.3.R/Finger2.3.R_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger3.1.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger3.1.R/Finger3.2.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger3.1.R/Finger3.2.R/Finfer3.3.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger3.1.R/Finger3.2.R/Finfer3.3.R/Finfer3.3.R_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger4.1.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger4.1.R/Finger4.2.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger4.1.R/Finger4.2.R/Finger4.3.R
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Elbow.R/UpperArm.R/LowerArm.R/Hand.R/Finger4.1.R/Finger4.2.R/Finger4.3.R/Finger4.3.R_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Neck
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Neck/Head
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Neck/Head/Head_end
+    m_Weight: 1
+  - m_Path: Armature/HipsController/Hips/Waist/Chest/Neck/Head/Pelo
+    m_Weight: 1
+  - m_Path: Dagda
+    m_Weight: 1
