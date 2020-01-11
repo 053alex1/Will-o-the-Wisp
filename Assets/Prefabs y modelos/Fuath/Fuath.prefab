@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  deathparticle: {fileID: 6740951784736388836, guid: d0f89ef884a79c847a1b8b702a270cbd,
+    type: 3}
 --- !u!114 &449225255211466836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +142,7 @@ MonoBehaviour:
   RadioMov: 40
   wanderTimer: 4
   TimerCDAttack: 2
+  TimerCDSalto: 7
   RadioVision: 80
   RadioSentido: 30
   fov: 90
@@ -709,6 +712,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fuath
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: f2107c448f05eac48ad8ea8e29e28120,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 04c2842d067957e40bc1239b10d30238, type: 2}
     - target: {fileID: -4216859302048453862, guid: f2107c448f05eac48ad8ea8e29e28120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -764,11 +772,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: f2107c448f05eac48ad8ea8e29e28120,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 04c2842d067957e40bc1239b10d30238, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2107c448f05eac48ad8ea8e29e28120, type: 3}
 --- !u!4 &5318866577120926138 stripped

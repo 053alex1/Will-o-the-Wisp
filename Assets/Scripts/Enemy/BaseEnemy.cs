@@ -12,6 +12,8 @@ public class BaseEnemy : MonoBehaviour
     private Scrollbar vida, vida1;
     private GameObject x;
     private Animator myAnimator;
+    public ParticleSystem deathparticle;
+
     void Start()
     {
         target = Camera.main.transform;
@@ -35,7 +37,23 @@ public class BaseEnemy : MonoBehaviour
         //Animación de recibir daño setTrigger
         hp -= damage;
         Debug.Log("Enemy ouch - " + hp + " hp left");
-        if (hp <= 0) Destroy(gameObject);
+        if (hp <= 0)
+        {
+            StartCoroutine(deadmon());
+            Destroy(gameObject);
+            
+
+        }
+
         vida.size = hp / Maxhp;
     }
+    
+    private IEnumerator deadmon()
+    {
+        Instantiate(deathparticle, transform);
+
+        yield return new WaitForSeconds(7);
+       
+    }
+
 }
