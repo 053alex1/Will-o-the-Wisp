@@ -17,16 +17,12 @@ public class playerStats : MonoBehaviour
     private const float maxMana = 15f;
     private float manaRegenPerSec = 0.75f;
     private float delay = 1f;   //Tiempo entre el último ataque de maná y la regeneración de este
-    private float timestamp = 0f;
+    private float manaTimestamp = 0f;
     public bool isDead;
     public bool Ultim = false;
     private Animator myAnim;
     public GUIInteraction gui;
     public bool isDying = false;  // para saber si estoy en los 3 segundos de espera
-
-
-
-
     public float getHp()
     {
         return hp;
@@ -41,12 +37,12 @@ public class playerStats : MonoBehaviour
     }
     public void reduceMana(float amount)
     {
-        timestamp = Time.time;              // Cuando se 
+        manaTimestamp = Time.time;
         mana = Mathf.Max(0, mana - amount);
     }
     public void regenMana()
     {
-        if (Time.time > (timestamp + delay))
+        if (Time.time > (manaTimestamp + delay))
         {      // Sólo se recupera el maná cuando hayan pasado los segundos del delay
             mana = Mathf.Min(maxMana, mana + (manaRegenPerSec * Time.deltaTime));
             gui.ChangeMagic(mana);
@@ -78,12 +74,8 @@ public class playerStats : MonoBehaviour
         else if (hp <= 0)
         {
             StartCoroutine(deadhit());
-
         }
-
-
     }
-
 
     public void dead()
     {
@@ -99,7 +91,6 @@ public class playerStats : MonoBehaviour
         gameObject.SetActive(false);
         isDead = true;
     }
-
 
     //codigo que no funciona y que quita las animaciones
     /*  private IEnumerator deadhit()

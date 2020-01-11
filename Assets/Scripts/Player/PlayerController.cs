@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public enum Sounds { JUMP, HIT, HITB, TOTAL_SOUNDS };
-
     private Rigidbody rb;
     private Transform tr;
     public Animator playerAnimator;
@@ -29,6 +28,8 @@ public class PlayerController : MonoBehaviour
     private BurbujaStats bs;
     public AudioSource[] Audios;
     public GUIInteraction gui;
+    private float attackTimestamp = 0f;
+    private float attackDelay = 1f;
 
 
     void Awake()
@@ -54,7 +55,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
         Move();
         Jump();
         bubbleFunction();
@@ -111,7 +111,6 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("isJumping", true);
           
             Audios[(int)Sounds.JUMP].Play(); //Reproducir audio
-
         }
     }
 
@@ -120,7 +119,6 @@ public class PlayerController : MonoBehaviour
         shootScript.lightShoot();
         Audios[(int)Sounds.HIT].Play(); //Reproducir audio
         gui.ChangeMagic(ps.mana);
-
     }
 
     void HeavyAttack()
@@ -128,13 +126,11 @@ public class PlayerController : MonoBehaviour
         shootScript.heavyShoot();
         Audios[(int)Sounds.HITB].Play(); //Reproducir audio
         gui.ChangeMagic(ps.mana);
-
     }
 
     void Attack()
     {
         burbuja = GameObject.FindGameObjectWithTag("Bubble");
-        //Debug.Log("!bs.seguir is: " + bs.seguir);
         if (Input.GetMouseButtonDown(0))
         {
             if (burbuja != null)
@@ -143,11 +139,10 @@ public class PlayerController : MonoBehaviour
                 if (!bs.seguir)
                 {
                     Debug.Log("Burbuja no es null - la burbuja no me está siguiendo");
-                    if (ps.mana >= 2)
+                    if (ps.mana >= 2 && (attackTimestamp + attackDelay) < Time.time)
                     {
                         if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
                         LightAttack();
-
                     }
                     else { Debug.Log("Not enough mana for light attack - Mana is " + ps.mana); }
                 } else { Debug.Log("Burbuja no es null - la burbuja me está siguiendo"); }
@@ -160,7 +155,6 @@ public class PlayerController : MonoBehaviour
                 {
                     if (!this.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dagda_correr")) playerAnimator.SetTrigger("isAttacking");
                     LightAttack();
-
                 }
                 else { Debug.Log("Not enough mana for light attack - Mana is " + ps.mana); }
             }
@@ -192,6 +186,7 @@ public class PlayerController : MonoBehaviour
                 else Debug.Log("Not enough mana for heavy attack - Mana is " + ps.mana);
             }
         }
+        attackTimestamp = Time.time;
     }
 
     float CalculateJumpVerticalSpeed(float height)
