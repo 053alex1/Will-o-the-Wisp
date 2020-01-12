@@ -65,3 +65,7 @@ Assembly-CSharp.csproj
 obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
 Will-o-the-Wisp.sln
 Will-o-the-Wisp-b51e5132aa4dbd19a08447409dceb3516b35eaab.sln
+.vs/Will-o-the-Wisp/v15/Server/sqlite3/storage.ide
+.vs/Will-o-the-Wisp/v15/Server/sqlite3/storage.ide-shm
+.vs/Will-o-the-Wisp/v15/Server/sqlite3/storage.ide-wal
+.vs/Will-o-the-Wisp/v15/.suo
