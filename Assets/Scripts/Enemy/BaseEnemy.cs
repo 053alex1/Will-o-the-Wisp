@@ -41,8 +41,6 @@ public class BaseEnemy : MonoBehaviour
         {
             StartCoroutine(deadmon());
             Destroy(gameObject);
-            
-
         }
 
         vida.size = hp / Maxhp;

@@ -98,7 +98,8 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(movegfx * ps.speed * Time.deltaTime, Space.World);
 
-        disparador.transform.rotation = Quaternion.Euler(0f, maincam.eulerAngles.y, 0f);
+        //disparador.transform.rotation = Quaternion.Euler(0f, maincam.eulerAngles.y, 0f);
+        disparador.transform.RotateAround(transform.position, Vector3.up, Input.GetAxis("Mouse X"));
         playerAnimator.SetFloat("Walking", Mathf.Abs(movegfx.x + movegfx.z));
     }
 
