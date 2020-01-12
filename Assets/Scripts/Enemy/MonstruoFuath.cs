@@ -140,17 +140,20 @@ public class MonstruoFuath : MonoBehaviour
                 myAnimator.SetTrigger("isAttacking");
         }
         
-        myAnimator.SetBool("isWalking", true);
+        //myAnimator.SetBool("isWalking", true);
     }
     private void salto()
     {
+        //myAnimator.SetBool("isWalking", false);
+
         agent.enabled=false;
         myAnimator.SetTrigger("StaticJump");
         Vector3 v = target.position - transform.position;
         v.Normalize();
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(v.x, 0, v.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f);
-        rigidbody.AddForce(700*v.x, 500, 700*v.z);
+        //rigidbody.AddForce(700*v.x, 500, 700*v.z, ForceMode.Impulse);
+        rigidbody.AddForce(10 * v.x, 10, 10 * v.z, ForceMode.Impulse);
         Grounded = false;
     }
 
@@ -241,11 +244,11 @@ public class MonstruoFuath : MonoBehaviour
          
         else if (posAntigua.x <= transform.position.x +7 && posAntigua.x >= transform.position.x -7 && posAntigua.z <= transform.position.z+7 && posAntigua.z >= transform.position.z - 7)
         {
-            Debug.Log("Soy " + gameObject.name);
+            //Debug.Log("Soy " + gameObject.name);
             myAnimator.SetBool("isWalking", false);
         }
         //else agent.SetDestination(posAntigua);
-        Debug.Log(transform.position.x+" "+ transform.position.z + "Tengo q ir a"+ posAntigua  );
+        //Debug.Log(transform.position.x+" "+ transform.position.z + "Tengo q ir a"+ posAntigua  );
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
