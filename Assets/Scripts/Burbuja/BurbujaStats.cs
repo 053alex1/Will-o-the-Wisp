@@ -41,7 +41,7 @@ public class BurbujaStats : MonoBehaviour
     }
     
     public void dañoRecibido() {
-        resistencia =- 1;
+        resistencia -= 1;
         gui.ChangeEnergy(resistencia);
     }
 }
