@@ -498,6 +498,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  deathparticle: {fileID: 6740951784736388836, guid: d0f89ef884a79c847a1b8b702a270cbd,
+    type: 3}
 --- !u!1 &2560153305160091642
 GameObject:
   m_ObjectHideFlags: 0
