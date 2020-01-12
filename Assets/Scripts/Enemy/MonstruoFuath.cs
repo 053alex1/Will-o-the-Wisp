@@ -7,9 +7,9 @@ using UnityEngine.AI;
 public class MonstruoFuath : MonoBehaviour
 {
     //Radio en el que busca una nueva posicion aleatoria a la que ir en Wander
-    public float RadioMov = 40;
+    private float RadioMov = 40;
     //Tiempo que tarda en buscar una nueva posicion a la que ir en Wander
-    public float wanderTimer = 4f;
+    private float wanderTimer = 6f;
     public float TimerCDAttack = 3.5f;
     public float TimerCDSalto = 7f;
     //Radio(distancia) maxima a la que busca a dagda
@@ -74,12 +74,12 @@ public class MonstruoFuath : MonoBehaviour
                     }
                 case (Estados.SIGUIENDO):
                     {
-                        cd = 0.5f;
+                        cd = 0.3f;
                         float dis = float.MaxValue;
                         MaqEstados = Estados.CAMINANDO;
                         burbuja = GameObject.FindGameObjectWithTag("Bubble");
-                        //if (burbuja)
-                        //    dis = seguir(burbuja.transform,float.MaxValue);
+                        if (burbuja)
+                            dis = seguir(burbuja.transform,float.MaxValue);
                         obj = seguir(target, dis);
 
                         break;
@@ -90,7 +90,7 @@ public class MonstruoFuath : MonoBehaviour
                         MaqEstados = Estados.SIGUIENDO;
                         if (timerAttack > TimerCDAttack)
                         {
-                            cd = 1f;
+                            cd = 1.5f;
                             timerAttack = 0;
                             ataca(obj);
                         }
@@ -102,7 +102,7 @@ public class MonstruoFuath : MonoBehaviour
                         MaqEstados = Estados.SIGUIENDO;
                         if (timerSalto >= TimerCDSalto)
                         {
-                            cd = 1f;
+                            cd = 1.5f;
                             timerSalto = 0;
                             salto();
                         }
@@ -157,7 +157,7 @@ public class MonstruoFuath : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, RadioVision);
+        Gizmos.DrawWireSphere(transform.position, RadioMov);
     }
     private float seguir(Transform target,float d)
     {
@@ -215,10 +215,10 @@ public class MonstruoFuath : MonoBehaviour
                     //Mirar al enemigo
                     Quaternion lookRotation = Quaternion.LookRotation(new Vector3(v.x, 0, v.z));
                     transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-                    cd = 0f;
+                    cd = 0.1f;
                 }
 
-                else { MaqEstados = Estados.ATACA_DIS; cd = 0f; }
+                else { MaqEstados = Estados.ATACA_DIS; cd = 0.1f; }
             }
             return dis;
         }
@@ -239,12 +239,13 @@ public class MonstruoFuath : MonoBehaviour
             myAnimator.SetBool("isWalking", true);
         }
          
-        else if (posAntigua.x == transform.position.x && posAntigua.z == transform.position.z)
+        else if (posAntigua.x <= transform.position.x +7 && posAntigua.x >= transform.position.x -7 && posAntigua.z <= transform.position.z+7 && posAntigua.z >= transform.position.z - 7)
         {
             Debug.Log("Soy " + gameObject.name);
             myAnimator.SetBool("isWalking", false);
         }
-        //Debug.Log(transform.position.x + transform.position.z + "Tengo q ir a"+ posAntigua  );
+        //else agent.SetDestination(posAntigua);
+        Debug.Log(transform.position.x+" "+ transform.position.z + "Tengo q ir a"+ posAntigua  );
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)

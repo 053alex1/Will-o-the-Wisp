@@ -68,8 +68,8 @@ public class Monstruobasico : MonoBehaviour
                     float dis = float.MaxValue;
                     MaqEstados = Estados.CAMINANDO;
                     burbuja = GameObject.FindGameObjectWithTag("Bubble");
-                    //if (burbuja)
-                    //    dis = seguir(burbuja.transform,float.MaxValue);
+                    if (burbuja)
+                        dis = seguir(burbuja.transform,float.MaxValue);
                     obj = seguir(target, dis);
 
                     break;
@@ -197,8 +197,8 @@ public class Monstruobasico : MonoBehaviour
             myAnimator.SetBool("isWalking", true);
             //Debug.Log("Soy " + gameObject.name);
         }
-         
-        else if (posAntigua.x == transform.position.x && posAntigua.z == transform.position.z)
+
+        else if (posAntigua.x <= transform.position.x + 7 && posAntigua.x >= transform.position.x - 7 && posAntigua.z <= transform.position.z + 7 && posAntigua.z >= transform.position.z - 7)
         {
             //Debug.Log("Soy " + gameObject.name);
             myAnimator.SetBool("isWalking", false);

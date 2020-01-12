@@ -68,8 +68,8 @@ public class MBanshee : MonoBehaviour
                     float dis = float.MaxValue;
                     MaqEstados = Estados.CAMINANDO;
                     burbuja = GameObject.FindGameObjectWithTag("Bubble");
-                    //if (burbuja)
-                    //    dis = seguir(burbuja.transform,float.MaxValue);
+                    if (burbuja)
+                        dis = seguir(burbuja.transform,float.MaxValue);
                     obj = seguir(target, dis);
 
                     break;
