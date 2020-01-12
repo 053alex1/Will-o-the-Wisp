@@ -13,7 +13,6 @@ public class PausedMenu : MonoBehaviour
     public playerStats dagdaStats;
     public GameObject background;
     public GameObject panel;
-    public GameObject panelStart;
     public GameObject panelControll;
     public GameObject panelOptions;
     public GameObject panelDeath;
@@ -26,11 +25,10 @@ public class PausedMenu : MonoBehaviour
 
     void Awake()
     {
-        if (SceneManager.GetActiveScene().name == "Level_1") startTime = true;
-        else primeraVegada = true;
+        
     }
 
-    void Start()
+    private void Start()
     {
         dagda = GameObject.Find("Dagda");
         cameraScript = GameObject.Find("Camera").GetComponent<CameraFollow>();
@@ -61,20 +59,6 @@ public class PausedMenu : MonoBehaviour
             }
         }
 
-        if(startTime){
-            ActivarMenuStart();
-            started = true;
-        }
-
-        if(started) {
-            if (Input.anyKey)
-            {
-                DesactivarMenu();
-                startTime = false;
-                started = false; 
-            }
-        }
-
         if (dagdaStats.isDead || GameObject.Find("Dagda") == null || !GameObject.Find("Dagda").active) {
             ActivarMenuMuerte();
         }
@@ -100,16 +84,11 @@ public class PausedMenu : MonoBehaviour
         dagdaControll.enabled = true;
         Time.timeScale = 1;
         AudioListener.pause = false;
-        // foreach (GameObject panel in paneles)
-        // {
-        //     panel.SetActive(false);
-        // }
         panelOptions.SetActive(false);
         panelControll.SetActive(false);
         background.SetActive(false);
         pauseMenu.SetActive(false);
         panelDeath.SetActive(false);
-        panelStart.SetActive(false);
         primeraVegada = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -135,23 +114,6 @@ public class PausedMenu : MonoBehaviour
         Screen.lockCursor = false;
     }
 
-    public void ActivarMenuStart() {
-        
-        primeraVegada = true;
-        panelOptions.SetActive(false);
-        panelControll.SetActive(false);
-        pauseMenu.SetActive(false);
-        cameraScript.enabled = false;
-        dagdaControll.enabled = false;
-        panelStart.SetActive(true);
-        Time.timeScale = 0;
-        //AudioListener.pause = true;
-        background.SetActive(true);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
-        Screen.lockCursor = false;
-    }
-
     public void SetVolume (float volume) {
         audioMixer.SetFloat("volume", volume);
     }
@@ -160,11 +122,8 @@ public class PausedMenu : MonoBehaviour
         audioMixer.SetFloat("efectos", volume);
     }
 
-
     public void SetVolumeMusica (float volume) {
         audioMixer.SetFloat("musica", volume);
     }
-
-    
 
 }
