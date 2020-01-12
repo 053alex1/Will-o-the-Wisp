@@ -40,6 +40,7 @@ public class BaseEnemy : MonoBehaviour
         if (hp <= 0)
         {
             StartCoroutine(deadmon());
+
             Destroy(gameObject);
             
 
