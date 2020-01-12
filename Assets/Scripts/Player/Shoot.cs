@@ -43,16 +43,14 @@ public class Shoot : MonoBehaviour
             {
                 Debug.DrawRay(transform.position, ray.direction * 1000, Color.red, 10f);
                 ps.reduceMana(ps.lightDamage);
-                
             }
             else
             {
                 Debug.DrawRay(transform.position, ray.direction * 1000, Color.white, 10f);
             }
-
+        Ray bulletRay = new Ray(transform.position, ray.direction);
         Rigidbody rbullet = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Rigidbody>();
-        rbullet.AddForce(ray.direction * bulletForce * Time.deltaTime, ForceMode.Impulse);
-
+        rbullet.GetComponent<BulletController>().AddForce2Bullet(bulletRay.direction);
     }
 
 }

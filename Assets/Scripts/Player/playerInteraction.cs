@@ -18,11 +18,11 @@ public class playerInteraction : MonoBehaviour
     private changelayer cl;
     private bool hablando = false;
     private bool primeraVegada = true;
+
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Dagda");
         ps = player.GetComponent<playerStats>();
-        msgPanel = GameObject.FindGameObjectWithTag("panelMensaje");
         cl = GameObject.Find("LevelChanger").GetComponentInChildren<changelayer>();
     }
     void Start()
@@ -41,15 +41,13 @@ public class playerInteraction : MonoBehaviour
         }
     }
 
-    void pulsaI() {
-        //Debug.Log("Se activa pulsaI");
+    void pulsaI()
+    {
         npc = GameObject.FindGameObjectWithTag("NPC");
         if (npc != null)
         {
-        //Debug.Log("Existe cernunos");
             if (Vector3.Distance(tr.position, npc.transform.position) < 16)
             {
-                //Debug.Log("Esta cerca");
                 msgPanel.SetActive(true);
                 string msg = npc.GetComponent<MsgNPC>().GetMsgPulsaI();
                 msgText.text = msg;

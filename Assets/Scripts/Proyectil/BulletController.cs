@@ -6,16 +6,16 @@ public class BulletController : MonoBehaviour
 {
     public GameObject effect;
     private float bulletDuration = 5.0f;
-    private float bulletForce = 8.0f;
+    private float bulletForce = 100.0f;
     private float bulletRadius = 2.0f;
     private GameObject player;
     private playerStats ps;
-
-
+    private Rigidbody rb;
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Dagda");
         ps = player.GetComponent<playerStats>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     void Start()
@@ -23,6 +23,10 @@ public class BulletController : MonoBehaviour
         Destroy(gameObject.GetComponent<ParticleSystem>(), bulletDuration);
         Destroy(gameObject, bulletDuration);
         Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), player.GetComponent<Collider>());
+    }
+
+    public void AddForce2Bullet(Vector3 bulletDirection) {
+        rb.AddForce(bulletDirection * bulletForce, ForceMode.Impulse);
     }
     void OnCollisionEnter(Collision col)
     {
@@ -45,6 +49,4 @@ public class BulletController : MonoBehaviour
         Destroy(effect);
         Destroy(effect.GetComponent<GameObject>(), 5);
     }
-
-
 }

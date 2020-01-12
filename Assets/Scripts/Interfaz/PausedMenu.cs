@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class PausedMenu : MonoBehaviour
 {
@@ -19,13 +20,18 @@ public class PausedMenu : MonoBehaviour
     public GameObject[] paneles;
     public bool isPaused = false;
     private bool primeraVegada;
-    private bool startTime = true;
+    private bool startTime = false;
     private bool started = false;
     public AudioMixer audioMixer;
 
-    void Start() {
-        //paneles = GameObject.FindGameObjectsWithTag("Panel");
-        panelStart = GameObject.Find("panelStart");
+    void Awake()
+    {
+        if (SceneManager.GetActiveScene().name == "Level_1") startTime = true;
+        else primeraVegada = true;
+    }
+
+    void Start()
+    {
         dagda = GameObject.Find("Dagda");
         cameraScript = GameObject.Find("Camera").GetComponent<CameraFollow>();
         dagdaStats = dagda.GetComponent<playerStats>();
@@ -35,28 +41,31 @@ public class PausedMenu : MonoBehaviour
         panelDeath = GameObject.Find("panelDeath");
         background = GameObject.Find("background");
         pauseMenu = GameObject.Find("pauseMenu");
+
+        DesactivarMenu();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = !isPaused;
-        }
-
-        if(isPaused)
-        {
-            ActivarMenu();
-        }
-        else
-        {
-            DesactivarMenu();
+            if(isPaused)
+            {
+                isPaused = false;
+                CambiarPausa();
+            }
+            else
+            {
+                isPaused = true;
+                ActivarMenu();
+            }
         }
 
         if(startTime){
             ActivarMenuStart();
             started = true;
         }
+
         if(started) {
             if (Input.anyKey)
             {
@@ -65,7 +74,6 @@ public class PausedMenu : MonoBehaviour
                 started = false; 
             }
         }
-
 
         if (dagdaStats.isDead || GameObject.Find("Dagda") == null || !GameObject.Find("Dagda").active) {
             ActivarMenuMuerte();
@@ -77,7 +85,6 @@ public class PausedMenu : MonoBehaviour
         dagdaControll.enabled = false;
         Time.timeScale = 0;
         //AudioListener.pause = true;
-        //canvas.SetActive(true);
         background.SetActive(true);
         if (primeraVegada){
             pauseMenu.SetActive(true);
@@ -101,8 +108,8 @@ public class PausedMenu : MonoBehaviour
         panelControll.SetActive(false);
         background.SetActive(false);
         pauseMenu.SetActive(false);
-        panelStart.SetActive(false);
         panelDeath.SetActive(false);
+        panelStart.SetActive(false);
         primeraVegada = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -110,6 +117,7 @@ public class PausedMenu : MonoBehaviour
     public void CambiarPausa() 
     {
         isPaused = false;
+        DesactivarMenu();
     }
     public void ActivarMenuMuerte() {
         
@@ -135,10 +143,10 @@ public class PausedMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         cameraScript.enabled = false;
         dagdaControll.enabled = false;
+        panelStart.SetActive(true);
         Time.timeScale = 0;
         //AudioListener.pause = true;
         background.SetActive(true);
-        panelStart.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         Screen.lockCursor = false;
