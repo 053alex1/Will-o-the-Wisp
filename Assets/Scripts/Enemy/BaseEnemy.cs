@@ -41,7 +41,7 @@ public class BaseEnemy : MonoBehaviour
         {
             StartCoroutine(deadmon());
 
-            Destroy(gameObject);
+            
         }
 
         vida.size = hp / Maxhp;
@@ -51,8 +51,8 @@ public class BaseEnemy : MonoBehaviour
     {
         Instantiate(deathparticle, transform);
 
-        yield return new WaitForSeconds(7);
-       
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 
 }
