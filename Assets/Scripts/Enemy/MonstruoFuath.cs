@@ -29,7 +29,9 @@ public class MonstruoFuath : MonoBehaviour
     private float timer, timerAttack, timerSalto, cd, obj;
     private Vector3 posAntigua;
     private bool Grounded = true;
-
+    public float dañoA;
+    public float dañoCol;
+    private playerStats targetStats;
     private enum Estados { ATACA_DIS, ATACA, CAMINANDO, SIGUIENDO };
     private Estados MaqEstados;
     //   private MetodosGenerales m;
@@ -43,6 +45,7 @@ public class MonstruoFuath : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindWithTag("Dagda").transform;
+        targetStats = target.GetComponent<playerStats>();
         rigidbody = GetComponent<Rigidbody>();
         timer = wanderTimer;
         timerSalto = TimerCDSalto;
@@ -135,12 +138,15 @@ public class MonstruoFuath : MonoBehaviour
             b.dañoRecibido();
             myAnimator.SetTrigger("isAttacking");
         }
-        else
-        {
-            playerStats targetStats = target.GetComponent<playerStats>();
-            targetStats.getHit(1f);
-            //if (!targetStats.dead())
-            myAnimator.SetTrigger("isAttacking");
+            else
+            {
+                
+                
+            if (!targetStats.isdead())
+            {
+                targetStats.getHit(dañoA);
+                myAnimator.SetTrigger("isAttacking");
+            }
         }
 
         //myAnimator.SetBool("isWalking", true);
@@ -211,20 +217,20 @@ public class MonstruoFuath : MonoBehaviour
             }
             //atacar+
 
-
-            if (follow && dis <= disAtqDis)
+            if (follow && dis <= agent.stoppingDistance)
             {
-                if (dis <= agent.stoppingDistance)
-                {
-                    myAnimator.SetBool("isWalking", false);
-                    MaqEstados = Estados.ATACA;
-                    //Mirar al enemigo
-                    Quaternion lookRotation = Quaternion.LookRotation(new Vector3(v.x, 0, v.z));
-                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-                    cd = 0.1f;
-                }
+                myAnimator.SetBool("isWalking", false);
+                MaqEstados = Estados.ATACA;
+                //Mirar al enemigo
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(v.x, 0, v.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+                cd = 0.1f;
+            }
+            else if (follow && dis <= disAtqDis && dis >= 11)
+            {
+               
 
-                else { MaqEstados = Estados.ATACA_DIS; cd = 0.1f; }
+                MaqEstados = Estados.ATACA_DIS; cd = 0.1f; 
             }
             return dis;
         }
@@ -272,6 +278,10 @@ public class MonstruoFuath : MonoBehaviour
         {
             Grounded = true;
             agent.enabled = true;
+        }
+        if (collision.collider.tag == "Dagda")
+        {
+            targetStats.getHit(dañoCol);
         }
     }
 }
