@@ -40,10 +40,7 @@ public class BaseEnemy : MonoBehaviour
         if (hp <= 0)
         {
             StartCoroutine(deadmon());
-
-            
         }
-
         vida.size = hp / Maxhp;
     }
     

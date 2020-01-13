@@ -26,7 +26,7 @@ public class MonstruoFuath : MonoBehaviour
     //Usados para el calculo(igual luego los quito de aquí
     protected Transform target;
     protected NavMeshAgent agent;
-    private float timer, timerAttack,timerSalto,cd, obj;
+    private float timer, timerAttack, timerSalto, cd, obj;
     private Vector3 posAntigua;
     private bool Grounded = true;
 
@@ -63,8 +63,10 @@ public class MonstruoFuath : MonoBehaviour
         //logica sencilla: si no estas siguiendo al protagonista tu recorrido es aleatorio
         if (cd > 0) cd -= Time.deltaTime;
 
-        else if (Grounded) { 
-            switch (MaqEstados) {
+        else if (Grounded)
+        {
+            switch (MaqEstados)
+            {
                 case (Estados.CAMINANDO):
                     {
                         cd = 0.2f;
@@ -79,7 +81,7 @@ public class MonstruoFuath : MonoBehaviour
                         MaqEstados = Estados.CAMINANDO;
                         burbuja = GameObject.FindGameObjectWithTag("Bubble");
                         if (burbuja)
-                            dis = seguir(burbuja.transform,float.MaxValue);
+                            dis = seguir(burbuja.transform, float.MaxValue);
                         obj = seguir(target, dis);
 
                         break;
@@ -108,7 +110,8 @@ public class MonstruoFuath : MonoBehaviour
                         }
                         break;
                     }
-            }; }
+            };
+        }
         else
         {
             Vector3 v = target.position - transform.position;
@@ -116,37 +119,37 @@ public class MonstruoFuath : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(v.x, 0, v.z));
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f);
         }
-       
+
     }
     private void ataca(float obj)
     {
-          myAnimator.SetBool("isWalking", false);
-            
+        myAnimator.SetBool("isWalking", false);
 
-            //ANIMACIÓN DE ATAQUE setTrigger
-            
-            // Debug.Log("Soy " + gameObject.name + " y he desactivado el walking y he hecho un ataque");
-            if (obj == -1)
-            {
-                BurbujaStats b = burbuja.transform.GetComponent<BurbujaStats>();
-                b.dañoRecibido();
-                myAnimator.SetTrigger("isAttacking");
+
+        //ANIMACIÓN DE ATAQUE setTrigger
+
+        // Debug.Log("Soy " + gameObject.name + " y he desactivado el walking y he hecho un ataque");
+        if (obj == -1)
+        {
+            BurbujaStats b = burbuja.transform.GetComponent<BurbujaStats>();
+            b.dañoRecibido();
+            myAnimator.SetTrigger("isAttacking");
         }
-            else
-            {
-                playerStats targetStats = target.GetComponent<playerStats>();
-                targetStats.getHit(1f);
-                //if (!targetStats.dead())
-                myAnimator.SetTrigger("isAttacking");
+        else
+        {
+            playerStats targetStats = target.GetComponent<playerStats>();
+            targetStats.getHit(1f);
+            //if (!targetStats.dead())
+            myAnimator.SetTrigger("isAttacking");
         }
-        
+
         //myAnimator.SetBool("isWalking", true);
     }
     private void salto()
     {
         //myAnimator.SetBool("isWalking", false);
 
-        agent.enabled=false;
+        agent.enabled = false;
         myAnimator.SetTrigger("StaticJump");
         Vector3 v = target.position - transform.position;
         v.Normalize();
@@ -162,10 +165,10 @@ public class MonstruoFuath : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, RadioMov);
     }
-    private float seguir(Transform target,float d)
+    private float seguir(Transform target, float d)
     {
-        
-        
+
+
         float dis, dot, dotfov;
         bool follow = false;
         //funciones para calcular si dagda esta en tu rango de vision y a tu distancia maxima de vision 
@@ -231,7 +234,7 @@ public class MonstruoFuath : MonoBehaviour
     public void wander()
     {
         //Animación de caminar setBool
-        
+
         // Cada vez que el timer supera el wander time busca una nueva posicion aleatoria a la que ir
         if (timer >= wanderTimer)
         {
@@ -241,8 +244,8 @@ public class MonstruoFuath : MonoBehaviour
             timer = 0;
             myAnimator.SetBool("isWalking", true);
         }
-         
-        else if (posAntigua.x <= transform.position.x +7 && posAntigua.x >= transform.position.x -7 && posAntigua.z <= transform.position.z+7 && posAntigua.z >= transform.position.z - 7)
+
+        else if (posAntigua.x <= transform.position.x + 7 && posAntigua.x >= transform.position.x - 7 && posAntigua.z <= transform.position.z + 7 && posAntigua.z >= transform.position.z - 7)
         {
             //Debug.Log("Soy " + gameObject.name);
             myAnimator.SetBool("isWalking", false);
@@ -271,4 +274,4 @@ public class MonstruoFuath : MonoBehaviour
             agent.enabled = true;
         }
     }
-    }
+}

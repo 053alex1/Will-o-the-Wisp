@@ -76,7 +76,6 @@ public class MBanshee : MonoBehaviour
                 }
             case (Estados.ATACA):
                 {
-                    
                     ataca(obj);
                     MaqEstados = Estados.SIGUIENDO;
                     break;

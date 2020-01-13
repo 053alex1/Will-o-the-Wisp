@@ -29,9 +29,7 @@ public class Summon : MonoBehaviour
                 comprobarSiMuerto();
             }
         }
-    }
-
-    
+    }    
     private void comprobarSiMuerto()
     {
         dullahanPer = GameObject.Find("Dullahan(Clone)");
@@ -52,7 +50,7 @@ public class Summon : MonoBehaviour
                 {
                     Instantiate(dullahan, new Vector3(891, 23, 90), Quaternion.identity);
                     comprobar = true;
-                }else{
+                } else {
                     Invoke("CernunnosSummon", 6.4f);
                     GameObject  effect = Instantiate(summonEffect, new Vector3(-29f, 2f, -53f), Quaternion.identity) as GameObject;
                     ParticleSystem part = effect.GetComponent<ParticleSystem>();

@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private float attackDelay = 1f;
     private bool isDead;
     private bool reallyDead;
-
+    private bool attached;
 
     void Awake()
     {
@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
         shootScript = disparador.GetComponent<Shoot>();
         burbuja = GameObject.FindGameObjectWithTag("Bubble");
         isDead = false;
+        attached = false;
     }
 
     void Start()
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviour
             Move();
             Jump();
             bubbleFunction();
-            Attack();
+            if (!attached) Attack();
         }
     }
 
@@ -218,11 +219,13 @@ public class PlayerController : MonoBehaviour
                     {
                         Debug.Log("Dejando de seguir a Dagda");
                         burbuja.GetComponent<BurbujaStats>().seguir = false;
+                        attached = false;
                     }
                     else
                     {
                         Debug.Log("Siguiendo a Dagda");
                         burbuja.GetComponent<BurbujaStats>().seguir = true;
+                        attached = true;
                     }
                 }
                 else
@@ -238,8 +241,15 @@ public class PlayerController : MonoBehaviour
                 b.transform.rotation = Quaternion.identity;
                 Debug.Log("La burbuja no estaba creada");
                 gui.CreateEnergyBar();
+                attached = true;
             }
         }
+    }
+    public void setBubbleAttached(bool state) {
+        attached = state;
+    }
+    public bool getBubbleAttached() {
+        return attached;
     }
 
     Vector3 getPlayerPosition()

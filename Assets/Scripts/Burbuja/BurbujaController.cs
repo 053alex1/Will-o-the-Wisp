@@ -41,9 +41,9 @@ public class BurbujaController : MonoBehaviour
     void FixedUpdate()
     {
         bubbleFloat();
-        fuegosCerca3();
+        fuegosCerca();
 
-        if (bs.resistencia <= 0) romperBurbuja3();
+        if (bs.resistencia <= 0) romperBurbuja();
         
         if (bs.seguir) {
             seguirProta();
@@ -65,18 +65,19 @@ public class BurbujaController : MonoBehaviour
         */
     }
     
-    void romperBurbuja3() {
+    void romperBurbuja() {
         cont = 0;
         tr.DetachChildren();
         foreach (GameObject fuego in fuegosLista)
         {
             fuego.GetComponent<FuegoStats>().libre = true;
         }
+        dagda.GetComponent<PlayerController>().setBubbleAttached(false);
         gui.DestroyEnergyBar();
         Destroy(gameObject);
     }
 
-    void fuegosCerca3() {
+    void fuegosCerca() {
         foreach (GameObject fuego in fuegosLista)
         {
             
