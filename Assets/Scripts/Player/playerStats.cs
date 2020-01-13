@@ -23,6 +23,7 @@ public class playerStats : MonoBehaviour
     private Animator myAnim;
     public GUIInteraction gui;
     public bool isDying = false;  // para saber si estoy en los 3 segundos de espera
+    public PlayerController playerCont;
     public float getHp()
     {
         return hp;
@@ -52,8 +53,8 @@ public class playerStats : MonoBehaviour
     {
         hp = maxHealth;
         mana = maxMana;
-        isDead = false;
         myAnim = GetComponentInChildren<Animator>();
+        playerCont = GetComponentInChildren<PlayerController>();
         gui = GameObject.Find("GUI").GetComponent<GUIInteraction>();
     }
     void Update()
@@ -63,51 +64,31 @@ public class playerStats : MonoBehaviour
     void Start()
     {
         InvokeRepeating("regenMana", 0f, manaRegenPerSec);  // Con esta función se invoca a regenMana() cada manaRegenPerSec segundos
-        //fillHp();
     }
     public void getHit(float damage)
     {
-        if (isDead || isDying) return;
+        if (playerCont.getDead() || isDying) return;
         myAnim.SetTrigger("isHurt");
         hp -= damage;
         if (hp > 0) { gui.ChangeLife(hp); Debug.Log("Player ouch - " + hp + " hp left"); }
         else if (hp <= 0)
         {
-            StartCoroutine(deadhit());
+            dead();
+            StartCoroutine(deadHit());
         }
     }
 
     public void dead()
     {
-        isDead = true;
+        playerCont.setDead(true);
     }
 
-    private IEnumerator deadhit()
+    private IEnumerator deadHit()
     {
         myAnim.SetTrigger("death");
-
         Instantiate(deathparticles, transform);
         yield return new WaitForSeconds(7);
         gameObject.SetActive(false);
-        isDead = true;
+        playerCont.setReallyDead(true);
     }
-
-    //codigo que no funciona y que quita las animaciones
-    /*  private IEnumerator deadhit()
-      {
-          isDying = true;
-          GameObject m = GameObject.Find("DagdaMesh");
-          m.SetActive(false);
-          m = GameObject.Find("Armature");
-          m.SetActive(false);
-
-          Instantiate(deathparticles, transform);
-
-          yield return new WaitForSeconds(3);
-          gameObject.SetActive(false);
-          isDead = true;
-      }*/
-
-    //codigo que no funciona:
-
 }

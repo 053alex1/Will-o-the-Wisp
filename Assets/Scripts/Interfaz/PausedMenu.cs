@@ -41,7 +41,6 @@ public class PausedMenu : MonoBehaviour
         background = GameObject.Find("background");
         pauseMenu = GameObject.Find("pauseMenu");
         panelCreditos = GameObject.Find("panelCreditos");
-
         DesactivarMenu();
     }
 
@@ -61,7 +60,7 @@ public class PausedMenu : MonoBehaviour
             }
         }
 
-        if (dagdaStats.isDead || GameObject.Find("Dagda") == null || !GameObject.Find("Dagda").active) {
+        if (dagdaControll.getReallyDead() || GameObject.Find("Dagda") == null || !GameObject.Find("Dagda").active) {
             ActivarMenuMuerte();
         }
     }
