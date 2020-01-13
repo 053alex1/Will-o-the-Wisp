@@ -97,13 +97,8 @@ public class playerInteraction : MonoBehaviour
                                 msgPanel.SetActive(false);
                                 ps.Ultim = false;
                                 //hablando = false; Com volem canviar el nivell no fa falta canviar esta variable
-                                if(SceneManager.GetActiveScene().buildIndex == 4)
-                                {
-                                    //falta fundido a negro
-                                    menus.GetComponent<PausedMenu>().ActivarCreditos();
-                                }else {
+                                
                                 cl.FadeToLevel();
-                                }
                             }
                         }
                         else
@@ -148,12 +143,7 @@ public class playerInteraction : MonoBehaviour
                                 msgPanel.SetActive(false);
                                 ps.Ultim = false;
                                 //hablando = false; Com volem canviar el nivell no fa falta canviar esta variable
-                                if(SceneManager.GetActiveScene().buildIndex == 4)
-                                {
-                                    //fundido a negro
-                                }else {
-                                cl.FadeToLevel();
-                                }
+                                menus.GetComponent<PausedMenu>().ActivarCreditos();
                             }
                         }
                         else
