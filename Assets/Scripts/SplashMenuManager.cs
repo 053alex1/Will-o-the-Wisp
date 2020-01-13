@@ -10,7 +10,7 @@ public class SplashMenuManager : MonoBehaviour
 {
 
     const float ImageWidth = 5000.0f,
-                TimeOut = 15.0f;
+                TimeOut = 16.2f;
 
     public enum SplashStates
     {
@@ -46,7 +46,7 @@ public class SplashMenuManager : MonoBehaviour
                 //Si llega a cierto tamaño, para de aumentar
                 if (transform.localScale.x <= 1)
                 {
-                    transform.localScale = new Vector2(1F, 1F);
+                    transform.localScale = new Vector2(1.5F, 1.5F);
                 }
 
                 break;
