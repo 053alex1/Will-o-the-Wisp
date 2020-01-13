@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public GUIInteraction gui;
     private float attackTimestamp = 0f;
     private float attackDelay = 1f;
+    private bool isDead;
+    private bool reallyDead;
 
 
     void Awake()
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
         disparador = GameObject.Find("Disparador");
         shootScript = disparador.GetComponent<Shoot>();
         burbuja = GameObject.FindGameObjectWithTag("Bubble");
+        isDead = false;
     }
 
     void Start()
@@ -50,15 +53,16 @@ public class PlayerController : MonoBehaviour
         ps.isGrounded = true;
         ps.isRunning = false;
         Audios = GetComponents<AudioSource>();
-
     }
 
     void Update()
     {
-        Move();
-        Jump();
-        bubbleFunction();
-        Attack();
+        if (!isDead) {
+            Move();
+            Jump();
+            bubbleFunction();
+            Attack();
+        }
     }
 
     void Move()
@@ -263,5 +267,23 @@ public class PlayerController : MonoBehaviour
             gui.ChangeLife(ps.getHp());
         }
     }
+
+    public void setDead(bool state) {
+        isDead = state;
+        Debug.Log("Dead has been set to " + state);
+    }
+
+    public bool getDead() {
+        return isDead;
+    }
+
+    public void setReallyDead(bool state) {
+        reallyDead = state;
+    }
+
+    public bool getReallyDead() {
+        return reallyDead;
+    }
+
 
 }
