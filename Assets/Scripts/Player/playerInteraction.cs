@@ -13,6 +13,7 @@ public class playerInteraction : MonoBehaviour
     public Text msgText;
     public GameObject canvas;
     public GameObject npc;
+    public GameObject menus;
     GameObject player;
     public GameObject burbuja;
     public playerStats ps;
@@ -25,6 +26,7 @@ public class playerInteraction : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Dagda");
         ps = player.GetComponent<playerStats>();
         cl = GameObject.Find("LevelChanger").GetComponentInChildren<changelayer>();
+        menus = GameObject.Find("Menus");
     }
     void Start()
     {
@@ -97,7 +99,8 @@ public class playerInteraction : MonoBehaviour
                                 //hablando = false; Com volem canviar el nivell no fa falta canviar esta variable
                                 if(SceneManager.GetActiveScene().buildIndex == 4)
                                 {
-                                    //fundido a negro
+                                    //falta fundido a negro
+                                    menus.GetComponent<PausedMenu>().ActivarCreditos();
                                 }else {
                                 cl.FadeToLevel();
                                 }

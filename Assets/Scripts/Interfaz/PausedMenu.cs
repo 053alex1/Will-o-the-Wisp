@@ -15,6 +15,7 @@ public class PausedMenu : MonoBehaviour
     public GameObject panel;
     public GameObject panelControll;
     public GameObject panelOptions;
+    public GameObject panelCreditos;
     public GameObject panelDeath;
     public GameObject[] paneles;
     public bool isPaused = false;
@@ -39,6 +40,7 @@ public class PausedMenu : MonoBehaviour
         panelDeath = GameObject.Find("panelDeath");
         background = GameObject.Find("background");
         pauseMenu = GameObject.Find("pauseMenu");
+        panelCreditos = GameObject.Find("panelCreditos");
 
         DesactivarMenu();
     }
@@ -89,6 +91,7 @@ public class PausedMenu : MonoBehaviour
         background.SetActive(false);
         pauseMenu.SetActive(false);
         panelDeath.SetActive(false);
+        panelCreditos.SetActive(false);
         primeraVegada = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -104,13 +107,30 @@ public class PausedMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         panelOptions.SetActive(false);
         panelControll.SetActive(false);
-        pauseMenu.SetActive(false);
+        pauseMenu.SetActive(false);;
+        panelCreditos.SetActive(false);
         cameraScript.enabled = false;
         dagdaControll.enabled = false;
         Time.timeScale = 0;
         //AudioListener.pause = true;
         background.SetActive(true);
         panelDeath.SetActive(true);
+        Screen.lockCursor = false;
+    }
+
+    public void ActivarCreditos() {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        panelOptions.SetActive(false);
+        panelControll.SetActive(false);
+        pauseMenu.SetActive(false);
+        panelDeath.SetActive(false);
+        cameraScript.enabled = false;
+        dagdaControll.enabled = false;
+        Time.timeScale = 0;
+        //AudioListener.pause = true;
+        background.SetActive(true);
+        panelCreditos.SetActive(true);
         Screen.lockCursor = false;
     }
 
