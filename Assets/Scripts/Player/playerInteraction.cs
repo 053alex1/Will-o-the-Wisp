@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class playerInteraction : MonoBehaviour
@@ -67,47 +68,105 @@ public class playerInteraction : MonoBehaviour
             npc = GameObject.FindGameObjectWithTag("NPC");
             if (npc != null)
             {
-                Debug.Log("Found Cernunnos");
-                Debug.Log("Distance: " + Vector3.Distance(tr.position, npc.transform.position));
-                if (Vector3.Distance(tr.position, npc.transform.position) < 16)
+                if(GameObject.Find("Cernunnos(Clone)") == npc) 
                 {
-                    Debug.Log("Cernunnos talking");
-                    npc.GetComponentInChildren<Animator>().SetTrigger("interaction");
-
-                    if (primeraVegada) {
-                        msgPanel.SetActive(false);
-                        primeraVegada = false;
-                    }
-                    if (msgPanel.activeSelf == true)
+                    Debug.Log("Found Cernunnos");
+                    Debug.Log("Distance: " + Vector3.Distance(tr.position, npc.transform.position));
+                    if (Vector3.Distance(tr.position, npc.transform.position) < 16)
                     {
-                        npc.GetComponent<MsgNPC>().okButon();
-                        if (!ps.Ultim)
+                        Debug.Log("Cernunnos talking");
+                        npc.GetComponentInChildren<Animator>().SetTrigger("interaction");
+
+                        if (primeraVegada) {
+                            msgPanel.SetActive(false);
+                            primeraVegada = false;
+                        }
+                        if (msgPanel.activeSelf == true)
                         {
-                            string msg = npc.GetComponent<MsgNPC>().GetMsg();
-                            msgText.text = msg;
+                            npc.GetComponent<MsgNPC>().okButon();
+                            if (!ps.Ultim)
+                            {
+                                string msg = npc.GetComponent<MsgNPC>().GetMsg();
+                                msgText.text = msg;
+                            }
+                            else
+                            {
+                                npc.GetComponent<MsgNPC>().resetIndex();
+                                msgPanel.SetActive(false);
+                                ps.Ultim = false;
+                                //hablando = false; Com volem canviar el nivell no fa falta canviar esta variable
+                                if(SceneManager.GetActiveScene().buildIndex == 4)
+                                {
+                                    //fundido a negro
+                                }else {
+                                cl.FadeToLevel();
+                                }
+                            }
                         }
                         else
                         {
-                            npc.GetComponent<MsgNPC>().resetIndex();
-                            msgPanel.SetActive(false);
-                            ps.Ultim = false;
-                            //hablando = false; Com volem canviar el nivell no fa falta canviar esta variable
-                            cl.FadeToLevel();
+                            msgPanel.SetActive(true);
+                            string msg = npc.GetComponent<MsgNPC>().GetMsg();
+                            msgText.text = msg;
                         }
                     }
                     else
                     {
-                        msgPanel.SetActive(true);
-                        string msg = npc.GetComponent<MsgNPC>().GetMsg();
-                        msgText.text = msg;
+                        npc.GetComponent<MsgNPC>().resetIndex();
+                        msgPanel.SetActive(false);
+                        primeraVegada = true;
+                        hablando = false;
                     }
                 }
-                else
+                else if (GameObject.Find("Donn(Clone)") == npc)
                 {
-                    npc.GetComponent<MsgNPC>().resetIndex();
-                    msgPanel.SetActive(false);
-                    primeraVegada = true;
-                    hablando = false;
+                    Debug.Log("Found Donn");
+                    Debug.Log("Distance: " + Vector3.Distance(tr.position, npc.transform.position));
+                    if (Vector3.Distance(tr.position, npc.transform.position) < 16)
+                    {
+                        Debug.Log("Cernunnos talking");
+                        npc.GetComponentInChildren<Animator>().SetTrigger("interaction");
+
+                        if (primeraVegada) {
+                            msgPanel.SetActive(false);
+                            primeraVegada = false;
+                        }
+                        if (msgPanel.activeSelf == true)
+                        {
+                            npc.GetComponent<MsgNPC2>().okButon();
+                            if (!ps.Ultim)
+                            {
+                                string msg = npc.GetComponent<MsgNPC2>().GetMsg();
+                                msgText.text = msg;
+                            }
+                            else
+                            {
+                                npc.GetComponent<MsgNPC2>().resetIndex();
+                                msgPanel.SetActive(false);
+                                ps.Ultim = false;
+                                //hablando = false; Com volem canviar el nivell no fa falta canviar esta variable
+                                if(SceneManager.GetActiveScene().buildIndex == 4)
+                                {
+                                    //fundido a negro
+                                }else {
+                                cl.FadeToLevel();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            msgPanel.SetActive(true);
+                            string msg = npc.GetComponent<MsgNPC2>().GetMsg();
+                            msgText.text = msg;
+                        }
+                    }
+                    else
+                    {
+                        npc.GetComponent<MsgNPC2>().resetIndex();
+                        msgPanel.SetActive(false);
+                        primeraVegada = true;
+                        hablando = false;
+                    }
                 }
             }
         }

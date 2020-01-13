@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MsgNPC : MonoBehaviour
+public class MsgNPC2 : MonoBehaviour
 {
     public GameObject dagda;
     public playerStats ps;
@@ -13,13 +13,15 @@ public class MsgNPC : MonoBehaviour
         dagda = GameObject.FindGameObjectWithTag("Dagda");
         ps = dagda.GetComponent<playerStats>();
     }
+
     public string[] msg = { 
-        "Cuánto tiempo Dagda.",
-        "Hemos estado esperando tu regreso.",
-        "Confío en que puedas rescatar a los otros.",
-        "Mantente de pie valiente, defiéndete, eres un guerrero.",
-        "Siempre estaré en deuda contigo, amgio mío."
+        "Gracias por devolverme mi poder Dagda.",
+        "El bosque es cada vez más hostil y las fuerzas Fomoré resurgen con más intensidad, pero ya casi nos has salvado a todos. ",
+        "Solo Lugh y Morrigan están prisioneros todavía.",
+        "Con ellos libres, los Tuatha Dé Danann recuperaremos todo nuestro poder,",
+        "y seremos capaces de encerrar a los Fomoré para siempre… "
     };
+
     public string[] msgPulsaI = {
         "Pulsa I para interactuar"
     };
@@ -31,6 +33,7 @@ public class MsgNPC : MonoBehaviour
     public string GetMsg() {
         return msg[index];
     }
+
 
     public void okButon(){
         if (index == msg.Length - 1) {
