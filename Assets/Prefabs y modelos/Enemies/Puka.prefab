@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4881690201090154750}
   m_Layer: 0
   m_Name: Puka
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67502bc2a8c69314ca3bcdfb746a8705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 15
   deathparticle: {fileID: 6740951784736388836, guid: 3766c111ba0a16941a43117f2fa95ffc,
     type: 3}
 --- !u!195 &3469678392239989039
@@ -147,6 +147,8 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   GFX: {fileID: 235765326181925109}
   burbuja: {fileID: 0}
+  "da\xF1oA": 0
+  "da\xF1oCol": 0
 --- !u!1 &460757148989081652
 GameObject:
   m_ObjectHideFlags: 0

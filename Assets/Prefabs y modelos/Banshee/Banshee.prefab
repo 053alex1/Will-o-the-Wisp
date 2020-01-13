@@ -451,8 +451,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.7
-  m_Speed: 40
-  m_Acceleration: 8
+  m_Speed: 45
+  m_Acceleration: 7
   avoidancePriority: 50
   m_AngularSpeed: 160
   m_StoppingDistance: 0
@@ -480,7 +480,7 @@ MonoBehaviour:
   TimerCDAttack: 2
   RadioVision: 80
   RadioSentido: 30
-  fov: 90
+  fov: 110
   disAtqDis: 20
   playerAnimator: {fileID: 0}
   GFX: {fileID: 5811491574613121393}
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67502bc2a8c69314ca3bcdfb746a8705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 12
   deathparticle: {fileID: 6740951784736388836, guid: d0f89ef884a79c847a1b8b702a270cbd,
     type: 3}
 --- !u!1 &2560153305160091642

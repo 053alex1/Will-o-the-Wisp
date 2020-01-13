@@ -5521,7 +5521,7 @@ GameObject:
   - component: {fileID: 1962919722}
   m_Layer: 0
   m_Name: Dullahan
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5606,7 +5606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67502bc2a8c69314ca3bcdfb746a8705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 22
   deathparticle: {fileID: 0}
 --- !u!114 &1962919721
 MonoBehaviour:
@@ -5630,8 +5630,8 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   GFX: {fileID: 8689618620408456809}
   burbuja: {fileID: 0}
-  "da\xF1oA": 9
-  "da\xF1oCol": 2
+  "da\xF1oA": 10
+  "da\xF1oCol": 5
 --- !u!195 &1962919722
 NavMeshAgent:
   m_ObjectHideFlags: 0
