@@ -12,8 +12,10 @@ public class Summon : MonoBehaviour
     public GameObject donn;
     
     public GameObject dullahan;
+    public GameObject dullahanPer;
     private GameObject bubble;
-    private bool comprobar = false;
+    public bool comprobar = false;
+    public bool stopComprobar = false;
 
     void Awake() {
         bc = GetComponent<BurbujaController>();
@@ -22,25 +24,21 @@ public class Summon : MonoBehaviour
     }
     void Update()
     {
-        if(comprobar){
-            comprobarSiMuerto();
+        if(!stopComprobar){
+            if(comprobar){
+                comprobarSiMuerto();
+            }
         }
     }
 
     
     private void comprobarSiMuerto()
     {
-        dullahan = GameObject.Find("Dullahan");
-        if(dullahan == null)
-        {/*
-            Invoke("DonnSummon", 6.4f);
-            GameObject  effect = Instantiate(summonEffect, new Vector3(-29f, 2f, -53f), Quaternion.identity) as GameObject;
-            ParticleSystem part = effect.GetComponent<ParticleSystem>();
-            Destroy(effect, part.main.duration);
-            */
+        dullahanPer = GameObject.Find("Dullahan(Clone)");
+        if(dullahanPer == null)
+        {
             DonnSummon();
-            Debug.Log("Has reunido todos los fuegos");
-            DestroyBubbleAndFires();
+            stopComprobar=true;
         }
     }
     
@@ -52,7 +50,7 @@ public class Summon : MonoBehaviour
             if(bc.cont == fuegosLength) {
                 if(SceneManager.GetActiveScene().buildIndex == 4)
                 {
-                    Instantiate(dullahan);
+                    Instantiate(dullahan, new Vector3(891, 23, 90), Quaternion.identity);
                     comprobar = true;
                 }else{
                     Invoke("CernunnosSummon", 6.4f);
@@ -72,7 +70,7 @@ public class Summon : MonoBehaviour
     }
 
     void DonnSummon() {
-        Instantiate(donn);
+        Instantiate(donn, new Vector3(880, 22, 96), Quaternion.identity);
     }
 
     void DestroyBubbleAndFires()
