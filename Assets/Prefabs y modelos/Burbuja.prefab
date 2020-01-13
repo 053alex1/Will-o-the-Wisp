@@ -123,6 +123,7 @@ MonoBehaviour:
   exist: 0
   quet: 1
   radio: 0
+  gui: {fileID: 0}
 --- !u!54 &5956468708454806440
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -155,6 +156,7 @@ MonoBehaviour:
   pushStrength: 0
   fuegosLista: []
   cont: 0
+  gui: {fileID: 0}
 --- !u!95 &2940202626828370802
 Animator:
   serializedVersion: 3
@@ -190,3 +192,4 @@ MonoBehaviour:
     type: 3}
   summonEffect: {fileID: 1789005739015704, guid: bec1f133b07f34245a4f056ac2397c3f,
     type: 3}
+  donn: {fileID: 5391208942689332211, guid: b646e3d083ee9cb42b122ef39ba885a2, type: 3}

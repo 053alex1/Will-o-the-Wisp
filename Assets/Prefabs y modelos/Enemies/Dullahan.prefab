@@ -2018,7 +2018,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4004549821302171457}
   m_LocalRotation: {x: -0.7071068, y: -0.00000011520233, z: -0.00000011520235, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 5.4530334, z: 0.2156927}
+  m_LocalPosition: {x: -0, y: 5.45, z: 0.2156927}
   m_LocalScale: {x: 0.97700226, y: 0.97700226, z: 0.97700226}
   m_Children: []
   m_Father: {fileID: 5678163646405284986}
@@ -4964,6 +4964,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5678163646405284986}
   - component: {fileID: 2325792553532832000}
+  - component: {fileID: 1962919723}
+  - component: {fileID: 1962919724}
+  - component: {fileID: 1962919720}
+  - component: {fileID: 1962919721}
+  - component: {fileID: 1962919722}
   m_Layer: 0
   m_Name: Dullahan
   m_TagString: Untagged
@@ -4978,9 +4983,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8689618620408456809}
-  m_LocalRotation: {x: -0, y: -0.5517314, z: -0, w: 0.8340219}
+  m_LocalRotation: {x: 0, y: -0.5517332, z: 0, w: 0.83402073}
   m_LocalPosition: {x: 779.12067, y: 15.17, z: 106.24311}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.98208}
   m_Children:
   - {fileID: 4024617115528810091}
   - {fileID: 4337566623880217315}
@@ -5008,6 +5013,94 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &1962919723
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8689618620408456809}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &1962919724
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8689618620408456809}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.510733
+  m_Height: 16.354742
+  m_Direction: 1
+  m_Center: {x: 0.12747075, y: -3.1278086, z: -0.8143538}
+--- !u!114 &1962919720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8689618620408456809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67502bc2a8c69314ca3bcdfb746a8705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 10
+  deathparticle: {fileID: 0}
+--- !u!114 &1962919721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8689618620408456809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2bb31123597f54fb9d5f662aa8ed46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RadioMov: 40
+  wanderTimer: 4
+  TimerCDAttack: 2
+  RadioVision: 80
+  RadioSentido: 30
+  fov: 90
+  disAtqDis: 20
+  playerAnimator: {fileID: 0}
+  GFX: {fileID: 0}
+  burbuja: {fileID: 0}
+--- !u!195 &1962919722
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8689618620408456809}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.7
+  m_Speed: 40
+  m_Acceleration: 10
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 10
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1.2
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8762009087553081338
 GameObject:
   m_ObjectHideFlags: 0

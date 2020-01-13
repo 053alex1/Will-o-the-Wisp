@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AparisionNpc : MonoBehaviour
 {
+    private GameObject dullahan;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class AparisionNpc : MonoBehaviour
         dullahan = GameObject.Find("Dullahan");
         if(dullahan == null)
         {
-            
+
         }
     }
 }

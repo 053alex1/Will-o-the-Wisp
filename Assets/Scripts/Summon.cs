@@ -9,6 +9,9 @@ public class Summon : MonoBehaviour
     private BurbujaController bc;
     private int fuegosLength;
 
+    public GameObject donn;
+    
+    private GameObject dullahan;
     private GameObject bubble;
 
     void Awake() {
@@ -16,6 +19,28 @@ public class Summon : MonoBehaviour
         fuegosLength = GetComponent<BurbujaStats>().fuegoFatuos.Length - 1;
         bubble = GameObject.Find("Burbuja(Clone)");
     }
+    void Update()
+    {
+        comprobarSiMuerto();
+    }
+
+    
+    private void comprobarSiMuerto()
+    {
+        dullahan = GameObject.Find("Dullahan");
+        if(dullahan == null)
+        {/*
+            Invoke("DonnSummon", 6.4f);
+            GameObject  effect = Instantiate(summonEffect, new Vector3(-29f, 2f, -53f), Quaternion.identity) as GameObject;
+            ParticleSystem part = effect.GetComponent<ParticleSystem>();
+            Destroy(effect, part.main.duration);
+            */
+            DonnSummon();
+            Debug.Log("Has reunido todos los fuegos");
+            DestroyBubbleAndFires();
+        }
+    }
+    
     void OnTriggerEnter(Collider other){ 
         Debug.Log("Collided with something: " + other.tag);
         if (other.gameObject.tag == "Altar") {
@@ -34,6 +59,10 @@ public class Summon : MonoBehaviour
 
     void CernunnosSummon() {
         Instantiate(cernunnos);
+    }
+
+    void DonnSummon() {
+        Instantiate(donn);
     }
 
     void DestroyBubbleAndFires()
