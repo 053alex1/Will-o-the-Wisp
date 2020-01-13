@@ -260,12 +260,6 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("isJumping", false);
         }
 
-        if (collision.collider.tag == "Enemy")
-        {
-            playerAnimator.SetTrigger("isHurt");
-            ps.getHit(10.0f);
-            gui.ChangeLife(ps.getHp());
-        }
     }
 
     public void setDead(bool state) {

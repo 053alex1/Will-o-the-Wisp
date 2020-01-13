@@ -26,7 +26,9 @@ public class Monstruobasico : MonoBehaviour
     protected NavMeshAgent agent;
     private float timer, timerAttack, obj;
     private Vector3 posAntigua;
-
+    public float dañoA;
+    public float dañoCol;
+    private playerStats targetStats;
 
     private enum Estados { ATACA_DIS, ATACA, CAMINANDO, SIGUIENDO };
     private Estados MaqEstados;
@@ -41,6 +43,8 @@ public class Monstruobasico : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindWithTag("Dagda").transform;
+
+        targetStats = target.GetComponent<playerStats>();
         timer = wanderTimer;
         timerAttack = TimerCDAttack;
         agent.speed = 40f;
@@ -54,6 +58,7 @@ public class Monstruobasico : MonoBehaviour
     void Update()
     {
         timerAttack += Time.deltaTime;
+        timer += Time.deltaTime;
         //logica sencilla: si no estas siguiendo al protagonista tu recorrido es aleatorio
 
         switch (MaqEstados) {
@@ -97,17 +102,21 @@ public class Monstruobasico : MonoBehaviour
             timerAttack = 0;
 
             //ANIMACIÓN DE ATAQUE setTrigger
-            myAnimator.SetTrigger("isAttacking");
+            
             // Debug.Log("Soy " + gameObject.name + " y he desactivado el walking y he hecho un ataque");
             if (obj == -1)
             {
                 BurbujaStats b = burbuja.transform.GetComponent<BurbujaStats>();
                 b.dañoRecibido();
+                myAnimator.SetTrigger("isAttacking");
             }
             else
             {
-                playerStats targetStats = target.GetComponent<playerStats>();
-                targetStats.getHit(1f);
+                
+                if (!targetStats.isdead()) { 
+                    targetStats.getHit(dañoA);
+                    myAnimator.SetTrigger("isAttacking");
+                }
             }
         }
         myAnimator.SetBool("isWalking", true);
@@ -218,4 +227,12 @@ public class Monstruobasico : MonoBehaviour
 
         return navHit.position;
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Dagda")
+        {
+            targetStats.getHit(dañoCol);
+        }
+    }
+
 }

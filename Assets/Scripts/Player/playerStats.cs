@@ -18,7 +18,7 @@ public class playerStats : MonoBehaviour
     private float manaRegenPerSec = 0.75f;
     private float delay = 1f;   //Tiempo entre el último ataque de maná y la regeneración de este
     private float manaTimestamp = 0f;
-    public bool isDead;
+    public bool isDead=false;
     public bool Ultim = false;
     private Animator myAnim;
     public GUIInteraction gui;
@@ -77,10 +77,15 @@ public class playerStats : MonoBehaviour
             StartCoroutine(deadHit());
         }
     }
+    public bool isdead()
+    {
+        return isDead;
+    }
 
     public void dead()
     {
         playerCont.setDead(true);
+        isDead = true;
     }
 
     private IEnumerator deadHit()
