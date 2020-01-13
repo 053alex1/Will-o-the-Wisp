@@ -67,7 +67,7 @@ Rigidbody:
   m_GameObject: {fileID: 235765326181925109}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 1
+  m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -84,10 +84,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.6408386
+  m_Radius: 1.9056234
   m_Height: 16.074932
   m_Direction: 1
-  m_Center: {x: 0.21836853, y: -1.3201103, z: 0.41549683}
+  m_Center: {x: 0.21836838, y: -1.3201103, z: 0.35802093}
 --- !u!114 &579385989863818437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   RadioMov: 40
   wanderTimer: 4
   TimerCDAttack: 2
-  RadioVision: 80
+  RadioVision: 50
   RadioSentido: 30
   fov: 90
   disAtqDis: 20
