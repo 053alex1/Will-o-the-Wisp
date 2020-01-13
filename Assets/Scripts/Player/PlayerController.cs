@@ -99,9 +99,10 @@ public class PlayerController : MonoBehaviour
 
         transform.Rotate(0, turnAmount * 250.0f * Time.deltaTime, 0);
         movegfx = tr.forward * move.magnitude;
-        movegfx.y = rb.velocity.y;
+        //movegfx.y = rb.velocity.y;
 
-        transform.Translate(movegfx * ps.speed * Time.deltaTime, Space.World);
+        //transform.Translate(movegfx * ps.speed * Time.deltaTime, Space.World);
+        rb.AddForce(movegfx * ps.speed, ForceMode.Acceleration);
 
         //disparador.transform.rotation = Quaternion.Euler(0f, maincam.eulerAngles.y, 0f);
         disparador.transform.RotateAround(transform.position, Vector3.up, Input.GetAxis("Mouse X"));
@@ -112,10 +113,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && ps.isGrounded)
         {
-            rb.velocity += -1f * Physics.gravity.normalized * this.CalculateJumpVerticalSpeed(this.ps.jumpHeight);
+            //rb.velocity += -1f * Physics.gravity.normalized * this.CalculateJumpVerticalSpeed(this.ps.jumpHeight);
+            rb.AddForce(Vector3.up * ps.jumpHeight, ForceMode.Impulse);
             ps.isGrounded = false;
             playerAnimator.SetBool("isJumping", true);
-          
+
             Audios[(int)Sounds.JUMP].Play(); //Reproducir audio
         }
     }
