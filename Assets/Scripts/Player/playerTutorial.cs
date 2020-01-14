@@ -38,7 +38,7 @@ public class playerTutorial : MonoBehaviour
         cameraScript = GameObject.Find("Camera").GetComponent<CameraFollow>();
 
         msgPanel = GameObject.FindGameObjectWithTag("panelMensaje");
-        //cl = GameObject.Find("LevelChanger").GetComponentInChildren<changelayer>();
+        cl = GameObject.Find("LevelChanger").GetComponentInChildren<changelayer>();
     }
     void Start()
     {
@@ -134,8 +134,8 @@ public class playerTutorial : MonoBehaviour
                             enemy.SetActive(true);
                         }
                         //habilitarCondicio2 = true;
-                        if(msgTut.index < 9) {
-                            if (msgTut.index >= 8){
+                        if(msgTut.index < 10) {
+                            if (msgTut.index >= 7){
                                 if (condicio2Prev){
                                 msgTut.okButon();
                                 string msg = msgTut.GetMsg();
