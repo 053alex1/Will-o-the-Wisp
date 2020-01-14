@@ -80,7 +80,6 @@ public class BurbujaController : MonoBehaviour
     void fuegosCerca() {
         foreach (GameObject fuego in fuegosLista)
         {
-            
             if (Vector3.Distance(tr.position, fuego.GetComponent<Transform>().position) < 5 && fuego.GetComponent<FuegoStats>().libre) {
                 meterFuego(fuego.GetComponent<Transform>());
             }
@@ -102,26 +101,6 @@ public class BurbujaController : MonoBehaviour
         tr.position = dagtr.position  + new Vector3(15, 0, 0);
     }
     void seguirProta(){
-        
-        //float angle = Vector3.Angle(targetDir, tr.forward);
-        //tr.position.Angle(targetDir, tr.forward) = 4.0f;
-
-    //     var dist = Vector3.Distance(tr.position, dagtr.position);
-
-    //     if (dist < distance)
-    //  {
-    //      //Calculate the vector between the object and the player
-    //     Vector3 targetDir = dagtr.position - tr.position;
-    //      //Cancel out the vertical difference
-    //      targetDir.y = 0;
-    //      //Translate the object in the direction of the vector
-    //      tr.Translate(targetDir.normalized * pushStrength);
-    //  }
-
-
-        //tr.position = Vector3.MoveTowards (tr.position, dagtr.forward, Time.deltaTime * bs.speed);
-        //tr.Translate(dagtr.forward * Time.deltaTime * bs.speed);
-    
         tr.position = Vector3.MoveTowards (tr.position, dagtr.position + new Vector3(7, 5, 0), Time.deltaTime * bs.speed);
     }
     void pararSeguirProta(){

@@ -84,5 +84,6 @@ public class Summon : MonoBehaviour
     {
         bc.gui.DestroyEnergyBar();
         bubble.SetActive(false);
+        GameObject.Find("Dagda").GetComponent<PlayerController>().setBubbleAttached(false);
     }
 }
