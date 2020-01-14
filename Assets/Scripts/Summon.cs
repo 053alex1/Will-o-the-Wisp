@@ -4,15 +4,21 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Summon : MonoBehaviour
 {
-    public GameObject cernunnos;
-    public GameObject summonEffect;
     private BurbujaController bc;
     private int fuegosLength;
-
-    public GameObject donn;
-    
-    public GameObject dullahan;
-    public GameObject dullahanPer;
+    [SerializeField]
+    private GameObject cernunnos;
+    [SerializeField]
+    private GameObject cernunnosEffect;
+    [SerializeField]
+    private GameObject dullahan;
+    [SerializeField]
+    private GameObject dullahanEffect;
+    [SerializeField]
+    private GameObject donn;
+    [SerializeField]
+    private GameObject donnEffect;
+    private GameObject dullahanPer;
     private GameObject bubble;
     public bool comprobar = false;
     public bool stopComprobar = false;
@@ -52,7 +58,7 @@ public class Summon : MonoBehaviour
                     comprobar = true;
                 } else {
                     Invoke("CernunnosSummon", 6.4f);
-                    GameObject  effect = Instantiate(summonEffect, new Vector3(-29f, 2f, -53f), Quaternion.identity) as GameObject;
+                    GameObject  effect = Instantiate(cernunnosEffect, new Vector3(-29f, 2f, -53f), Quaternion.identity) as GameObject;
                     ParticleSystem part = effect.GetComponent<ParticleSystem>();
                     Destroy(effect, part.main.duration);
                 }
