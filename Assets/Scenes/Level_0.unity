@@ -2627,6 +2627,7 @@ MonoBehaviour:
   panel: {fileID: 0}
   panelControll: {fileID: 0}
   panelOptions: {fileID: 0}
+  panelCreditos: {fileID: 0}
   panelDeath: {fileID: 0}
   paneles: []
   isPaused: 0
@@ -5746,6 +5747,7 @@ MonoBehaviour:
   panel: {fileID: 0}
   panelControll: {fileID: 0}
   panelOptions: {fileID: 0}
+  panelCreditos: {fileID: 0}
   panelDeath: {fileID: 0}
   paneles: []
   isPaused: 0
@@ -11649,56 +11651,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7607231309781138180, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
-        type: 3}
-      propertyPath: m_Name
-      value: Dagda
-      objectReference: {fileID: 0}
-    - target: {fileID: 3549692523519255661, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: aaa65c2c661a1ed4ea9f2df416398c7d, type: 2}
-    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
-        type: 3}
-      propertyPath: msgPanel
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
-        type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
-        type: 3}
-      propertyPath: msgText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
-        type: 3}
-      propertyPath: playerAnimator
-      value: 
-      objectReference: {fileID: 1489609957}
-    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
-        type: 3}
-      propertyPath: GFX
-      value: 
-      objectReference: {fileID: 1489609956}
-    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
-        type: 3}
-      propertyPath: test
-      value: 
-      objectReference: {fileID: 8300000, guid: bc81b6222fde2d74fa95140edd6ccfa8, type: 3}
-    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
-        type: 3}
-      propertyPath: gui
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: -2139024746048446749, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5683020562206570206, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
         type: 3}
       propertyPath: m_audioClip
@@ -11775,17 +11727,67 @@ PrefabInstance:
     - target: {fileID: 3861310300043371868, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
         type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861310300043371868, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
+        type: 3}
+      propertyPath: m_Drag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
+        type: 3}
+      propertyPath: msgPanel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
+        type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
+        type: 3}
+      propertyPath: msgText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
+        type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 1489609957}
+    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
+        type: 3}
+      propertyPath: GFX
+      value: 
+      objectReference: {fileID: 1489609956}
+    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
+        type: 3}
+      propertyPath: test
+      value: 
+      objectReference: {fileID: 8300000, guid: bc81b6222fde2d74fa95140edd6ccfa8, type: 3}
+    - target: {fileID: 3861310300043371869, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
+        type: 3}
+      propertyPath: gui
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3861310300043371871, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
         type: 3}
       propertyPath: speed
-      value: 20
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 3861310300043371871, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
         type: 3}
       propertyPath: gui
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861310300043371871, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -2139024746048446749, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6902058120175749399, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
         type: 3}
@@ -11796,6 +11798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607231309781138180, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
+        type: 3}
+      propertyPath: m_Name
+      value: Dagda
       objectReference: {fileID: 0}
     - target: {fileID: 7162698047817581209, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
         type: 3}
@@ -11817,6 +11824,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 3549692523519255661, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: aaa65c2c661a1ed4ea9f2df416398c7d, type: 2}
     - target: {fileID: 437770447474841805, guid: 3ec258ed2bb94a54dbaa1d780ba84013,
         type: 3}
       propertyPath: m_LocalRotation.x
