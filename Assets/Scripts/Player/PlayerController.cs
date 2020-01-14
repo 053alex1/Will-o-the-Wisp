@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
         //movegfx.y = rb.velocity.y;
 
         //transform.Translate(movegfx * ps.speed * Time.deltaTime, Space.World);
-        rb.AddForceAtPosition(movegfx * ps.speed, tr.forward, ForceMode.Force);
+        rb.AddForceAtPosition(movegfx * ps.speed * Time.deltaTime, tr.forward, ForceMode.Force);
 
         //disparador.transform.rotation = Quaternion.Euler(0f, maincam.eulerAngles.y, 0f);
         disparador.transform.RotateAround(transform.position, Vector3.up, Input.GetAxis("Mouse X"));

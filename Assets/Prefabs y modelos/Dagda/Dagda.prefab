@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3861310300043371866}
   - component: {fileID: 3861310300043371868}
   - component: {fileID: 3861310300043371869}
-  - component: {fileID: 3861310300043371871}
+  - component: {fileID: 3947348445976234793}
   - component: {fileID: -2139024746048446749}
   - component: {fileID: 4381843071688558921}
   m_Layer: 0
@@ -379,10 +379,10 @@ MonoBehaviour:
   bubblePrefab: {fileID: 5956468708454806443, guid: a2c87e05233042a4e877ea77b771460d,
     type: 3}
   burbuja: {fileID: 0}
-  ps: {fileID: 3861310300043371871}
+  ps: {fileID: 0}
   Audios: []
   gui: {fileID: 0}
---- !u!114 &3861310300043371871
+--- !u!114 &3947348445976234793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -397,8 +397,8 @@ MonoBehaviour:
   deathparticles: {fileID: 0}
   hp: 5
   mana: 20
-  speed: 15
-  jumpHeight: 0.5
+  speed: 8000
+  jumpHeight: 20
   lightDamage: 2
   heavyDamage: 5
   isGrounded: 0
@@ -406,6 +406,8 @@ MonoBehaviour:
   isDead: 0
   Ultim: 0
   gui: {fileID: 0}
+  isDying: 0
+  playerCont: {fileID: 0}
 --- !u!114 &-2139024746048446749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,9 +427,9 @@ MonoBehaviour:
   dagdaStats: {fileID: 0}
   background: {fileID: 0}
   panel: {fileID: 0}
-  panelStart: {fileID: 0}
   panelControll: {fileID: 0}
   panelOptions: {fileID: 0}
+  panelCreditos: {fileID: 0}
   panelDeath: {fileID: 0}
   paneles: []
   isPaused: 0

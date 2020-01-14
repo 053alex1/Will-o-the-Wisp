@@ -20,6 +20,7 @@ public class playerInteraction : MonoBehaviour
     private changelayer cl;
     private bool hablando = false;
     private bool primeraVegada = true;
+    private string msg;
 
     void Awake()
     {
@@ -49,12 +50,18 @@ public class playerInteraction : MonoBehaviour
         npc = GameObject.FindGameObjectWithTag("NPC");
         if (npc != null)
         {
-            if (Vector3.Distance(tr.position, npc.transform.position) < 16)
+            if (Vector3.Distance(tr.position, npc.transform.position) < 25)
             {
                 msgPanel.SetActive(true);
-                string msg = npc.GetComponent<MsgNPC>().GetMsgPulsaI();
+                if (GameObject.Find("Donn(Clone)") == npc) {
+                    msg = npc.GetComponent<MsgNPC2>().GetMsgPulsaI();
+                }
+                else if (GameObject.Find("Cernunnos(Clone)") == npc) {
+                    msg = npc.GetComponent<MsgNPC>().GetMsgPulsaI();
+                }
+                Debug.Log("Message is: " + msg);
                 msgText.text = msg;
-            }else {
+            } else {
                 msgPanel.SetActive(false);
             }
         }
@@ -74,7 +81,7 @@ public class playerInteraction : MonoBehaviour
                 {
                     Debug.Log("Found Cernunnos");
                     Debug.Log("Distance: " + Vector3.Distance(tr.position, npc.transform.position));
-                    if (Vector3.Distance(tr.position, npc.transform.position) < 16)
+                    if (Vector3.Distance(tr.position, npc.transform.position) < 25)
                     {
                         Debug.Log("Cernunnos talking");
                         npc.GetComponentInChildren<Animator>().SetTrigger("interaction");
@@ -120,7 +127,7 @@ public class playerInteraction : MonoBehaviour
                 {
                     Debug.Log("Found Donn");
                     Debug.Log("Distance: " + Vector3.Distance(tr.position, npc.transform.position));
-                    if (Vector3.Distance(tr.position, npc.transform.position) < 16)
+                    if (Vector3.Distance(tr.position, npc.transform.position) < 25)
                     {
                         Debug.Log("Cernunnos talking");
                         npc.GetComponentInChildren<Animator>().SetTrigger("interaction");

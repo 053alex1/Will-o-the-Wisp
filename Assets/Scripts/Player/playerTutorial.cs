@@ -134,8 +134,8 @@ public class playerTutorial : MonoBehaviour
                             enemy.SetActive(true);
                         }
                         //habilitarCondicio2 = true;
-                        if(msgTut.index < 8) {
-                            if (msgTut.index >= 7){
+                        if(msgTut.index < 9) {
+                            if (msgTut.index >= 8){
                                 if (condicio2Prev){
                                 msgTut.okButon();
                                 string msg = msgTut.GetMsg();
@@ -149,7 +149,8 @@ public class playerTutorial : MonoBehaviour
                 }  
             }
         }
-        else{
+        else {
+            Debug.Log("MENSAJE ULTIMO");
             cl.FadeToLevel(); 
             //POSAR CODI CANVI ESCENA ACI!!!!!!!
         }
