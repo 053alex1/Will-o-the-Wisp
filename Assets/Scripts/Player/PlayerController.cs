@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
         Vector3 move = v * camForward_Dir + h * Camera.main.transform.right;
 
         if (move.magnitude > 1f) move.Normalize();
-        if (rb.velocity.y < -0.2f) rb.velocity = Vector3.down * ps.jumpHeight;
+        //if (rb.velocity.y < -0.2f) rb.velocity = Vector3.down * ps.jumpHeight;
 
         // Calculate the rotation for the player
         move = transform.InverseTransformDirection(move);
