@@ -14,36 +14,14 @@ public class Summon : MonoBehaviour
     private GameObject dullahan;
     [SerializeField]
     private GameObject dullahanEffect;
-    [SerializeField]
-    private GameObject donn;
-    [SerializeField]
-    private GameObject donnEffect;
-    private GameObject dullahanPer;
     private GameObject bubble;
-    public bool comprobar = false;
-    public bool stopComprobar = false;
+    private DonnSummon donnSummon;
 
     void Awake() {
         bc = GetComponent<BurbujaController>();
         fuegosLength = GetComponent<BurbujaStats>().fuegoFatuos.Length - 1;
         bubble = GameObject.Find("Burbuja(Clone)");
-    }
-    void Update()
-    {
-        if(!stopComprobar){
-            if(comprobar){
-                comprobarSiMuerto();
-            }
-        }
-    }    
-    private void comprobarSiMuerto()
-    {
-        dullahanPer = GameObject.Find("Dullahan(Clone)");
-        if(dullahanPer == null)
-        {
-            DonnSummon();
-            stopComprobar=true;
-        }
+        donnSummon = GameObject.Find("Donn Summoning").GetComponent<DonnSummon>();
     }
     
     void OnTriggerEnter(Collider other){ 
@@ -58,7 +36,7 @@ public class Summon : MonoBehaviour
                     GameObject  effect = Instantiate(dullahanEffect, new Vector3(885, 10, 95), Quaternion.identity) as GameObject;
                     ParticleSystem part = effect.GetComponent<ParticleSystem>();
                     Destroy(effect, part.main.duration);
-                    comprobar = true;
+                    donnSummon.comprobar = true;
                 } else {
                     Invoke("CernunnosSummon", 6.4f);
                     GameObject  effect = Instantiate(cernunnosEffect, new Vector3(-29f, 2f, -53f), Quaternion.identity) as GameObject;
@@ -74,10 +52,6 @@ public class Summon : MonoBehaviour
 
     void CernunnosSummon() {
         Instantiate(cernunnos);
-    }
-
-    void DonnSummon() {
-        Instantiate(donn, new Vector3(885, 25, 95), Quaternion.identity);
     }
 
     void DestroyBubbleAndFires()
