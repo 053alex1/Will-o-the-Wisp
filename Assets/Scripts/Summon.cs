@@ -55,6 +55,9 @@ public class Summon : MonoBehaviour
                 if(SceneManager.GetActiveScene().buildIndex == 4)
                 {
                     Instantiate(dullahan, new Vector3(891, 23, 90), Quaternion.identity);
+                    GameObject  effect = Instantiate(dullahanEffect, new Vector3(885, 10, 95), Quaternion.identity) as GameObject;
+                    ParticleSystem part = effect.GetComponent<ParticleSystem>();
+                    Destroy(effect, part.main.duration);
                     comprobar = true;
                 } else {
                     Invoke("CernunnosSummon", 6.4f);
@@ -74,7 +77,7 @@ public class Summon : MonoBehaviour
     }
 
     void DonnSummon() {
-        Instantiate(donn, new Vector3(880, 22, 96), Quaternion.identity);
+        Instantiate(donn, new Vector3(885, 25, 95), Quaternion.identity);
     }
 
     void DestroyBubbleAndFires()
