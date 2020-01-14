@@ -29,7 +29,7 @@ public class Monstruobasico : MonoBehaviour
     public float dañoA;
     public float dañoCol;
     private playerStats targetStats;
-
+    private BaseEnemy yo;
     private enum Estados { ATACA_DIS, ATACA, CAMINANDO, SIGUIENDO };
     private Estados MaqEstados;
     //   private MetodosGenerales m;
@@ -41,6 +41,7 @@ public class Monstruobasico : MonoBehaviour
     }
     void Start()
     {
+        yo = GetComponent<BaseEnemy>();
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindWithTag("Dagda").transform;
 
@@ -57,7 +58,9 @@ public class Monstruobasico : MonoBehaviour
 
     void Update()
     {
-        timerAttack += Time.deltaTime;
+        if (!yo.isdead())
+        {
+            timerAttack += Time.deltaTime;
         timer += Time.deltaTime;
         //logica sencilla: si no estas siguiendo al protagonista tu recorrido es aleatorio
 
@@ -92,7 +95,14 @@ public class Monstruobasico : MonoBehaviour
                     break;
                 }
         };
-       
+        }
+        else
+        {
+            //parar
+            myAnimator.SetBool("isWalking", false);
+            agent.enabled = false;
+        }
+
     }
     private void ataca(float obj)
     {

@@ -32,6 +32,7 @@ public class MonstruoFuath : MonoBehaviour
     public float dañoA;
     public float dañoCol;
     private playerStats targetStats;
+    private BaseEnemy yo;
     private enum Estados { ATACA_DIS, ATACA, CAMINANDO, SIGUIENDO };
     private Estados MaqEstados;
     //   private MetodosGenerales m;
@@ -43,6 +44,7 @@ public class MonstruoFuath : MonoBehaviour
     }
     void Start()
     {
+        yo = GetComponent<BaseEnemy>();
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindWithTag("Dagda").transform;
         targetStats = target.GetComponent<playerStats>();
@@ -60,69 +62,77 @@ public class MonstruoFuath : MonoBehaviour
 
     void Update()
     {
-        timerAttack += Time.deltaTime;
-        timerSalto += Time.deltaTime;
-        timer += Time.deltaTime;
-        //logica sencilla: si no estas siguiendo al protagonista tu recorrido es aleatorio
-        if (cd > 0) cd -= Time.deltaTime;
-
-        else if (Grounded)
+        if (!yo.isdead())
         {
-            switch (MaqEstados)
+            timerAttack += Time.deltaTime;
+            timerSalto += Time.deltaTime;
+            timer += Time.deltaTime;
+            //logica sencilla: si no estas siguiendo al protagonista tu recorrido es aleatorio
+            if (cd > 0) cd -= Time.deltaTime;
+
+            else if (Grounded)
             {
-                case (Estados.CAMINANDO):
-                    {
-                        cd = 0.2f;
-                        wander();
-                        MaqEstados = Estados.SIGUIENDO;
-                        break;
-                    }
-                case (Estados.SIGUIENDO):
-                    {
-                        cd = 0.3f;
-                        float dis = float.MaxValue;
-                        MaqEstados = Estados.CAMINANDO;
-                        burbuja = GameObject.FindGameObjectWithTag("Bubble");
-                        if (burbuja)
-                            dis = seguir(burbuja.transform, float.MaxValue);
-                        obj = seguir(target, dis);
-
-                        break;
-                    }
-                case (Estados.ATACA):
-                    {
-
-                        MaqEstados = Estados.SIGUIENDO;
-                        if (timerAttack > TimerCDAttack)
+                switch (MaqEstados)
+                {
+                    case (Estados.CAMINANDO):
                         {
-                            cd = 1.5f;
-                            timerAttack = 0;
-                            ataca(obj);
+                            cd = 0.2f;
+                            wander();
+                            MaqEstados = Estados.SIGUIENDO;
+                            break;
                         }
-                        break;
-
-                    }
-                case (Estados.ATACA_DIS):
-                    {
-                        MaqEstados = Estados.SIGUIENDO;
-                        if (timerSalto >= TimerCDSalto)
+                    case (Estados.SIGUIENDO):
                         {
-                            cd = 1.5f;
-                            timerSalto = 0;
-                            salto();
+                            cd = 0.3f;
+                            float dis = float.MaxValue;
+                            MaqEstados = Estados.CAMINANDO;
+                            burbuja = GameObject.FindGameObjectWithTag("Bubble");
+                            if (burbuja)
+                                dis = seguir(burbuja.transform, float.MaxValue);
+                            obj = seguir(target, dis);
+
+                            break;
                         }
-                        break;
-                    }
-            };
+                    case (Estados.ATACA):
+                        {
+
+                            MaqEstados = Estados.SIGUIENDO;
+                            if (timerAttack > TimerCDAttack)
+                            {
+                                cd = 1.5f;
+                                timerAttack = 0;
+                                ataca(obj);
+                            }
+                            break;
+
+                        }
+                    case (Estados.ATACA_DIS):
+                        {
+                            MaqEstados = Estados.SIGUIENDO;
+                            if (timerSalto >= TimerCDSalto)
+                            {
+                                cd = 1.5f;
+                                timerSalto = 0;
+                                salto();
+                            }
+                            break;
+                        }
+                };
+            }
+            else
+            {
+                Vector3 v = target.position - transform.position;
+                v.Normalize();
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(v.x, 0, v.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f);
+            }
         }
         else
         {
-            Vector3 v = target.position - transform.position;
-            v.Normalize();
-            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(v.x, 0, v.z));
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f);
+            //parar
+            myAnimator.SetBool("isWalking", false);
+            agent.enabled = false;
         }
-
     }
     private void ataca(float obj)
     {
@@ -162,7 +172,7 @@ public class MonstruoFuath : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(v.x, 0, v.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f);
         //rigidbody.AddForce(700*v.x, 500, 700*v.z, ForceMode.Impulse);
-        rigidbody.AddForce(10 * v.x, 10, 10 * v.z, ForceMode.Impulse);
+        rigidbody.AddForce(45 * v.x, 13, 45 * v.z, ForceMode.Impulse);
         Grounded = false;
     }
 

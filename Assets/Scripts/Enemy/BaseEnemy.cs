@@ -13,6 +13,7 @@ public class BaseEnemy : MonoBehaviour
     private GameObject x;
     private Animator myAnimator;
     public ParticleSystem deathparticle;
+    private bool dead = false;
 
     void Start()
     {
@@ -39,11 +40,12 @@ public class BaseEnemy : MonoBehaviour
         Debug.Log("Enemy ouch - " + hp + " hp left");
         if (hp <= 0)
         {
+            dead = true;
             StartCoroutine(deadmon());
         }
         vida.size = hp / Maxhp;
     }
-    
+    public bool isdead() { return dead; }
     private IEnumerator deadmon()
     {
         Instantiate(deathparticle, transform);
