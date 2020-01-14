@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67502bc2a8c69314ca3bcdfb746a8705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 7
   deathparticle: {fileID: 6740951784736388836, guid: 3766c111ba0a16941a43117f2fa95ffc,
     type: 3}
 --- !u!114 &449225255211466836
@@ -119,14 +119,14 @@ MonoBehaviour:
   TimerCDAttack: 2.5
   TimerCDSalto: 7
   RadioVision: 80
-  RadioSentido: 30
+  RadioSentido: 35
   fov: 90
   disAtqDis: 20
   playerAnimator: {fileID: 0}
   GFX: {fileID: 9190493479286565801}
   burbuja: {fileID: 0}
   "da\xF1oA": 2
-  "da\xF1oCol": 5
+  "da\xF1oCol": 6
 --- !u!1 &912783999728755879
 GameObject:
   m_ObjectHideFlags: 0
